@@ -7,7 +7,7 @@
 <meta name="description" content="A personal learning operating system: diagnose weaknesses, repair gaps, build durable memory, and prove mastery.">
 <!-- Installable app (Add to Home Screen) -->
 <link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0B1530">
+<meta name="theme-color" content="#08101F">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -19,15 +19,15 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
 :root{
-  --navy:#0B1530; --card-navy:#1C2E4F; --near-black:#060A18;
+  --navy:#08101F; --card-navy:#1C2E4F; --near-black:#060A18;
   --rust:#8B3A2E; --rust-hover:#A0452F; --terra:#C2734D; --terra-dark:#A0522D; --clay:#CE8166;
   --gold:#C9A14A; --gold-light:#D9B065; --cream:#F5F1E8;
   --white:#FFFFFF; --offwhite:#FAFAF9; --slate:#8C90A0;
-  --ink:#0B1530; --ink-soft:rgba(11,21,48,0.74); --ink-faint:rgba(11,21,48,0.52);
-  --line:rgba(11,21,48,0.12); --line-soft:rgba(11,21,48,0.07);
+  --ink:#08101F; --ink-soft:rgba(8,16,31,0.74); --ink-faint:rgba(8,16,31,0.52);
+  --line:rgba(8,16,31,0.12); --line-soft:rgba(8,16,31,0.07);
   --ok:#3F7A5B; --warn:#B4772E; --bad:#8B3A2E;
-  --shadow:0 1px 3px rgba(11,21,48,0.08);
-  --lift:0 14px 34px -16px rgba(11,21,48,0.30);
+  --shadow:0 1px 3px rgba(8,16,31,0.08);
+  --lift:0 14px 34px -16px rgba(8,16,31,0.30);
   --disp:'Plus Jakarta Sans',system-ui,sans-serif;
   --serif:'Plus Jakarta Sans',system-ui,sans-serif;
   --mono:'Plus Jakarta Sans',system-ui,sans-serif;
@@ -321,7 +321,7 @@ section.block:first-of-type{border-top:none}
 .mode-top{padding:18px 18px 14px;color:#fff;background:var(--navy);position:relative}
 .mode-top.quiz{background:linear-gradient(130deg,#6d2f8f,#3b1a52)}
 .mode-top.race{background:linear-gradient(130deg,#8B3A2E,#5c241c)}
-.mode-top.tbl{background:linear-gradient(130deg,#1E3D4C,#0B1530)}
+.mode-top.tbl{background:linear-gradient(130deg,#1E3D4C,#08101F)}
 .mode-top.escape{background:linear-gradient(130deg,#B8924A,#7a5f28)}
 .mode-top.draw{background:linear-gradient(130deg,#2b6b57,#163b30)}
 .mode-top .mtag{font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;opacity:.9}
@@ -360,7 +360,7 @@ section.block:first-of-type{border-top:none}
 .g-tile:hover{transform:translateY(-2px);filter:brightness(1.06)}
 .g-tile:disabled{cursor:default}
 .g-tile .sym{width:26px;height:26px;flex:none;display:grid;place-items:center;background:rgba(255,255,255,.25);border-radius:6px;font-weight:800}
-.g-tile.t0{background:#8B3A2E}.g-tile.t1{background:#1E6091}.g-tile.t2{background:#B8924A;color:#0B1530}.g-tile.t3{background:#2b6b57}
+.g-tile.t0{background:#8B3A2E}.g-tile.t1{background:#1E6091}.g-tile.t2{background:#B8924A;color:#08101F}.g-tile.t3{background:#2b6b57}
 .g-tile.correct{outline:4px solid #2b6b57;box-shadow:0 0 0 4px rgba(43,107,87,.3)}
 .g-tile.wrong{opacity:.4}
 .g-feedback{text-align:center;font-weight:800;font-size:17px;margin:16px 0 0}
@@ -419,7 +419,7 @@ section.block:first-of-type{border-top:none}
 .wk-pick[aria-pressed="true"] .lbl{text-decoration:none;opacity:1;color:var(--navy)}
 .wk-pick .lbl b{font-weight:800}
 /* floating pomodoro (dark, solid) */
-.pomo-float{position:fixed;right:20px;bottom:20px;width:322px;max-width:calc(100vw - 32px);background:#0B1530;background:linear-gradient(158deg,#17284a 0%,#0B1530 55%,#060A18 100%);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-lg);box-shadow:0 22px 48px -16px rgba(0,0,0,.62);color:var(--cream);z-index:75;overflow:hidden}
+.pomo-float{position:fixed;right:20px;bottom:20px;width:322px;max-width:calc(100vw - 32px);background:#08101F;background:linear-gradient(158deg,#17284a 0%,#08101F 55%,#060A18 100%);border:1px solid rgba(255,255,255,.12);border-radius:var(--r-lg);box-shadow:0 22px 48px -16px rgba(0,0,0,.62);color:var(--cream);z-index:75;overflow:hidden}
 .pomo-float[hidden]{display:none}
 .pf-head{display:flex;align-items:center;gap:8px;padding:9px 12px;background:rgba(255,255,255,.05);border-bottom:1px solid rgba(255,255,255,.10);cursor:grab;user-select:none;touch-action:none}
 .pf-head:active{cursor:grabbing}
@@ -497,7 +497,7 @@ section.block:first-of-type{border-top:none}
       <svg viewBox="40 10 125 148" aria-hidden="true"><g transform="translate(0,18)">
         <g transform="translate(60,0) rotate(8 0 130)"><circle cx="0" cy="20" r="10" fill="#C9A14A"/><path d="M 0,32 C -10,32 -16,36 -16,42 C -16,55 -13,68 -11,82 C -10,100 -12,118 -14,130 L 14,130 C 12,118 10,100 11,82 C 13,68 16,55 16,42 C 16,36 10,32 0,32 Z" fill="#C9A14A"/></g>
         <g transform="translate(100,0)"><circle cx="0" cy="10" r="11" fill="#8B3A2E"/><path d="M 0,22 C -11,22 -17,26 -17,34 C -17,52 -14,70 -12,86 C -11,108 -13,122 -15,132 L 15,132 C 13,122 11,108 12,86 C 14,70 17,52 17,34 C 17,26 11,22 0,22 Z" fill="#8B3A2E"/></g>
-        <g transform="translate(140,0) rotate(-8 0 130)"><circle cx="0" cy="20" r="10" fill="#0B1530"/><path d="M 0,32 C -10,32 -16,36 -16,42 C -16,55 -13,68 -11,82 C -10,100 -12,118 -14,130 L 14,130 C 12,118 10,100 11,82 C 13,68 16,55 16,42 C 16,36 10,32 0,32 Z" fill="#0B1530"/></g>
+        <g transform="translate(140,0) rotate(-8 0 130)"><circle cx="0" cy="20" r="10" fill="#08101F"/><path d="M 0,32 C -10,32 -16,36 -16,42 C -16,55 -13,68 -11,82 C -10,100 -12,118 -14,130 L 14,130 C 12,118 10,100 11,82 C 13,68 16,55 16,42 C 16,36 10,32 0,32 Z" fill="#08101F"/></g>
       </g></svg>
       <span><span class="lt">Mastery <span class="ac">OS</span></span><span class="ls">Human Anatomy</span></span>
     </span>
@@ -779,7 +779,7 @@ var I={
   speak:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
   clinical:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M12 9v6M9 12h6"/></svg>',
   build:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3"/></svg>',
-  check:'<svg viewBox="0 0 24 24" fill="none" stroke="#0B1530" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></svg>',
+  check:'<svg viewBox="0 0 24 24" fill="none" stroke="#08101F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></svg>',
   chev:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>'
 };
 
@@ -1198,7 +1198,7 @@ function renderDailyBuild(){
 function ring(pct,color,big){
   var r=big?46:42,c=2*Math.PI*r,off=c*(1-pct/100),sz=big?120:112,cx=sz/2;
   return '<svg class="ring" viewBox="0 0 '+sz+' '+sz+'" width="'+sz+'" height="'+sz+'" role="img" aria-label="'+pct+' percent">'+
-    '<circle cx="'+cx+'" cy="'+cx+'" r="'+r+'" fill="none" stroke="rgba(11,21,48,.10)" stroke-width="9"/>'+
+    '<circle cx="'+cx+'" cy="'+cx+'" r="'+r+'" fill="none" stroke="rgba(8,16,31,.10)" stroke-width="9"/>'+
     '<circle cx="'+cx+'" cy="'+cx+'" r="'+r+'" fill="none" stroke="'+color+'" stroke-width="9" stroke-linecap="round" stroke-dasharray="'+c.toFixed(1)+'" stroke-dashoffset="'+off.toFixed(1)+'" transform="rotate(-90 '+cx+' '+cx+')"/>'+
     '<text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="'+(big?26:23)+'" font-weight="800" fill="var(--navy)">'+pct+'</text>'+
   '</svg>';
@@ -1813,7 +1813,7 @@ function drawGuess(){
   gSet('Draw & Guess','Draw from memory');
   var item=DRAW_BANK[Math.floor(Math.random()*DRAW_BANK.length)];var DUR=60;
   gBody('<div class="draw-wrap"><div class="g-qmeta"><span>Draw from memory</span><span id="dtime">'+DUR+'s</span></div><p class="g-q">Draw: '+esc(item.name)+'</p><canvas id="drawCanvas" width="640" height="300"></canvas><div class="draw-tools"><button class="btn" id="dClear">Clear</button><button class="btn gold" id="dReveal">I am done, reveal</button></div></div>');
-  var cv=$('#drawCanvas');if(!cv)return;var ctx=cv.getContext('2d');ctx.lineWidth=2.4;ctx.lineCap='round';ctx.strokeStyle='#0B1530';var drawing=false;
+  var cv=$('#drawCanvas');if(!cv)return;var ctx=cv.getContext('2d');ctx.lineWidth=2.4;ctx.lineCap='round';ctx.strokeStyle='#08101F';var drawing=false;
   function pos(e){var r=cv.getBoundingClientRect();var sx=cv.width/r.width,sy=cv.height/r.height;var cx=((e.touches?e.touches[0].clientX:e.clientX)-r.left)*sx;var cy=((e.touches?e.touches[0].clientY:e.clientY)-r.top)*sy;return {x:cx,y:cy};}
   function down(e){drawing=true;var p=pos(e);ctx.beginPath();ctx.moveTo(p.x,p.y);if(e.cancelable)e.preventDefault();}
   function move(e){if(!drawing)return;var p=pos(e);ctx.lineTo(p.x,p.y);ctx.stroke();if(e.cancelable)e.preventDefault();}
@@ -1925,7 +1925,7 @@ function pwCard(id,title,desc,gold,badge){
   return '<button type="button" id="'+id+'" style="position:relative;display:block;width:100%;text-align:left;padding:16px 18px;border-radius:var(--r);cursor:pointer;border:1.5px solid '+(gold?'var(--gold)':'var(--line)')+';background:'+(gold?'var(--gold)':'var(--white)')+';transition:.15s">'+
     (badge?'<span style="position:absolute;top:13px;right:15px;font-family:var(--mono);font-size:9.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:'+(gold?'var(--navy)':'var(--terra-dark)')+'">'+badge+'</span>':'')+
     '<span style="font-family:var(--disp);font-weight:800;font-size:16px;color:var(--navy);display:block">'+title+'</span>'+
-    '<span style="display:block;font-size:12.5px;margin-top:3px;color:'+(gold?'rgba(11,21,48,.75)':'var(--ink-soft)')+'">'+desc+'</span></button>';
+    '<span style="display:block;font-size:12.5px;margin-top:3px;color:'+(gold?'rgba(8,16,31,.75)':'var(--ink-soft)')+'">'+desc+'</span></button>';
 }
 function pwRow(k,title,desc){
   return '<button type="button" data-pw="'+k+'" style="display:flex;justify-content:space-between;align-items:center;gap:12px;width:100%;text-align:left;padding:13px 15px;border-radius:var(--r);cursor:pointer;border:1.5px solid var(--line);background:var(--white);transition:.15s"><span><span style="font-family:var(--disp);font-weight:700;font-size:15px;color:var(--navy);display:block">'+title+'</span><span style="font-size:12px;color:var(--ink-soft)">'+desc+'</span></span><span style="color:var(--terra-dark);font-weight:800;font-size:18px">&#8250;</span></button>';
@@ -2185,7 +2185,7 @@ function openGapByTopic(){
   var weeks=Object.keys(byWeek).map(Number).sort(function(a,b){return a-b;});
   gSet('Gap Check by Topic','Check the topics your exam covers');
   function chk(c,on,w){return '<label style="display:flex;gap:8px;align-items:flex-start;padding:5px 0;cursor:pointer;font-size:13.5px"><input type="checkbox" class="topic-chk" data-cid="'+esc(c.id)+'" data-wk="'+w+'"'+(on?' checked':'')+' style="margin-top:3px"><span>'+esc(c.name)+'</span></label>';}
-  var groups=weeks.map(function(w){var on=cover.indexOf(w)>-1;var items=byWeek[w].map(function(c){return chk(c,on,w);}).join('');return '<details'+(on?' open':'')+' style="border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin:8px 0"><summary style="font-weight:700;cursor:pointer">Week '+w+' <span style="color:var(--ink-soft);font-weight:400">('+byWeek[w].length+')</span></summary><div style="margin:6px 0 2px"><button type="button" class="btn" data-weekall="'+w+'" style="padding:5px 11px;font-size:12.5px;margin:0 6px 6px 0">Select all in Week '+w+'</button><button type="button" class="btn" data-weekclear="'+w+'" style="padding:5px 11px;font-size:12.5px;background:#fff;color:#0B1530;margin:0 0 6px">Clear week</button></div>'+items+'</details>';}).join('');
+  var groups=weeks.map(function(w){var on=cover.indexOf(w)>-1;var items=byWeek[w].map(function(c){return chk(c,on,w);}).join('');return '<details'+(on?' open':'')+' style="border:1px solid var(--line);border-radius:10px;padding:8px 12px;margin:8px 0"><summary style="font-weight:700;cursor:pointer">Week '+w+' <span style="color:var(--ink-soft);font-weight:400">('+byWeek[w].length+')</span></summary><div style="margin:6px 0 2px"><button type="button" class="btn" data-weekall="'+w+'" style="padding:5px 11px;font-size:12.5px;margin:0 6px 6px 0">Select all in Week '+w+'</button><button type="button" class="btn" data-weekclear="'+w+'" style="padding:5px 11px;font-size:12.5px;background:#fff;color:#08101F;margin:0 0 6px">Clear week</button></div>'+items+'</details>';}).join('');
   gBody('<p style="font-size:13px;color:var(--ink-soft);margin:0 0 10px">Pick the topics on your exam, then run the gap finder. This is by topic, not by week, so it works no matter how your term is laid out.</p>'+
     '<div class="g-actions" style="margin-bottom:8px"><button class="btn" id="tgMid">Midterm (Weeks 1 to 4)</button><button class="btn" id="tgAll">Select all</button><button class="btn" id="tgNone">Clear</button></div>'+
     groups+
