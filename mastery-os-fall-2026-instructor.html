@@ -17,8 +17,6 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Lora:ital,wght@0,400;0,500;1,400;1,500&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-<!-- Course competency map (edit this file to change competencies; the OS auto-loads it). -->
-<script src="competenciesfall2026.js"></script>
 <style>
 :root{
   --navy:#08101F; --card-navy:#1C2E4F; --near-black:#060A18;
@@ -1039,6 +1037,7 @@ var EVIDENCE=[
   {k:'cadaver',name:'Cadaver identification',icon:I.eye,desc:'Name the structure on the specimen, not the textbook.',cta:'Mark it done',href:null},
   {k:'histo',name:'Histology identification',icon:I.micro,desc:'Identify the tissue at the microscope level.',cta:'Mark it done',href:null},
   {k:'explain',name:'Explain aloud',icon:I.speak,desc:'Say it out loud in plain language, no notes.',cta:'Start explaining',href:null},
+  {k:'teachai',name:'Teach it to an AI',icon:I.teach,desc:'Explain it out loud to a free AI tutor, like teaching a 5-year-old, and let it quiz you back.',cta:'Open AI tutor',href:null},
   {k:'teach',name:'Teach another learner',icon:I.teach,desc:'The real test: can someone else follow you?',cta:'Start teaching',href:null},
   {k:'clinical',name:'Clinical case',icon:I.clinical,desc:'Apply the structure to a patient scenario.',cta:'Mark it done',href:null},
   {k:'questions',name:'Create practice questions',icon:I.build,desc:'Write items that would trip up a classmate.',cta:'Mark it done',href:null}
@@ -1513,7 +1512,7 @@ function logEvidence(k,compId){
 /* =========================================================
    PROVE-IT (competency evidence picker)
 ========================================================= */
-var PROVE_READY=['retrieval','draw','explain','teach'];
+var PROVE_READY=['retrieval','draw','explain','teach','teachai'];
 var PROVE_HOW={
   explain:'Say it out loud in plain language, no notes, as if teaching a friend. Where you get stuck is your gap.',
   teach:'Explain it to another person until they can say it back. Their questions show you what you missed.'
@@ -1524,26 +1523,83 @@ function openProve(id){
   gSet('Prove: '+c.name,'Pick one way, then do it');
   function methodBtn(e){
     var ready=PROVE_READY.indexOf(e.k)>-1;
-    if(ready)return '<button class="btn prove-m" data-provem="'+e.k+'" style="text-align:left;display:block;width:100%;margin:0 0 8px;padding:12px 14px"><b>'+esc(e.name)+'</b><br><span style="font-size:12.5px;color:var(--ink-soft);font-weight:400">'+esc(e.desc)+'</span></button>';
+    if(ready){var done=c.ev.indexOf(e.k)>-1;return '<button class="btn prove-m" data-provem="'+e.k+'" style="position:relative;text-align:left;display:block;width:100%;margin:0 0 8px;padding:12px 14px">'+(done?'<span class="proto-badge" style="position:absolute;top:10px;right:10px;background:#e2efe8;border-color:#bcd8c8;color:var(--ok)">Done &#10003;</span>':'')+'<b>'+esc(e.name)+'</b><br><span style="font-size:12.5px;color:var(--ink-soft);font-weight:400">'+esc(e.desc)+'</span></button>';}
     return '<div class="prove-m soon" style="position:relative;text-align:left;width:100%;margin:0 0 8px;padding:12px 14px;border:1.5px solid var(--line);border-radius:var(--r);opacity:.6"><span class="proto-badge" style="position:absolute;top:10px;right:10px">Coming soon</span><b>'+esc(e.name)+'</b><br><span style="font-size:12.5px;color:var(--ink-soft);font-weight:400">'+esc(e.desc)+'</span></div>';
   }
   gBody('<div style="text-align:left"><p style="color:var(--ink-soft);margin:0 0 14px">Pick the one way you want to prove <b>'+esc(c.name)+'</b>, whatever way you are most comfortable. Do it, and your mastery moves. Spaced recall keeps it locked in over time.</p>'+
+    (c.ev.length?'<p style="background:var(--cream);border:1px solid var(--line-soft);border-radius:var(--r);padding:10px 13px;font-size:13px;margin:0 0 14px">Already proven <b>'+c.ev.length+'</b> way'+(c.ev.length>1?'s':'')+': '+esc(c.ev.map(function(k){return EVMAP[k]?EVMAP[k].name:k;}).join(' · '))+'. A <b>different</b> way locks it in harder.</p>':'')+
     EVIDENCE.map(methodBtn).join('')+
     '<div class="g-actions"><button class="btn" data-gameclose>Close</button></div></div>');
   $$('#gameBody [data-provem]').forEach(function(b){b.onclick=function(){proveDo(c,b.getAttribute('data-provem'));};});
 }
 function proveDo(c,k){
   var e=EVMAP[k];if(!e)return;
+  if(k==='teachai'){aiTutorScreen(c);return;}
   if(e.href){
     var url=e.href;
     if(k==='draw'||k==='label')url+='?title='+encodeURIComponent(c.name);
     else if(e.href.indexOf('spaced-recall')>-1)url+='#comp='+encodeURIComponent(c.id);
     window.open(url,'_blank','noopener');
-    logEvidence(k,c.id);closeGame();
+    logEvidence(k,c.id);proveComplete(c,k);
     return;
   }
   gBody('<div class="g-center"><div class="g-emoji">🎯</div><h3>'+esc(e.name)+'</h3><p>'+esc(PROVE_HOW[k]||e.desc)+'</p><p style="font-size:13px;color:var(--ink-soft)">When you are done, mark it and your mastery moves. Then run spaced recall to keep it.</p><div class="g-actions"><button class="btn gold" id="proveDone">I did it, mark done</button><button class="btn" data-toolblank="spaced-recall.html#comp='+encodeURIComponent(c.id)+'">Spaced recall</button><button class="btn" id="proveBack">Back</button></div></div>');
-  $('#proveDone').onclick=function(){logEvidence(k,c.id);closeGame();};
+  $('#proveDone').onclick=function(){logEvidence(k,c.id);proveComplete(c,k);};
+  $('#proveBack').onclick=function(){openProve(c.id);};
+}
+function proveComplete(c,lastMethod){
+  clearG();var ov=$('#gameOverlay');ov.classList.add('open');ov.setAttribute('aria-hidden','false');
+  gSet('Proved: '+c.name,(EVMAP[lastMethod]?EVMAP[lastMethod].name:'Done')+' logged');
+  var doneWays=c.ev.map(function(k){return EVMAP[k]?EVMAP[k].name:k;}).join(' · ');
+  var remaining=EVIDENCE.filter(function(e){return PROVE_READY.indexOf(e.k)>-1&&c.ev.indexOf(e.k)<0;});
+  var html='<div class="g-center"><div class="g-emoji">&#9989;</div><h3>Nice, mastery moved</h3>'+
+    '<p>Proven so far by <b>'+esc(doneWays)+'</b>. Proving <b>'+esc(c.name)+'</b> a different way locks it in harder.</p>';
+  if(remaining.length){
+    html+='<div class="g-actions" style="flex-direction:column;gap:10px;max-width:380px;margin:8px auto 0">'+
+      '<button class="btn gold big" id="pcNow">Prove it another way now</button>'+
+      '<button class="btn" id="pcTom">Another way tomorrow</button>'+
+      '<button class="btn" id="pcNext">On my next repetition</button>'+
+      '<button class="btn ghost" data-gameclose>Done for now</button></div>'+
+      '<p style="font-size:12px;color:var(--ink-faint);margin-top:10px">'+remaining.length+' way'+(remaining.length>1?'s':'')+' you have not tried yet.</p>';
+  }else{
+    html+='<p style="font-size:13px;color:var(--ink-soft)">You have proven this every available way. Spaced recall keeps it sharp.</p><div class="g-actions"><button class="btn gold" data-gameclose>Done</button></div>';
+  }
+  html+='</div>';gBody(html);
+  var n=$('#pcNow'),t=$('#pcTom'),x=$('#pcNext');
+  if(n)n.onclick=function(){openProve(c.id);};
+  if(t)t.onclick=function(){c.next=addDays(TODAY,1);c.varyNext=true;save();renderAll();closeGame();toast('Queued for tomorrow, a fresh way to prove '+c.name);};
+  if(x)x.onclick=function(){c.varyNext=true;save();closeGame();toast('Next time it comes up, try a new way.');};
+}
+function aiTutorScreen(c){
+  var prompt='I am studying anatomy and want to prove I understand "'+c.name+'".\n'+
+    'The learning target is: '+(c.can||c.name)+'\n\n'+
+    'Be my quiz partner:\n'+
+    '1. Ask me to explain "'+c.name+'" out loud, in plain language, like I am teaching a five-year-old.\n'+
+    '2. After I explain, tell me exactly what I got right and what I missed or got wrong versus the target above.\n'+
+    '3. Then ask me three follow-up questions, one at a time, getting a bit harder each time.\n'+
+    '4. End by telling me if I am ready, or exactly what to review.\n'+
+    'Keep it friendly and encouraging. Start by asking me to explain it.';
+  var enc=encodeURIComponent(prompt);
+  gSet('Teach it to an AI: '+c.name,'Use your own free AI account');
+  gBody('<div style="text-align:left">'+
+    '<p style="color:var(--ink-soft);margin:0 0 12px">Explain <b>'+esc(c.name)+'</b> out loud to a free AI tutor, like you are teaching a five-year-old. It listens, tells you what you missed, and quizzes you back.</p>'+
+    '<div style="background:var(--cream);border:1px solid var(--line);border-radius:var(--r);padding:11px 13px;font-size:12.5px;color:var(--ink-soft);margin-bottom:12px">This uses <b>your own free AI account</b> (ChatGPT, Claude, or Gemini), so it is free to you. Free plans cap how many messages you can send in a rolling window, usually enough for several teach-backs, and the exact limit varies by provider and changes over time. If you run low, just <b>prove it another way</b> and come back to AI later.</div>'+
+    '<div style="font-family:var(--mono);font-size:12px;background:var(--offwhite);border:1px solid var(--line);border-radius:var(--r);padding:12px;white-space:pre-wrap;max-height:150px;overflow:auto;margin-bottom:12px">'+esc(prompt)+'</div>'+
+    '<p style="font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-faint);margin:0 0 8px">Open your AI, prompt loaded</p>'+
+    '<div class="g-actions" style="flex-wrap:wrap;gap:8px"><button class="btn primary" id="aiChatgpt">ChatGPT</button>'+
+      '<button class="btn" id="aiClaude">Claude</button>'+
+      '<button class="btn" id="aiGemini">Gemini</button>'+
+      '<button class="btn ghost" id="aiCopy">Copy prompt</button></div>'+
+    '<p style="font-size:12px;color:var(--ink-faint);margin-top:8px">Pick your AI and it opens with the prompt loaded. <b>If the box is empty</b> (Gemini usually is), the prompt is already on your clipboard — click the message box, paste it (<b>Ctrl+V</b>, or <b>&#8984;+V</b> on Mac), and press <b>Enter</b>. Then explain it out loud.</p>'+
+    '<div class="g-actions" style="margin-top:14px"><button class="btn gold" id="proveDone">I did it, mark done</button><button class="btn" id="proveBack">Back</button></div>'+
+    '</div>');
+  function aiLaunch(url,msg){try{navigator.clipboard.writeText(prompt);}catch(e){}try{window.open(url,'_blank','noopener');}catch(e){location.href=url;}if(msg)toast(msg);}
+  var g;
+  g=$('#aiChatgpt');if(g)g.onclick=function(){aiLaunch('https://chatgpt.com/?q='+enc,'Opening ChatGPT with your prompt');};
+  g=$('#aiClaude');if(g)g.onclick=function(){aiLaunch('https://claude.ai/new?q='+enc,'Opening Claude with your prompt');};
+  g=$('#aiGemini');if(g)g.onclick=function(){aiLaunch('https://gemini.google.com/app','Prompt copied — paste into Gemini (Ctrl+V / ⌘+V) and press Enter');};
+  var pc=$('#aiCopy');if(pc)pc.onclick=function(){try{navigator.clipboard.writeText(prompt);toast('Prompt copied');}catch(e){toast('Select the prompt above and copy it');}};
+  $('#proveDone').onclick=function(){logEvidence('teachai',c.id);proveComplete(c,'teachai');};
   $('#proveBack').onclick=function(){openProve(c.id);};
 }
 
