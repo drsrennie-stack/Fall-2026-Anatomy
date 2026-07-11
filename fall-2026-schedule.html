@@ -6,102 +6,58 @@
 <title>BIO 004 — Fall 2026 Course Schedule</title>
 <style>
   :root{
-    --navy:#0B2A4A; --navy2:#123a63; --ink:#16202b; --muted:#5c6b7a;
-    --line:#dbe2ea; --bg:#eef2f6; --white:#fff;
-    --lab:#0E7C66; --labbg:#e2f1ec; --lec:#8A3B12; --lecbg:#f6e9df;
-    --final:#5a2a86; --finalbg:#efe6f7;
-    --warn:#9a5b00; --warnbg:#fdf2dd; --lock:#93a0ad;
-    --r:12px;
+    --navy:#0B2A4A; --ink:#1a1a1a; --muted:#5c6b7a; --line:#c9c9c9;
+    --bg:#f0f0f0; --white:#fff; --shade:#eeeeee;
+    --exam:#111; --examhi:#fff6d8; --warn:#8a5200; --warnbg:#fdf3dc; --r:6px;
   }
   *{box-sizing:border-box}
-  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
-    color:var(--ink);background:var(--bg);line-height:1.45;-webkit-print-color-adjust:exact;print-color-adjust:exact}
-  .wrap{max-width:1180px;margin:0 auto;padding:22px 20px 80px}
-  header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:16px;margin-bottom:4px}
-  h1{font-size:24px;margin:0;letter-spacing:-.2px}
-  .sub{color:var(--muted);font-size:14px;margin-top:3px}
+  body{margin:0;font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Arial,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.4;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .wrap{max-width:1080px;margin:0 auto;padding:22px 18px 70px}
+  header.top{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;gap:14px;margin-bottom:10px}
+  h1{font-size:22px;margin:0}
+  .sub{color:var(--muted);font-size:13px;margin-top:3px}
   .toolbar{display:flex;gap:8px;flex-wrap:wrap}
   button.tb{border:1.5px solid var(--line);background:var(--white);color:var(--navy);font-weight:600;
-    font-size:13px;padding:8px 13px;border-radius:9px;cursor:pointer;transition:.15s}
-  button.tb:hover{border-color:var(--navy);background:#f4f8fc}
-  button.tb.primary{background:var(--navy);color:#fff;border-color:var(--navy)}
-  button.tb.primary:hover{background:var(--navy2)}
+    font-size:13px;padding:8px 13px;border-radius:8px;cursor:pointer}
+  button.tb:hover{border-color:var(--navy)}
 
-  .banner{background:var(--white);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;margin:14px 0 10px}
-  .banner h2{font-size:13px;text-transform:uppercase;letter-spacing:.6px;color:var(--muted);margin:0 0 8px}
-  .flags{display:flex;flex-wrap:wrap;gap:8px}
-  .flag{font-size:12.5px;padding:6px 10px;border-radius:8px;background:var(--warnbg);color:var(--warn);
-    border:1px solid #eddcae;font-weight:600}
-  .flag.info{background:#e7eef6;color:var(--navy);border-color:#cfdcec}
-  .editnote{font-size:12.5px;color:var(--muted);margin-top:10px}
-  .editnote b{color:var(--ink)}
+  .calnote{background:var(--warnbg);border:1px solid #e6d09a;border-radius:var(--r);padding:11px 14px;margin:10px 0 6px;font-size:12.5px;color:var(--warn)}
+  .calnote b{color:#5f3900}
+  .editnote{font-size:12px;color:var(--muted);margin:8px 2px 14px}
 
-  table{width:100%;border-collapse:separate;border-spacing:0;background:var(--white);
-    border:1px solid var(--line);border-radius:var(--r);overflow:hidden;margin-top:8px}
-  thead th{background:var(--navy);color:#fff;font-size:12px;text-transform:uppercase;letter-spacing:.5px;
-    text-align:left;padding:11px 12px;font-weight:700}
-  thead th.c{text-align:center}
-  tbody td{border-top:1px solid var(--line);padding:11px 12px;vertical-align:top;font-size:13.5px}
-  tbody tr:nth-child(even) td{background:#f7fafc}
-  .wkcell{width:118px;white-space:nowrap}
-  .wknum{font-weight:800;font-size:14px;color:var(--navy)}
-  .wkdate{color:var(--muted);font-size:12.5px;margin-top:2px}
-  .unit{font-weight:600;color:var(--navy2);font-size:12px;margin-top:6px;line-height:1.3}
-  .chcell{width:92px;text-align:center;color:var(--muted);font-size:12.5px;white-space:nowrap}
-  .hrcell{width:120px}
-  ul.topics{margin:0;padding:0;list-style:none}
-  ul.topics li{padding:2px 0 2px 13px;position:relative}
-  ul.topics li:before{content:"";position:absolute;left:0;top:10px;width:5px;height:5px;border-radius:50%;background:#b7c3d0}
-  [contenteditable]{outline:none;border-radius:5px;transition:background .1s}
-  [contenteditable]:hover{background:#eef5fb}
-  [contenteditable]:focus{background:#e4f0fb;box-shadow:inset 0 0 0 1.5px #9cc2e6}
-
-  .exam{display:inline-flex;align-items:center;gap:6px;font-weight:700;font-size:12.5px;
-    padding:5px 9px;border-radius:8px;margin:5px 0;border:1px solid transparent}
-  .exam .lockico{font-size:11px;opacity:.7}
-  .exam.lab{background:var(--labbg);color:var(--lab);border-color:#bfe0d5}
-  .exam.lecture{background:var(--lecbg);color:var(--lec);border-color:#e9cdb6}
-  .exam.final{background:var(--finalbg);color:var(--final);border-color:#dcc7ee}
-  .exam .day{font-weight:800}
-  .exam .cv{font-weight:500;opacity:.85}
-  tr.hasexam td{background:#fbfdff}
-  tr.hasexam:nth-child(even) td{background:#f4f9fd}
-
-  .hr{display:flex;flex-direction:column;gap:5px}
-  .bar{height:9px;border-radius:5px;background:#eef2f6;overflow:hidden;display:flex}
-  .bar .new{background:var(--navy)}
-  .bar .rev{background:#9db6cf}
-  .hrlabel{font-size:11.5px;color:var(--muted)}
-  .hrlabel b{color:var(--ink);font-weight:700}
-  .finalrow td{background:var(--finalbg)!important}
-
-  footer.legend{display:flex;flex-wrap:wrap;gap:16px;margin-top:14px;font-size:12.5px;color:var(--muted)}
-  .lg{display:flex;align-items:center;gap:6px}
-  .sw{width:13px;height:13px;border-radius:4px;display:inline-block}
-  .foot2{margin-top:16px;font-size:12px;color:var(--muted);line-height:1.6}
-  .confirm{background:#fff8ec;border:1px solid #f0dfbd;border-radius:var(--r);padding:13px 16px;margin-top:16px;font-size:13px}
-  .confirm b{color:var(--warn)}
-
-  @media print{
-    body{background:#fff}
-    .toolbar,.editnote{display:none}
-    .wrap{max-width:none;padding:0}
-    table{border-radius:0}
-    .banner,.confirm{break-inside:avoid}
-    tbody tr{break-inside:avoid}
-  }
-  @media(max-width:820px){
-    .chcell,.hrcell{display:none}
-    thead th.chcell,thead th.hrcell{display:none}
-  }
+  table{width:100%;border-collapse:collapse;background:var(--white);border:1.5px solid #333;font-size:13.5px}
+  thead th{background:var(--white);color:#000;border:1px solid #333;padding:9px 10px;text-align:center;font-weight:700;font-size:13px}
+  th.lec,th.lab{text-align:left}
+  tbody td{border:1px solid #333;padding:9px 11px;vertical-align:top}
+  tbody tr:nth-child(even) td{background:var(--shade)}
+  .wkcell{width:118px;text-align:center;white-space:nowrap}
+  .wknum{font-weight:800}
+  .wkdate{font-size:12.5px;margin-top:3px}
+  .chcell{width:74px;text-align:center;white-space:nowrap}
+  .leccol{width:38%}
+  ul.t{margin:0;padding:0;list-style:none}
+  ul.t li{padding:3px 0}
+  ul.t li.exam{font-weight:800;text-transform:uppercase;letter-spacing:.2px;background:var(--examhi);
+    display:inline-block;padding:3px 7px;border-radius:4px;border:1px solid #e6cf7a;margin:2px 0}
+  ul.t li.exam.plain{text-transform:none}
+  [contenteditable]{outline:none;border-radius:4px}
+  [contenteditable]:hover{background:#eaf3fb}
+  [contenteditable]:focus{background:#e0eefb;box-shadow:inset 0 0 0 1.5px #9cc2e6}
+  .fallnote{margin-top:6px;font-size:11.5px;color:var(--warn);background:var(--warnbg);
+    border:1px dashed #e0c583;border-radius:4px;padding:4px 7px}
+  .finalbox{border:1.5px solid #333;border-top:none;background:var(--white);padding:12px 14px;font-size:13.5px}
+  .finalbox b{font-weight:800}
+  .foot{font-size:11.5px;color:var(--muted);margin-top:14px}
+  @media print{.toolbar,.editnote{display:none} body{background:#fff} .wrap{max-width:none;padding:0}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header class="top">
     <div>
-      <h1>BIO 004 · Human Anatomy — Fall 2026</h1>
-      <div class="sub">17-week semester · Aug 17 – Dec 11, 2026 · Finals Dec 12–18 · Required home study <b>16–20 h/week</b></div>
+      <h1>BIO 004 · Human Anatomy — Course Schedule, Fall 2026</h1>
+      <div class="sub">Instruction Aug 17 – Dec 11, 2026 · Finals Dec 12–18 · Required home study 16–20 h/week</div>
     </div>
     <div class="toolbar">
       <button class="tb" onclick="window.print()">🖨 Print / PDF</button>
@@ -110,169 +66,114 @@
     </div>
   </header>
 
-  <div class="banner">
-    <h2>Fall 2026 calendar anchors</h2>
-    <div class="flags">
-      <span class="flag info">Instruction begins Mon Aug 17</span>
-      <span class="flag">Labor Day — campus closed Mon Sep 7 (Wk 4)</span>
-      <span class="flag">Veterans Day — campus closed Wed Nov 11 (Wk 13)</span>
-      <span class="flag">Thanksgiving — no class Nov 25–29 · <b>Wk 15 loses Thursday</b></span>
-      <span class="flag info">Last day of instruction Fri Dec 11 · Finals Dec 12–18</span>
-    </div>
-    <div class="editnote"><b>Editable:</b> click any topic to type over it — the schedule adjusts around your locked exams. The 🔒 exam chips are your fixed anchors (Lecture Exams 1–4, Lab Practicals 1–5, Final). Use <b>Save my edits</b> to download your changed version, or <b>Print / PDF</b> for the syllabus copy.</div>
+  <div class="calnote">
+    <b>Fall calendar swaps</b> (your schedule is unchanged; only the dates and the campus-closure days move to fall):
+    Labor Day <b>Mon Sep 7</b> (Wk 4) · Veterans Day <b>Wed Nov 11</b> (Wk 13) · Thanksgiving <b>Nov 25–29</b> (Wk 15 loses its Thursday). Your Spring "Spring Break" and the Week 9 "No Instruction" Thursday have no fall equivalent — flagged inline for you to keep or delete.
+  </div>
+  <div class="editnote"><b>This is your schedule, verbatim, on fall dates.</b> Click any cell to edit. Exam lines are highlighted where you placed them. "Save my edits" downloads your changed copy; "Print / PDF" makes the syllabus copy.</div>
+
+  <table id="sched"><thead><tr>
+    <th class="wkcell">Week</th>
+    <th class="lec leccol">Lecture Topics</th>
+    <th class="chcell">Text Ch.</th>
+    <th class="lab">Lab Topics</th>
+  </tr></thead><tbody id="body"></tbody></table>
+
+  <div class="finalbox">
+    <b>FINAL EXAM.</b> Approximately 50% will be material covered since Lecture Exam 4 and about 50% will cover material from Lecture Exams 1, 2, 3, and 4.
+    <span contenteditable="true"><b>Thursday, December 17</b> — confirm the official finals time slot (Spring ran 8:00–10:00 am in the lecture room).</span>
   </div>
 
-  <table id="sched">
-    <thead>
-      <tr>
-        <th class="wkcell">Week</th>
-        <th>Lecture topics</th>
-        <th class="chcell c">Text ch.</th>
-        <th>Lab topics</th>
-        <th class="hrcell">Home study</th>
-      </tr>
-    </thead>
-    <tbody id="body"></tbody>
-  </table>
-
-  <footer class="legend">
-    <span class="lg"><span class="sw" style="background:var(--lec)"></span> Lecture Exam (locked)</span>
-    <span class="lg"><span class="sw" style="background:var(--lab)"></span> Lab Practical (locked)</span>
-    <span class="lg"><span class="sw" style="background:var(--final)"></span> Cumulative Final (locked)</span>
-    <span class="lg"><span class="sw" style="background:var(--navy)"></span> New-competency work</span>
-    <span class="lg"><span class="sw" style="background:#9db6cf"></span> Spaced review of earlier weeks</span>
-  </footer>
-
-  <div class="confirm">
-    <b>Three things to confirm and adjust:</b> &nbsp;(1) the meeting pattern is assumed <b>Tue/Thu</b> for lecture and lab — change if your section differs; (2) <b>Week 15 loses its Thursday</b> to Thanksgiving, so the five pelvic-anatomy labs need trimming or shifting; (3) the <b>Final Exam slot</b> is set to Thu Dec 17 — swap in the official finals time. Everything here maps to your 195-competency map and drives Mastery OS.
-  </div>
-
-  <div class="foot2">
-    Home-study bars show focused new-competency time (from the competency map, conservative time-to-mastery) plus spaced review of earlier weeks, targeting the 16–20 h/week requirement. New-work per week ranges 2.6 h (histology) to 11.4 h (the CNS week); the remainder each week is retrieval practice and lab-sprint reps that keep earlier units durable.
-  </div>
+  <div class="foot">Reproduced from your master BIO 004 schedule. The 195-competency map (competencies-fall2026.js) is re-keyed to these same 17 weeks so Mastery OS, the cram, and the gap finder line up with this schedule.</div>
 </div>
 
 <script>
+// Verbatim from the instructor's master schedule. e = exam line (highlighted).
 const WEEKS = [
- {n:1,dates:"Aug 17–21",unit:"Foundations",ch:"1",new:4.2,
-   lec:["Introduction to anatomy","The language of anatomy","Structural hierarchy","Positional terminology"],
-   lab:["Introduction & lab safety","Anatomical terminology","The microscope"],exams:[]},
- {n:2,dates:"Aug 24–28",unit:"Cells & Tissues I",ch:"2 & 4",new:3.6,
-   lec:["Cells, structure & function","Epithelial tissue","Cell junctions","Endocrine & exocrine glands","Connective tissue"],
-   lab:["Histology: epithelium","Histology: connective tissue"],exams:[]},
- {n:3,dates:"Aug 31–Sep 4",unit:"Tissues II & Integument",ch:"4 & 5",new:2.6,
-   lec:["Muscle tissue","Nervous tissue","Integumentary system"],
-   lab:["Histology: muscle tissue","Histology: nervous tissue","Histology: blood"],exams:[]},
- {n:4,dates:"Sep 7–11",unit:"Bone Tissue & Axial Skeleton",ch:"6 & 7",new:3.2,
-   lec:["Cartilage & bone architecture","Bone development & repair","Axial skeleton"],
-   lab:["Histology: integumentary system"],
-   exams:[{t:"lab",name:"Lab Practical Exam 1",day:"THU",date:"Sep 10"}],
-   flag:"Labor Day Mon Sep 7 — campus closed"},
- {n:5,dates:"Sep 14–18",unit:"Appendicular Skeleton",ch:"8",new:5.6,
-   lec:["Appendicular skeleton"],
-   lab:["Axial skeleton: skull","Axial skeleton: vertebrae & ribs"],
-   exams:[{t:"lecture",name:"Lecture Exam 1",day:"TUE",date:"Sep 15",cv:"Ch 1, 2, 4, 5, 6"}]},
- {n:6,dates:"Sep 21–25",unit:"Joints & Muscle Structure",ch:"9 & 10",new:8.2,
-   lec:["Classification & structure of joints","Selected synovial joints","Muscle: structure & sarcomeres"],
-   lab:["Upper extremity & pectoral girdle"],exams:[]},
- {n:7,dates:"Sep 28–Oct 2",unit:"Muscle Mechanics & Endocrine",ch:"11 & 17",new:6.3,
-   lec:["Muscle: fascicle arrangement & lever systems","The endocrine system"],
-   lab:["Lower extremity & pelvic girdle","Selected synovial joints"],exams:[]},
- {n:8,dates:"Oct 5–9",unit:"Blood",ch:"18",new:4.1,
-   lec:["Blood: composition, formation & disorders"],
-   lab:["Thorax: heart & major vessels","Muscles of the head, neck & shoulder"],
-   exams:[{t:"lab",name:"Lab Practical Exam 2",day:"TUE",date:"Oct 6"},
-          {t:"lecture",name:"Lecture Exam 2",day:"THU",date:"Oct 8",cv:"Ch 7, 8, 9, 10, 11"}]},
- {n:9,dates:"Oct 12–16",unit:"The Heart",ch:"19",new:6.8,
-   lec:["Heart structures & valves","Cardiac muscle tissue","Pathway of blood"],
-   lab:["Anterior torso & arm muscles"],exams:[]},
- {n:10,dates:"Oct 19–23",unit:"Conduction & Vessels",ch:"19 & 20",new:5.8,
-   lec:["Cardiac conduction system & disorders","Blood vessels: structure & types","Blood vessels: disorders & fetal circulation"],
-   lab:["Posterior torso & arm muscles","Anterior forearm muscles"],exams:[]},
- {n:11,dates:"Oct 26–30",unit:"Lymphatic & Respiratory",ch:"21 & 22",new:5.8,
-   lec:["Lymphatic system","Respiratory system"],
-   lab:["Posterior forearm muscles","Histology of blood vessels"],
-   exams:[{t:"lab",name:"Lab Practical Exam 3",day:"THU",date:"Oct 29"}]},
- {n:12,dates:"Nov 2–6",unit:"Digestive I",ch:"23",new:8.1,
-   lec:["Digestive system: alimentary canal & accessory organs"],
-   lab:["Thoracic anatomy: respiration","Histology of trachea & lungs","Hip & anterior thigh","The leg"],
-   exams:[{t:"lecture",name:"Lecture Exam 3",day:"TUE",date:"Nov 3",cv:"Ch 17, 18, 19, 20, 21"}]},
- {n:13,dates:"Nov 9–13",unit:"Digestive II & Urinary",ch:"23 & 24",new:7.7,
-   lec:["Digestive system: alimentary canal & accessory organs","Urinary system: kidneys, ureters, bladder, urethra"],
-   lab:["Abdominal wall & viscera I","Abdominal wall & viscera II"],
-   exams:[],flag:"Veterans Day Wed Nov 11 — campus closed (Tue/Thu meet)"},
- {n:14,dates:"Nov 16–20",unit:"Reproductive Systems",ch:"25",new:7.6,
-   lec:["Reproductive system: male","Reproductive system: female","Reproductive system: labor & delivery"],
-   lab:["Abdominal cavity blood vessels","Histology of alimentary canal & accessory organs"],
-   exams:[{t:"lab",name:"Lab Practical Exam 4",day:"THU",date:"Nov 19"}]},
- {n:15,dates:"Nov 23–27",unit:"Nervous System Foundations",ch:"12",new:5.8,
-   lec:["Nervous system: functional organization & nervous tissue","Gross anatomy & neuronal integration"],
-   lab:["Pelvic anatomy I: urinary","Histology of urinary system","Pelvic anatomy II: male repro","Pelvic anatomy III: female repro","Histology of reproductive system"],
-   exams:[{t:"lecture",name:"Lecture Exam 4",day:"TUE",date:"Nov 24",cv:"Ch 22, 23, 24, 25"}],
-   flag:"Thanksgiving Nov 25–29 — no class Thursday · trim/shift the 5 pelvic labs"},
- {n:16,dates:"Nov 30–Dec 4",unit:"Central Nervous System",ch:"13 & 14",new:11.4,
-   lec:["CNS: the brain & spinal cord","CNS: meninges & CSF"],
-   lab:["Brain: meninges, ventricles & lobes","Brainstem & cranial nerves","Histology of the nervous system"],exams:[]},
- {n:17,dates:"Dec 7–11",unit:"Peripheral & Autonomic NS",ch:"15",new:6.7,
-   lec:["Peripheral nervous system","Autonomic nervous system"],
-   lab:["Spinal cord & spinal nerves","Autonomic nervous system"],
-   exams:[{t:"lab",name:"Lab Practical Exam 5",day:"THU",date:"Dec 10"}]},
- {n:"Finals",dates:"Dec 14–18",unit:"Finals Week",ch:"—",new:0,
-   lec:[],lab:null,final:true,
-   exams:[{t:"final",name:"Cumulative Final Exam",day:"THU",date:"Dec 17",cv:"≈50% since Exam 4 · 50% cumulative"}]}
+ {n:1,d:"Aug 17–21",ch:"1",
+   lec:["Introduction to Anatomy","The Language of Anatomy","Structural Hierarchy","Positional Terminology"],
+   lab:["Introduction, Lab Safety, Anatomical Terminology","The Microscope"]},
+ {n:2,d:"Aug 24–28",ch:"2 and 4",
+   lec:["Cells, Cell structure and function","Epithelial tissue","Gap Junctions","Endocrine & Exocrine Glands","Connective tissue"],
+   lab:["Histology – Epithelium","Histology – Connective Tissue"]},
+ {n:3,d:"Aug 31–Sep 4",ch:"4 and 5",
+   lec:["Muscle Tissue","Nervous Tissue","Integumentary system"],
+   lab:["Histology – Muscle Tissue","Histology – Nervous Tissue","Histology – Blood"]},
+ {n:4,d:"Sep 7–11",ch:"6 and 7",
+   lec:["Cartilages & Bone Architecture","Bone Develop. & Repair","Axial Skeleton"],
+   lab:["Histology – Integumentary system",{e:1,plain:0,t:"THU: LAB PRACTICAL EXAM 1"}],
+   fall:"Labor Day Mon Sep 7 — campus closed (Tue/Thu classes meet)."},
+ {n:5,d:"Sep 14–18",ch:"8",
+   lec:[{e:1,t:"TUE: LECTURE EXAM 1 (Ch. 1, 2, 4, 5, 6)"},"Appendicular Skeleton"],
+   lab:["Axial Skeleton: Skull","Axial Skeleton: Vert. & Ribs"]},
+ {n:6,d:"Sep 21–25",ch:"9 and 10",
+   lec:["Classification & Structure of Joints","Selected Synovial Joints","Muscle – Structure & Sarcomeres"],
+   lab:["Upper extremity & Pectoral girdle"]},
+ {n:7,d:"Sep 28–Oct 2",ch:"11 and 17",
+   lec:["Muscle – Arrangement of Fascicles & Lever Systems","The Endocrine System"],
+   lab:["Lower extremity & Pelvic girdle","Selected Synovial Joints"]},
+ {n:8,d:"Oct 5–9",ch:"18",
+   lec:["Blood: Composition, Formation & Disorders",{e:1,t:"THU: LECTURE EXAM 2 (Chapters 7, 8, 9, 10 & 11)"}],
+   lab:[{e:1,t:"TUE: LAB PRACTICAL EXAM 2"},"Thorax: Heart and Major Vessels","Muscles of the Head, Neck & Shoulder"]},
+ {n:9,d:"Oct 12–16",ch:"19",
+   lec:["The Heart: Heart Structures and Valves","Cardiac Muscle Tissue","Pathway of Blood",{e:1,plain:1,t:"THU: NO INSTRUCTION"}],
+   lab:["Anterior Torso & Arm Muscles",{e:1,plain:1,t:"THU: NO INSTRUCTION"}],
+   fall:"Spring had a NO INSTRUCTION Thursday here — no fall holiday falls on Thu Oct 15. Keep as a flex day or delete."},
+ {n:10,d:"Oct 19–23",ch:"19 and 20",
+   lec:["Cardiac Conduction System & Disorders","Blood Vessels: Structure & Types","Blood Vessels: Disorders & Fetal Circulation"],
+   lab:["Posterior Torso & Arm Muscles","Anterior Forearm Muscles"]},
+ {n:11,d:"Oct 26–30",ch:"21 and 22",
+   lec:["Lymphatic System","Respiratory System"],
+   lab:["Posterior Forearm Muscles","Histology of Blood Vessels",{e:1,t:"THU: LAB PRACTICAL EXAM 3"}]},
+ {n:12,d:"Nov 2–6",ch:"23",
+   lec:[{e:1,t:"TUE: LECTURE EXAM 3 (Chapters 17, 18, 19, 20, 21)"},"Digestive System: Alimentary Canal and Accessory Organs"],
+   lab:["Thoracic anatomy – Respiration","Histology of the Trachea and Lungs","Hip & Anterior Thigh","The Leg"],
+   fall:"Your Spring Break followed this week in Spring — no fall equivalent (Thanksgiving falls in Wk 15)."},
+ {n:13,d:"Nov 9–13",ch:"23 and 24",
+   lec:["Digestive System: Alimentary Canal and Accessory Organs","Urinary System: Kidneys, Ureters, Urinary Bladder & Urethra"],
+   lab:["Abdominal Wall and Viscera I","Abdominal Wall and Viscera II"],
+   fall:"Veterans Day Wed Nov 11 — campus closed (Tue/Thu classes meet)."},
+ {n:14,d:"Nov 16–20",ch:"25",
+   lec:["Repro. System – Male","Repro. System – Female","Repro. System – Labor & Delivery"],
+   lab:["Abdominal cavity Blood Vessels","Histology of the Alimentary Canal and Accessory Organs",{e:1,t:"THU: PRACTICAL EXAM 4"}]},
+ {n:15,d:"Nov 23–27",ch:"12",
+   lec:[{e:1,t:"TUE: LECTURE EXAM 4 (Chapters 22, 23, 24, and 25)"},"Nervous System: Functional Organization & Nervous Tissue","Gross Anatomy & Neuronal Integration"],
+   lab:["Pelvic Anatomy I – Urinary System","Histology of the Urinary System","Pelvic Anatomy II – Male Repro","Pelvic Anatomy III – Female Repro","Histology of the Reproductive System"],
+   fall:"Thanksgiving Nov 25–29 — NO CLASS Thursday Nov 26. This lab-heavy week loses its Thursday; trim or shift the pelvic labs."},
+ {n:16,d:"Nov 30–Dec 4",ch:"13 and 14",
+   lec:["CNS: The Brain and Spinal Cord","CNS Meninges and CSF"],
+   lab:["Brain: Meninges, Ventricles, & Lobes","Brainstem and Cranial Nerves","Histology of the Nervous System"]},
+ {n:17,d:"Dec 7–11",ch:"15",
+   lec:["PNS","ANS"],
+   lab:["Spinal Cord & Spinal Nerves","ANS",{e:1,t:"THU: LAB PRACTICAL EXAM 5"}]}
 ];
 
-const TARGET = 18; // midpoint of the 16–20h requirement
-
-function li(items){
-  if(items===null) return '<span style="color:var(--muted)">—</span>';
-  return '<ul class="topics">'+items.map(t=>'<li contenteditable="true">'+t+'</li>').join('')+'</ul>';
+function cell(items){
+  return '<ul class="t">'+items.map(x=>{
+    if(typeof x==='object'){
+      return '<li class="exam'+(x.plain?' plain':'')+'" contenteditable="true">'+x.t+'</li>';
+    }
+    return '<li contenteditable="true">'+x+'</li>';
+  }).join('')+'</ul>';
 }
-function examChip(e){
-  return '<div class="exam '+e.t+'"><span class="lockico">🔒</span><span class="day">'+e.day+':</span> '
-    + e.name + (e.cv?' <span class="cv">('+e.cv+')</span>':'') + ' <span class="cv">· '+e.date+'</span></div>';
-}
-function hrBar(nw){
-  if(nw<=0) return '<div class="hrlabel">Review & exam prep</div>';
-  const rev=Math.max(0, TARGET-nw);
-  const total=nw+rev;
-  const np=Math.round(nw/total*100), rp=100-np;
-  return '<div class="hr"><div class="bar"><div class="new" style="width:'+np+'%"></div>'
-    +'<div class="rev" style="width:'+rp+'%"></div></div>'
-    +'<div class="hrlabel"><b>'+nw.toFixed(1)+'h</b> new · <b>~'+rev.toFixed(0)+'h</b> review</div></div>';
-}
-
 function render(){
-  const body=document.getElementById('body');
-  body.innerHTML = WEEKS.map(w=>{
-    const examsHtml = w.exams.map(examChip).join('');
-    const flagHtml = w.flag?'<div class="exam" style="background:var(--warnbg);color:var(--warn);border-color:#eddcae"><span class="lockico">▲</span>'+w.flag+'</div>':'';
-    const cls = (w.final?'finalrow ':'') + (w.exams.length?'hasexam':'');
-    const lecCell = (w.lec&&w.lec.length?li(w.lec):'<span style="color:var(--muted)">—</span>') + examsHtml.replace(/class="exam (lab)/g,'class="exam $1');
-    // put lecture exams + final under lecture col, lab practicals under lab col
-    const lecExams = w.exams.filter(e=>e.t==='lecture'||e.t==='final').map(examChip).join('');
-    const labExams = w.exams.filter(e=>e.t==='lab').map(examChip).join('');
-    return '<tr class="'+cls+'">'
-      + '<td class="wkcell"><div class="wknum">'+(typeof w.n==='number'?'Week '+w.n:w.n)+'</div>'
-        + '<div class="wkdate">'+w.dates+'</div><div class="unit">'+w.unit+'</div>'+flagHtml+'</td>'
-      + '<td>'+(w.lec&&w.lec.length?li(w.lec):(w.final?'':'<span style="color:var(--muted)">—</span>'))+lecExams+'</td>'
-      + '<td class="chcell c" contenteditable="true">'+w.ch+'</td>'
-      + '<td>'+li(w.lab)+labExams+'</td>'
-      + '<td class="hrcell">'+hrBar(w.new)+'</td>'
-      + '</tr>';
+  document.getElementById('body').innerHTML = WEEKS.map(w=>{
+    const fall = w.fall?'<div class="fallnote">▲ '+w.fall+'</div>':'';
+    return '<tr>'
+      +'<td class="wkcell"><div class="wknum">Week '+w.n+'</div><div class="wkdate" contenteditable="true">'+w.d+'</div></td>'
+      +'<td class="leccol">'+cell(w.lec)+fall+'</td>'
+      +'<td class="chcell" contenteditable="true">'+w.ch+'</td>'
+      +'<td>'+cell(w.lab)+'</td>'
+      +'</tr>';
   }).join('');
 }
 render();
-
 function exportHTML(){
-  const clone=document.documentElement.cloneNode(true);
-  clone.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));
-  const html='<!DOCTYPE html>\n'+clone.outerHTML;
-  const blob=new Blob([html],{type:'text/html'});
-  const a=document.createElement('a');
-  a.href=URL.createObjectURL(blob);
-  a.download='BIO004-Fall2026-schedule-edited.html';
-  a.click();
+  const c=document.documentElement.cloneNode(true);
+  c.querySelectorAll('[contenteditable]').forEach(el=>el.removeAttribute('contenteditable'));
+  const blob=new Blob(['<!DOCTYPE html>\n'+c.outerHTML],{type:'text/html'});
+  const a=document.createElement('a');a.href=URL.createObjectURL(blob);
+  a.download='BIO004-Fall2026-schedule-edited.html';a.click();
 }
 </script>
 </body>
