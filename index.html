@@ -10,7 +10,7 @@
 <style>
   :root{
     --navy:#0B1530; --navy-darkest:#060A18; --navy-tint:#ECEFF4;
-    --terra:#B01818; --terra-dark:#8E1414; --gold:#C9A14A; --gold-soft:#DCB45C;
+    --terra:#8B1D1D; --terra-dark:#6B1616; --gold:#C9A14A; --gold-soft:#DCB45C;
     --offwhite:#FAFAF9;
     --radius:8px;
     --shadow-lift:0 2px 4px rgba(11,21,48,.05), 0 12px 26px -8px rgba(11,21,48,.18);
@@ -28,7 +28,7 @@
   .logo-title .a{color:var(--terra-dark);}
   .logo-sub{font-family:var(--font-eyebrow);font-size:.66rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--navy);opacity:.72;margin-top:3px;display:block;}
 
-  .cover{background:var(--navy-darkest);border-radius:var(--radius);padding:clamp(24px,4.5vw,42px);color:#fff;border-top:3px solid var(--terra);}
+  .cover{background:var(--navy-darkest);border-radius:var(--radius);padding:clamp(24px,4.5vw,42px);color:#fff;border-top:3px solid #1E2A47;}
   .cover-eyebrow{font-family:var(--font-eyebrow);font-size:.76rem;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--gold-soft);margin:0 0 12px;}
   .cover-title{font-family:var(--font-display);font-weight:800;font-size:clamp(28px,5vw,46px);line-height:1.03;letter-spacing:-.02em;margin:0;}
   .cover-title span{color:var(--terra);}
@@ -50,7 +50,24 @@
   .instr .card{background:#fff;}
   .instr .card .ic{background:var(--terra-dark);}
 
-  footer{background:var(--navy-darkest);color:var(--navy-tint);text-align:center;padding:1.9rem 1.5rem 1.7rem;border-top:2px solid var(--terra);border-radius:var(--radius);margin-top:42px;}
+  /* one big index card per class */
+  .classgrid{grid-template-columns:repeat(3,1fr);}
+  @media(max-width:820px){.classgrid{grid-template-columns:1fr;}}
+  .classcard{display:flex;flex-direction:column;gap:3px;text-decoration:none;color:inherit;background:#fff;border:1px solid rgba(11,21,48,.06);border-radius:16px;box-shadow:var(--shadow-lift);padding:24px 22px;transition:transform .18s ease,box-shadow .18s ease;}
+  .classcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-lift-strong);}
+  .cc-when{font-family:var(--font-eyebrow);font-weight:700;font-size:.68rem;letter-spacing:.16em;text-transform:uppercase;color:var(--terra-dark);}
+  .cc-days{font-family:var(--font-display);font-weight:800;font-size:1.55rem;letter-spacing:-.02em;line-height:1.05;color:var(--navy);margin:2px 0 0;}
+  .cc-meta{font-size:.86rem;opacity:.78;margin:10px 0 0;line-height:1.45;}
+  .cc-crn{font-size:.76rem;font-weight:700;opacity:.6;margin-top:2px;}
+  .classcard .go{margin-top:14px;font-family:var(--font-display);font-weight:800;font-size:.9rem;color:var(--terra-dark);}
+  .toolrow{display:flex;flex-wrap:wrap;gap:10px;}
+  .toolrow a{font-family:var(--font-display);font-weight:700;font-size:.9rem;color:var(--navy);background:#fff;border:1px solid rgba(11,21,48,.12);border-radius:999px;padding:10px 18px;text-decoration:none;transition:border-color .15s,color .15s,transform .15s;}
+  .toolrow a:hover{border-color:var(--terra-dark);color:var(--terra-dark);transform:translateY(-2px);}
+  .instr-line{margin-top:30px;font-size:.82rem;color:var(--navy);opacity:.6;}
+  .instr-line a{color:var(--terra-dark);font-weight:700;text-decoration:none;}
+  .instr-line a:hover{text-decoration:underline;}
+
+  footer{background:var(--navy-darkest);color:var(--navy-tint);text-align:center;padding:1.9rem 1.5rem 1.7rem;border-top:2px solid #1E2A47;border-radius:var(--radius);margin-top:42px;}
   footer .by{font-family:var(--font-display);font-weight:700;color:#fff;font-size:1rem;margin-bottom:.15rem;}
   footer .role{font-size:.82rem;color:var(--navy-tint);}
   @media (prefers-reduced-motion: reduce){*{transition-duration:.01ms !important;}}
@@ -62,8 +79,8 @@
     <svg viewBox="40 10 125 148" role="img" aria-hidden="true" focusable="false">
       <g transform="translate(0,18)">
         <g transform="translate(60,0) rotate(8 0 130)"><circle cx="0" cy="20" r="10" fill="#0B1530"/><path d="M 0,32 C -10,32 -16,36 -16,42 C -16,55 -13,68 -11,82 C -10,100 -12,118 -14,130 L 14,130 C 12,118 10,100 11,82 C 13,68 16,55 16,42 C 16,36 10,32 0,32 Z" fill="#0B1530"/></g>
-        <g transform="translate(100,0)"><circle cx="0" cy="10" r="11" fill="#8E1414"/><path d="M 0,22 C -11,22 -17,26 -17,34 C -17,52 -14,70 -12,86 C -11,108 -13,122 -15,132 L 15,132 C 13,122 11,108 12,86 C 14,70 17,52 17,34 C 17,26 11,22 0,22 Z" fill="#8E1414"/></g>
-        <g transform="translate(140,0) rotate(-8 0 130)"><circle cx="0" cy="20" r="10" fill="#B01818"/><path d="M 0,32 C -10,32 -16,36 -16,42 C -16,55 -13,68 -11,82 C -10,100 -12,118 -14,130 L 14,130 C 12,118 10,100 11,82 C 13,68 16,55 16,42 C 16,36 10,32 0,32 Z" fill="#B01818"/></g>
+        <g transform="translate(100,0)"><circle cx="0" cy="10" r="11" fill="#6B1616"/><path d="M 0,22 C -11,22 -17,26 -17,34 C -17,52 -14,70 -12,86 C -11,108 -13,122 -15,132 L 15,132 C 13,122 11,108 12,86 C 14,70 17,52 17,34 C 17,26 11,22 0,22 Z" fill="#6B1616"/></g>
+        <g transform="translate(140,0) rotate(-8 0 130)"><circle cx="0" cy="20" r="10" fill="#DCB45C"/><path d="M 0,32 C -10,32 -16,36 -16,42 C -16,55 -13,68 -11,82 C -10,100 -12,118 -14,130 L 14,130 C 12,118 10,100 11,82 C 13,68 16,55 16,42 C 16,36 10,32 0,32 Z" fill="#DCB45C"/></g>
       </g>
     </svg>
     <span>
@@ -80,65 +97,41 @@
     <p class="cover-tag">Your study system, your schedule, and what each exam covers. Pick your section, prep the night before, and come to class ready to apply it.</p>
   </section>
 
-  <p class="section-label">Start here</p>
-  <div class="grid">
-    <a class="card primary" href="mastery-os-fall-2026.html">
-      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="4"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg></span>
-      <span class="ct">Mastery OS</span>
-      <span class="cd">Your study operating system — it tells you the single best thing to do next, then coaches you through proving you know it.</span>
-      <span class="go">Open &rarr;</span>
+  <p class="section-label">Pick your class</p>
+  <div class="grid classgrid">
+    <a class="classcard" href="class1.html">
+      <span class="cc-when">Section 1 &middot; Afternoon</span>
+      <span class="cc-days">Mon / Wed</span>
+      <span class="cc-meta">Lecture 12:30&ndash;1:50 pm &middot; Lab 2:00&ndash;4:50 pm &middot; VC 1137</span>
+      <span class="cc-crn">CRN 80650</span>
+      <span class="go">Open my class &rarr;</span>
     </a>
-    <a class="card" href="bio004-course-calendar.html">
-      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="17" rx="2"/><path d="M3 9h18M8 2v4M16 2v4"/></svg></span>
-      <span class="ct">Course Calendar</span>
-      <span class="cd">Click any class day to see your lecture, your lab, and the pre-work due the night before.</span>
-      <span class="go">Open &rarr;</span>
+    <a class="classcard" href="class2.html">
+      <span class="cc-when">Section 2 &middot; Morning</span>
+      <span class="cc-days">Tue / Thu</span>
+      <span class="cc-meta">Lecture 9:30&ndash;10:45 am &middot; Lab 11:00 am&ndash;1:50 pm &middot; VC 1137</span>
+      <span class="cc-crn">CRN 80654</span>
+      <span class="go">Open my class &rarr;</span>
     </a>
-    <a class="card" href="bio004-exam-modules.html">
-      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v5H4zM4 10h16v10H4z"/><path d="M8 14h8"/></svg></span>
-      <span class="ct">Exam Modules</span>
-      <span class="cd">The five exams and exactly what each one covers, by body system.</span>
-      <span class="go">Open &rarr;</span>
-    </a>
-  </div>
-
-  <p class="section-label">Your lab schedule (by section)</p>
-  <div class="grid">
-    <a class="card" href="class1.html">
-      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3"/></svg></span>
-      <span class="ct">Mon / Wed &middot; Afternoon</span>
-      <span class="cd">CRN 80650 &middot; interactive lab schedule with exam countdown.</span>
-      <span class="go">Open &rarr;</span>
-    </a>
-    <a class="card" href="class2.html">
-      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3"/></svg></span>
-      <span class="ct">Tue / Thu &middot; Early</span>
-      <span class="cd">CRN 80654 &middot; interactive lab schedule with exam countdown.</span>
-      <span class="go">Open &rarr;</span>
-    </a>
-    <a class="card" href="class3.html">
-      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3"/></svg></span>
-      <span class="ct">Tue / Thu &middot; Evening</span>
-      <span class="cd">CRN 80655 &middot; interactive lab schedule with exam countdown.</span>
-      <span class="go">Open &rarr;</span>
+    <a class="classcard" href="class3.html">
+      <span class="cc-when">Section 3 &middot; Evening</span>
+      <span class="cc-days">Tue / Thu</span>
+      <span class="cc-meta">Lecture 5:30&ndash;6:45 pm &middot; Lab 7:00&ndash;9:50 pm &middot; VC 1137</span>
+      <span class="cc-crn">CRN 80655</span>
+      <span class="go">Open my class &rarr;</span>
     </a>
   </div>
 
-  <p class="section-label">Instructor</p>
-  <div class="grid instr">
-    <a class="card" href="mastery-os-fall-2026-instructor.html">
-      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 12a9 9 0 1 0 3-6.7L3 8"/><path d="M3 3v5h5"/></svg></span>
-      <span class="ct">Mastery OS — Test build</span>
-      <span class="cd">Opens fresh at setup every time so you can rehearse and verify the student experience.</span>
-      <span class="go">Open &rarr;</span>
-    </a>
-    <a class="card" href="fall-2026-schedule.html">
-      <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="2"/><path d="M8 8h8M8 12h8M8 16h5"/></svg></span>
-      <span class="ct">Master Course Schedule</span>
-      <span class="cd">The full 17-week week-by-week schedule on the Solano Fall 2026 calendar.</span>
-      <span class="go">Open &rarr;</span>
-    </a>
+  <p class="section-label">Course tools</p>
+  <div class="toolrow">
+    <a href="start-here.html">Start Here</a>
+    <a href="mastery-os-fall-2026.html">Mastery OS</a>
+    <a href="bio004-course-calendar.html">Calendar</a>
+    <a href="bio004-exam-modules.html">Exam modules</a>
+    <a href="fall-2026-syllabus.html">Syllabus</a>
   </div>
+
+  <p class="instr-line">Instructor: <a href="mastery-os-fall-2026-instructor.html">Mastery OS test build</a> &middot; <a href="fall-2026-schedule.html">master schedule</a></p>
 
   <footer>
     <div class="by">Dr. Sharilyn Rennie</div>

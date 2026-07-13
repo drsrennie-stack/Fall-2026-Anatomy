@@ -20,12 +20,12 @@
 <style>
 :root{
   --navy:#08101F; --card-navy:#1C2E4F; --near-black:#060A18;
-  --rust:#8E1414; --rust-hover:#A0452F; --terra:#B01818; --terra-dark:#A0522D; --clay:#CE8166;
+  --rust:#6B1616; --rust-hover:#A0452F; --terra:#8B1D1D; --terra-dark:#A0522D; --clay:#CE8166;
   --gold:#C9A14A; --gold-light:#D9B065; --cream:#F5F1E8;
   --white:#FFFFFF; --offwhite:#FAFAF9; --slate:#8C90A0;
   --ink:#08101F; --ink-soft:rgba(8,16,31,0.74); --ink-faint:rgba(8,16,31,0.52);
   --line:rgba(8,16,31,0.12); --line-soft:rgba(8,16,31,0.07);
-  --ok:#3F7A5B; --warn:#B4772E; --bad:#8E1414;
+  --ok:#3F7A5B; --warn:#B4772E; --bad:#6B1616;
   --shadow:0 1px 3px rgba(8,16,31,0.08);
   --lift:0 14px 34px -16px rgba(8,16,31,0.30);
   --disp:'Plus Jakarta Sans',system-ui,sans-serif;
@@ -320,7 +320,7 @@ section.block:first-of-type{border-top:none}
 .mode-card{padding:0;overflow:hidden;text-align:left;display:flex;flex-direction:column;background:var(--white);border:1px solid var(--line);border-radius:var(--r-lg)}
 .mode-top{padding:18px 18px 14px;color:#fff;background:var(--navy);position:relative}
 .mode-top.quiz{background:linear-gradient(130deg,#6d2f8f,#3b1a52)}
-.mode-top.race{background:linear-gradient(130deg,#8E1414,#5c241c)}
+.mode-top.race{background:linear-gradient(130deg,#6B1616,#5c241c)}
 .mode-top.tbl{background:linear-gradient(130deg,#1E3D4C,#08101F)}
 .mode-top.escape{background:linear-gradient(130deg,#B8924A,#7a5f28)}
 .mode-top.draw{background:linear-gradient(130deg,#2b6b57,#163b30)}
@@ -360,7 +360,7 @@ section.block:first-of-type{border-top:none}
 .g-tile:hover{transform:translateY(-2px);filter:brightness(1.06)}
 .g-tile:disabled{cursor:default}
 .g-tile .sym{width:26px;height:26px;flex:none;display:grid;place-items:center;background:rgba(255,255,255,.25);border-radius:6px;font-weight:800}
-.g-tile.t0{background:#8E1414}.g-tile.t1{background:#1E6091}.g-tile.t2{background:#B8924A;color:#08101F}.g-tile.t3{background:#2b6b57}
+.g-tile.t0{background:#6B1616}.g-tile.t1{background:#1E6091}.g-tile.t2{background:#B8924A;color:#08101F}.g-tile.t3{background:#2b6b57}
 .g-tile.correct{outline:4px solid #2b6b57;box-shadow:0 0 0 4px rgba(43,107,87,.3)}
 .g-tile.wrong{opacity:.4}
 .g-feedback{text-align:center;font-weight:800;font-size:17px;margin:16px 0 0}
@@ -495,14 +495,14 @@ section.block:first-of-type{border-top:none}
   <div class="hbar">
     <span class="logo">
       <svg viewBox="40 10 125 148" aria-hidden="true"><g transform="translate(0,18)">
-        <g transform="translate(60,0) rotate(8 0 130)"><circle cx="0" cy="20" r="10" fill="#B01818"/><path d="M 0,32 C -10,32 -16,36 -16,42 C -16,55 -13,68 -11,82 C -10,100 -12,118 -14,130 L 14,130 C 12,118 10,100 11,82 C 13,68 16,55 16,42 C 16,36 10,32 0,32 Z" fill="#B01818"/></g>
-        <g transform="translate(100,0)"><circle cx="0" cy="10" r="11" fill="#8E1414"/><path d="M 0,22 C -11,22 -17,26 -17,34 C -17,52 -14,70 -12,86 C -11,108 -13,122 -15,132 L 15,132 C 13,122 11,108 12,86 C 14,70 17,52 17,34 C 17,26 11,22 0,22 Z" fill="#8E1414"/></g>
+        <g transform="translate(60,0) rotate(8 0 130)"><circle cx="0" cy="20" r="10" fill="#8B1D1D"/><path d="M 0,32 C -10,32 -16,36 -16,42 C -16,55 -13,68 -11,82 C -10,100 -12,118 -14,130 L 14,130 C 12,118 10,100 11,82 C 13,68 16,55 16,42 C 16,36 10,32 0,32 Z" fill="#8B1D1D"/></g>
+        <g transform="translate(100,0)"><circle cx="0" cy="10" r="11" fill="#6B1616"/><path d="M 0,22 C -11,22 -17,26 -17,34 C -17,52 -14,70 -12,86 C -11,108 -13,122 -15,132 L 15,132 C 13,122 11,108 12,86 C 14,70 17,52 17,34 C 17,26 11,22 0,22 Z" fill="#6B1616"/></g>
         <g transform="translate(140,0) rotate(-8 0 130)"><circle cx="0" cy="20" r="10" fill="#08101F"/><path d="M 0,32 C -10,32 -16,36 -16,42 C -16,55 -13,68 -11,82 C -10,100 -12,118 -14,130 L 14,130 C 12,118 10,100 11,82 C 13,68 16,55 16,42 C 16,36 10,32 0,32 Z" fill="#08101F"/></g>
       </g></svg>
       <span><span class="lt">Mastery <span class="ac">OS</span></span><span class="ls">Human Anatomy</span></span>
     </span>
     <span class="spacer"></span>
-    <span class="hbadge" style="background:#f6e4e0;color:#8E1414;border-color:#eccfc7">Instructor · Test build</span>
+    <span class="hbadge" style="background:#f6e4e0;color:#6B1616;border-color:#eccfc7">Instructor · Test build</span>
     <button class="btn rust" id="restartSetup" type="button" style="padding:8px 14px;font-size:13px">&#8635; Restart setup</button>
     <span class="hbadge" id="greetBadge">Welcome</span>
     <button class="icbtn" id="openGrades" aria-label="My grades" title="My grades">
@@ -700,7 +700,7 @@ section.block:first-of-type{border-top:none}
   </div>
   <div class="pf-ring" id="pfRing">
     <svg class="pf-ring-svg" viewBox="0 0 120 120" aria-hidden="true" focusable="false">
-      <defs><linearGradient id="pfGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B8924A"/><stop offset="1" stop-color="#B01818"/></linearGradient></defs>
+      <defs><linearGradient id="pfGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#B8924A"/><stop offset="1" stop-color="#8B1D1D"/></linearGradient></defs>
       <circle class="pf-ring-track" cx="60" cy="60" r="52"/>
       <circle class="pf-ring-arc" id="pfArc" cx="60" cy="60" r="52"/>
     </svg>
@@ -1211,7 +1211,7 @@ function ring(pct,color,big){
     '<text x="50%" y="50%" text-anchor="middle" dominant-baseline="central" font-size="'+(big?26:23)+'" font-weight="800" fill="var(--navy)">'+pct+'</text>'+
   '</svg>';
 }
-function ringColor(v){return v>=70?'#3F7A5B':v>=50?'#C9A14A':'#8E1414';}
+function ringColor(v){return v>=70?'#3F7A5B':v>=50?'#C9A14A':'#6B1616';}
 function renderDashboard(){
   var rd=readiness();
   var top='<div class="card readiness">'+ring(rd,'#C9A14A',true)+'<div class="rtext"><p class="eyebrow" style="color:var(--gold)">Practice Readiness</p><h3>Practice readiness: '+rd+'%</h3><p>'+readinessLine(rd)+'</p><p style="font-size:12px;opacity:.72;margin-top:8px">This reflects only what you have practiced here, not everything your exam may cover. Always cross-check the structure list and syllabus.</p></div><div style="flex:1"></div><button class="btn gold" data-session="today">Close the gap</button></div>';
@@ -1649,8 +1649,8 @@ function markToday(name,type){var lc=name.toLowerCase();var m=allComps().filter(
 ========================================================= */
 var OB={step:0,data:{}};
 var OB_LOGO='<svg viewBox="40 10 125 148" width="70" height="83" aria-hidden="true" style="display:block;margin:0 auto"><g transform="translate(0,18)">'+
-  '<g transform="translate(60,0) rotate(8 0 130)"><circle cx="0" cy="20" r="10" fill="#B01818"/><path d="M 0,32 C -10,32 -16,36 -16,42 C -16,55 -13,68 -11,82 C -10,100 -12,118 -14,130 L 14,130 C 12,118 10,100 11,82 C 13,68 16,55 16,42 C 16,36 10,32 0,32 Z" fill="#B01818"/></g>'+
-  '<g transform="translate(100,0)"><circle cx="0" cy="10" r="11" fill="#8E1414"/><path d="M 0,22 C -11,22 -17,26 -17,34 C -17,52 -14,70 -12,86 C -11,108 -13,122 -15,132 L 15,132 C 13,122 11,108 12,86 C 14,70 17,52 17,34 C 17,26 11,22 0,22 Z" fill="#8E1414"/></g>'+
+  '<g transform="translate(60,0) rotate(8 0 130)"><circle cx="0" cy="20" r="10" fill="#8B1D1D"/><path d="M 0,32 C -10,32 -16,36 -16,42 C -16,55 -13,68 -11,82 C -10,100 -12,118 -14,130 L 14,130 C 12,118 10,100 11,82 C 13,68 16,55 16,42 C 16,36 10,32 0,32 Z" fill="#8B1D1D"/></g>'+
+  '<g transform="translate(100,0)"><circle cx="0" cy="10" r="11" fill="#6B1616"/><path d="M 0,22 C -11,22 -17,26 -17,34 C -17,52 -14,70 -12,86 C -11,108 -13,122 -15,132 L 15,132 C 13,122 11,108 12,86 C 14,70 17,52 17,34 C 17,26 11,22 0,22 Z" fill="#6B1616"/></g>'+
   '<g transform="translate(140,0) rotate(-8 0 130)"><circle cx="0" cy="20" r="10" fill="#F5F1E8"/><path d="M 0,32 C -10,32 -16,36 -16,42 C -16,55 -13,68 -11,82 C -10,100 -12,118 -14,130 L 14,130 C 12,118 10,100 11,82 C 13,68 16,55 16,42 C 16,36 10,32 0,32 Z" fill="#F5F1E8"/></g>'+
   '</g></svg>';
 var OB_STEPS=[
