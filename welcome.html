@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
 <title>Welcome &middot; BIO 004 Human Anatomy &middot; Fall 2026</title>
-<meta name="description" content="Start here: a warm, hand-guided walkthrough of BIO 004 Human Anatomy with Dr. Rennie. Pick your section, then let me point you to everything you'll use this term.">
+<meta name="description" content="Start here: a warm, animated welcome to BIO 004 Human Anatomy with Dr. Rennie. Set up your course the first time, then a lively welcome-back that asks where you want to start today.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -23,30 +23,55 @@
   body{
     font-family:var(--font);color:var(--ink);
     background:radial-gradient(1200px 720px at 50% -8%, #fff 0%, var(--near-white) 52%, #F0ECE4 100%);
-    min-height:100vh;
+    min-height:100vh;overflow-x:hidden;
   }
   a{color:inherit;}
   :focus-visible{outline:3px solid var(--maroon);outline-offset:2px;border-radius:8px;}
 
-  .stage{min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px 18px;}
+  /* ===== animated aurora background ===== */
+  .aurora{position:fixed;inset:0;z-index:0;overflow:hidden;pointer-events:none;}
+  .aurora span{position:absolute;border-radius:50%;filter:blur(72px);opacity:.42;animation:drift 20s ease-in-out infinite;}
+  .aurora .a1{width:540px;height:540px;background:var(--maroon);top:-140px;left:-90px;}
+  .aurora .a2{width:480px;height:480px;background:var(--navy);bottom:-160px;right:-70px;animation-delay:-7s;}
+  .aurora .a3{width:400px;height:400px;background:var(--gold-soft);top:38%;left:52%;opacity:.30;animation-delay:-13s;}
+  @keyframes drift{0%,100%{transform:translate(0,0) scale(1);}33%{transform:translate(46px,-34px) scale(1.12);}66%{transform:translate(-34px,28px) scale(.94);}}
+
+  .stage{position:relative;z-index:1;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:28px 18px;}
   .card{
-    width:100%;max-width:640px;background:#fff;border:1px solid var(--line);border-radius:26px;
+    width:100%;max-width:660px;background:rgba(255,255,255,.94);backdrop-filter:blur(6px);border:1px solid var(--line);border-radius:26px;
     box-shadow:0 44px 84px -30px rgba(11,21,48,.5),0 12px 26px rgba(11,21,48,.12);
-    padding:38px 40px 30px;position:relative;
+    padding:40px 42px 32px;position:relative;
   }
   @media(max-width:560px){.card{padding:28px 22px 22px;border-radius:20px;}}
 
-  .phase{display:none;animation:fade .34s ease;}
+  .phase{display:none;}
   .phase.is-active{display:block;}
-  @keyframes fade{from{opacity:0;transform:translateY(10px);}to{opacity:1;transform:none;}}
 
   .eyebrow{font-family:var(--eb);font-weight:700;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;color:var(--maroon-dark);}
-  h1{font-size:2.05rem;font-weight:800;letter-spacing:-.02em;line-height:1.07;margin:.35rem 0 .55rem;}
+  h1{font-size:2.15rem;font-weight:800;letter-spacing:-.02em;line-height:1.06;margin:.35rem 0 .55rem;}
   h1 .accent{color:var(--maroon);}
   .sub{font-size:1.06rem;color:var(--ink);opacity:.85;margin:0 0 20px;line-height:1.56;}
 
-  .wlogo{display:flex;justify-content:center;margin:4px 0 16px;}
-  .wlogo svg{height:96px;width:auto;}
+  /* ===== animated first-run ===== */
+  .wlogo{display:flex;justify-content:center;margin:2px 0 12px;}
+  .wlogo svg{height:100px;width:auto;}
+  #pWelcome.is-active .wlogo{animation:rise .85s cubic-bezier(.2,.8,.2,1) both;}
+  @keyframes rise{from{opacity:0;transform:translateY(20px) scale(.95);}to{opacity:1;transform:none;}}
+  #pWelcome.is-active .wlogo svg > g > g{opacity:0;animation:figIn .55s ease forwards;}
+  #pWelcome.is-active .wlogo svg > g > g:nth-child(1){animation-delay:.30s;}
+  #pWelcome.is-active .wlogo svg > g > g:nth-child(2){animation-delay:.50s;}
+  #pWelcome.is-active .wlogo svg > g > g:nth-child(3){animation-delay:.70s;}
+  @keyframes figIn{to{opacity:1;}}
+
+  .greet{height:1.3em;font-family:var(--eb);font-weight:700;font-size:.8rem;letter-spacing:.24em;text-transform:uppercase;color:var(--maroon-dark);text-align:center;transition:opacity .32s ease;margin-bottom:4px;}
+  .greet.fade{opacity:0;}
+
+  .reveal{opacity:0;}
+  #pWelcome.is-active .reveal{animation:up .6s ease forwards;}
+  #pWelcome.is-active .d1{animation-delay:.9s;}
+  #pWelcome.is-active .d2{animation-delay:1.06s;}
+  #pWelcome.is-active .d3{animation-delay:1.24s;}
+  @keyframes up{from{opacity:0;transform:translateY(12px);}to{opacity:1;transform:none;}}
 
   .btn{display:inline-flex;align-items:center;gap:9px;background:var(--navy);color:#fff;text-decoration:none;font:inherit;font-weight:700;font-size:1.02rem;padding:15px 28px;border:none;border-radius:13px;cursor:pointer;transition:var(--t);box-shadow:0 14px 28px -14px rgba(11,21,48,.7);}
   .btn:hover{background:#08101f;transform:translateY(-1px);}
@@ -58,6 +83,7 @@
   .btnrow{display:flex;flex-wrap:wrap;gap:12px;margin-top:8px;}
   .fine{font-size:.86rem;opacity:.68;margin-top:14px;}
 
+  /* section options */
   .opts{display:flex;flex-direction:column;gap:11px;margin:6px 0 8px;}
   .opt{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--offwhite);border:2px solid transparent;border-radius:14px;padding:15px 16px;cursor:pointer;font:inherit;color:inherit;transition:var(--t);}
   .opt:hover{background:#fff;border-color:var(--line);}
@@ -73,7 +99,41 @@
   .audiochip{display:inline-flex;align-items:center;gap:8px;background:var(--offwhite);border:1px solid var(--line);border-radius:999px;padding:8px 14px;font-family:var(--eb);font-weight:700;font-size:.78rem;color:var(--navy);margin-bottom:4px;}
   .audiochip svg{width:15px;height:15px;color:var(--maroon-dark);}
 
-  #pTour{display:none;}
+  /* ===== welcome-back (returning) ===== */
+  #pBack .wlogo{margin:0 0 14px;justify-content:flex-start;}
+  #pBack .wlogo svg{height:52px;}
+  #pBack.is-active .backItem{opacity:0;animation:up .5s ease forwards;}
+  #pBack.is-active .b1{animation-delay:.05s;}
+  #pBack.is-active .b2{animation-delay:.14s;}
+  #pBack.is-active .b3{animation-delay:.22s;}
+  .livedate{font-family:var(--eb);font-weight:700;font-size:.74rem;letter-spacing:.14em;text-transform:uppercase;color:var(--navy);opacity:.55;margin-top:2px;}
+  .pulse{display:inline-block;width:8px;height:8px;border-radius:999px;background:#2f9e58;margin-right:7px;vertical-align:middle;animation:pdot 1.8s ease-in-out infinite;}
+  @keyframes pdot{0%,100%{box-shadow:0 0 0 0 rgba(47,158,88,.5);}50%{box-shadow:0 0 0 5px rgba(47,158,88,0);}}
+  @keyframes pdot2{}
+  .pulse{animation:pdot 1.8s ease-in-out infinite;}
+  .starts{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0 4px;}
+  @media(max-width:560px){.starts{grid-template-columns:1fr;}}
+  .scard{display:flex;align-items:center;gap:13px;text-decoration:none;background:#fff;border:1px solid var(--line);border-radius:15px;padding:15px 16px;transition:var(--t);box-shadow:0 2px 4px rgba(11,21,48,.05),0 10px 22px -12px rgba(11,21,48,.18);}
+  .scard:hover{transform:translateY(-3px);border-color:var(--maroon);box-shadow:0 6px 10px rgba(11,21,48,.07),0 22px 40px -14px rgba(11,21,48,.3);}
+  .scard .si{width:44px;height:44px;flex:none;border-radius:12px;background:var(--navy);color:#fff;display:flex;align-items:center;justify-content:center;}
+  .scard.primary .si{background:var(--maroon);}
+  .scard.gold .si{background:var(--gold);color:var(--navy);}
+  .scard .si svg{width:22px;height:22px;}
+  .scard .sw{display:flex;flex-direction:column;gap:1px;}
+  .scard .st{font-weight:800;color:var(--navy);font-size:1.02rem;}
+  .scard .ss{font-size:.84rem;opacity:.74;line-height:1.35;}
+  .chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px;}
+  .chip{display:inline-flex;align-items:center;gap:7px;text-decoration:none;font-family:var(--eb);font-weight:700;font-size:.82rem;color:var(--navy);background:#fff;border:1px solid var(--line);border-radius:999px;padding:8px 15px;cursor:pointer;transition:var(--t);}
+  .chip:hover{border-color:var(--maroon);color:var(--maroon-dark);}
+  .backfoot{display:flex;flex-wrap:wrap;align-items:center;gap:10px;margin-top:20px;padding-top:15px;border-top:1px solid var(--line);font-size:.86rem;}
+  .backfoot .yoursec{font-weight:700;color:var(--navy);}
+  .linkbtn{background:none;border:none;font:inherit;font-family:var(--eb);font-weight:700;font-size:.8rem;cursor:pointer;text-decoration:underline;padding:4px 2px;}
+  .linkbtn.change{color:var(--maroon-dark);}
+  .linkbtn.reset{color:var(--navy);opacity:.55;}
+  .linkbtn.reset:hover{opacity:1;color:var(--maroon-dark);}
+
+  /* ===== TOUR ===== */
+  #pTour{display:none;position:relative;z-index:1;}
   #pTour.is-active{display:block;}
   .board-wrap{max-width:1000px;margin:0 auto;padding:30px 20px 90px;}
   .board-head{text-align:center;margin:6px 0 22px;}
@@ -138,15 +198,32 @@
   .recap .rw b{color:var(--navy);}
   .recap .rw span{font-size:.85rem;opacity:.75;}
 
-  @media (prefers-reduced-motion: reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important;}}
+  /* reset modal */
+  .modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(6,10,24,.55);}
+  .modal.on{display:flex;}
+  .modal-box{background:#fff;border-radius:18px;max-width:400px;width:100%;padding:26px 26px 22px;box-shadow:0 40px 80px -20px rgba(0,0,0,.5);text-align:center;}
+  .modal-box h3{font-weight:800;font-size:1.3rem;color:var(--navy);margin:0 0 8px;}
+  .modal-box p{font-size:.96rem;color:var(--navy);opacity:.82;margin:0 0 20px;line-height:1.5;}
+  .modal-btns{display:flex;gap:10px;justify-content:center;}
+  .mb{font:inherit;font-weight:700;font-size:.96rem;padding:12px 22px;border-radius:11px;cursor:pointer;border:none;transition:var(--t);}
+  .mb.cancel{background:#fff;color:var(--navy);border:1.5px solid var(--line);}
+  .mb.cancel:hover{border-color:var(--navy);}
+  .mb.confirm{background:var(--maroon-dark);color:#fff;}
+  .mb.confirm:hover{background:var(--maroon);}
+
+  @media (prefers-reduced-motion: reduce){
+    *{transition-duration:.01ms!important;animation-duration:.01ms!important;animation-iteration-count:1!important;}
+    .aurora span{animation:none;}
+  }
 </style>
 </head>
 <body>
+<div class="aurora" aria-hidden="true"><span class="a1"></span><span class="a2"></span><span class="a3"></span></div>
 
 <div class="stage" id="stage">
   <main class="card" role="dialog" aria-label="Course welcome">
 
-    <!-- PHASE: WELCOME -->
+    <!-- PHASE: ANIMATED WELCOME (first run) -->
     <section class="phase is-active" id="pWelcome">
       <div class="wlogo">
         <svg viewBox="40 10 125 148" role="img" aria-label="Human Anatomy">
@@ -157,10 +234,10 @@
           </g>
         </svg>
       </div>
-      <div class="eyebrow" style="text-align:center;">BIO 004 &middot; Human Anatomy &middot; Fall 2026</div>
-      <h1 style="text-align:center;">Welcome to Human <span class="accent">Anatomy</span>.</h1>
-      <p class="sub" style="text-align:center;">Hi, I'm Dr.&nbsp;Rennie. Give me two minutes. First I'll set up your course, then I'll walk you through everything you'll use this term, pointing to each one myself.</p>
-      <div class="btnrow" style="justify-content:center;">
+      <div class="greet" id="greet">Hello</div>
+      <h1 class="reveal d1" style="text-align:center;">Welcome to Human <span class="accent">Anatomy</span>.</h1>
+      <p class="sub reveal d2" style="text-align:center;">Hi, I'm Dr.&nbsp;Rennie. Give me two minutes. First I'll set up your course, then I'll walk you through everything you'll use this term, pointing to each one myself.</p>
+      <div class="btnrow reveal d3" style="justify-content:center;">
         <button class="btn maroon" id="toSetup" type="button">Set up my course &rarr;</button>
       </div>
     </section>
@@ -190,26 +267,73 @@
       </div>
     </section>
 
+    <!-- PHASE: WELCOME BACK (returning) -->
+    <section class="phase" id="pBack">
+      <div class="wlogo backItem b1">
+        <svg viewBox="40 10 125 148" role="img" aria-label="Human Anatomy">
+          <g transform="translate(0,18)">
+            <g transform="translate(60,0) rotate(8 0 130)"><circle cx="0" cy="20" r="10" fill="#0B1530"/><path d="M 0,32 C -10,32 -16,36 -16,42 C -16,55 -13,68 -11,82 C -10,100 -12,118 -14,130 L 14,130 C 12,118 10,100 11,82 C 13,68 16,55 16,42 C 16,36 10,32 0,32 Z" fill="#0B1530"/></g>
+            <g transform="translate(100,0)"><circle cx="0" cy="10" r="11" fill="#8B1D1D"/><path d="M 0,22 C -11,22 -17,26 -17,34 C -17,52 -14,70 -12,86 C -11,108 -13,122 -15,132 L 15,132 C 13,122 11,108 12,86 C 14,70 17,52 17,34 C 17,26 11,22 0,22 Z" fill="#8B1D1D"/></g>
+            <g transform="translate(140,0) rotate(-8 0 130)"><circle cx="0" cy="20" r="10" fill="#DCB45C"/><path d="M 0,32 C -10,32 -16,36 -16,42 C -16,55 -13,68 -11,82 C -10,100 -12,118 -14,130 L 14,130 C 12,118 10,100 11,82 C 13,68 16,55 16,42 C 16,36 10,32 0,32 Z" fill="#DCB45C"/></g>
+          </g>
+        </svg>
+      </div>
+      <div class="backItem b1"><span class="eyebrow" id="backHi">Welcome back</span>
+        <div class="livedate"><span class="pulse"></span><span id="liveDate">Today</span></div>
+      </div>
+      <h1 class="backItem b2">Where would you like to <span class="accent">start</span> today?</h1>
+      <p class="sub backItem b2">You're in <strong id="backSec">Mon / Wed</strong>. Jump straight in.</p>
+      <div class="starts backItem b3" id="starts">
+        <a class="scard primary" id="s-prework" href="#" target="_blank" rel="noopener">
+          <span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/></svg></span>
+          <span class="sw"><span class="st">This week's pre-work</span><span class="ss">Watch the concept video, do the worksheet.</span></span>
+        </a>
+        <a class="scard" id="s-mastery" href="mastery-os-fall-2026.html" target="_blank" rel="noopener">
+          <span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a5 5 0 0 0-5 5c0 1-1 2-1 3a4 4 0 0 0 2 3.5V17a3 3 0 0 0 6 0v-.5A4 4 0 0 0 18 13c0-1-1-2-1-3a5 5 0 0 0-5-5z"/><path d="M12 7v10"/></svg></span>
+          <span class="sw"><span class="st">Study in Mastery OS</span><span class="ss">Spaced recall, cram sessions, gap finders.</span></span>
+        </a>
+        <a class="scard" id="s-labs" href="#" target="_blank" rel="noopener">
+          <span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-4.5 8A2 2 0 0 0 7.3 20h9.4a2 2 0 0 0 1.8-3L14 9V3"/><path d="M8.5 14h7"/></svg></span>
+          <span class="sw"><span class="st">Lab Sprints</span><span class="ss">Your structure list for this week's lab.</span></span>
+        </a>
+        <a class="scard gold" id="s-swm" href="https://drsrennie-stack.github.io/new-build-bio4-solano/study-session-signup.html" target="_blank" rel="noopener">
+          <span class="si"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
+          <span class="sw"><span class="st">Study With Me</span><span class="ss">Join a live, peer-hosted session.</span></span>
+        </a>
+      </div>
+      <div class="chips backItem b3">
+        <a class="chip" id="s-syllabus" href="fall-2026-syllabus.html" target="_blank" rel="noopener">Syllabus</a>
+        <a class="chip" href="https://www.medmasterscollaborative.com/anatomy-loops" target="_blank" rel="noopener">Loops</a>
+        <a class="chip" href="https://share.articulate.com/UOHEe3p6DmTC4nXuUTE02" target="_blank" rel="noopener">Digital Atlas</a>
+        <a class="chip" href="index.html" target="_blank" rel="noopener">Course home</a>
+        <button class="chip" id="retakeTour" type="button">Replay the walkthrough</button>
+      </div>
+      <div class="backfoot backItem b3">
+        <span class="yoursec">Your class: <span id="footSec">Mon / Wed</span></span>
+        <button class="linkbtn change" id="backChange" type="button">Change</button>
+        <button class="linkbtn reset" id="backReset" type="button">Reset</button>
+      </div>
+    </section>
+
     <!-- PHASE: DONE -->
     <section class="phase" id="pDone">
       <div class="donecheck"><svg viewBox="0 0 24 24" width="34" height="34" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></svg></div>
       <h1 style="text-align:center;">You're all <span class="accent">set</span>.</h1>
       <p class="sub" style="text-align:center;">Your section is saved: <strong id="doneSec">Mon / Wed &middot; Afternoon</strong>. You've seen everything. Here are your first two moves for this week:</p>
       <div class="recap">
-        <a href="mastery-os-fall-2026.html" target="_top"><span class="rn">1</span><span class="rw"><b>Set up your Mastery OS</b><span>Your study app. It already knows the section you just picked.</span></span></a>
-        <a class="lnk-hub" href="class1.html" target="_top"><span class="rn two">2</span><span class="rw"><b>Do this week's pre-work</b><span>Open your schedule, click your first class day, watch and fill it in.</span></span></a>
+        <a href="mastery-os-fall-2026.html" target="_blank" rel="noopener"><span class="rn">1</span><span class="rw"><b>Set up your Mastery OS</b><span>Your study app. It already knows the section you just picked.</span></span></a>
+        <a class="lnk-hub" href="class1.html" target="_blank" rel="noopener"><span class="rn two">2</span><span class="rw"><b>Do this week's pre-work</b><span>Open your schedule, click your first class day, watch and fill it in.</span></span></a>
       </div>
       <div class="btnrow" style="justify-content:center;margin-top:20px;">
-        <a class="btn maroon" href="mastery-os-fall-2026.html" target="_top">Open Mastery OS</a>
-        <a class="btn ghost lnk-hub" href="class1.html" target="_top">My schedule &rarr;</a>
+        <button class="btn maroon" id="toBack" type="button">Go to my home</button>
       </div>
-      <p class="fine" style="text-align:center;">You can reopen this walkthrough anytime from the course home. <a href="index.html" target="_top" style="color:var(--maroon-dark);font-weight:700;">Go to course home &rarr;</a></p>
+      <p class="fine" style="text-align:center;">You can reopen this anytime from the course home.</p>
     </section>
 
   </main>
 </div>
 
-<!-- ===== TOUR PHASE (full board) ===== -->
+<!-- ===== TOUR ===== -->
 <section id="pTour">
   <div class="board-wrap">
     <div class="board-head">
@@ -218,7 +342,6 @@
       <p class="sub">I'll point to each one and tell you what it's for. Open each as we go. That's how you'll remember where it lives.</p>
     </div>
     <div class="board" id="board">
-      <!-- 1 Syllabus -->
       <div class="rc i-maroon" id="rc-syllabus" data-link="syl">
         <span class="num">01</span>
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M16 13H8M16 17H8M10 9H8"/></svg></span>
@@ -226,7 +349,6 @@
         <span class="rd">Your grades, the five exams, TBLs, and the whole plan for the term.</span>
         <span class="rgo"><span class="done-x">&#10003;</span> Opened</span>
       </div>
-      <!-- 2 Mastery OS -->
       <div class="rc" id="rc-mastery">
         <span class="num">02</span>
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2a5 5 0 0 0-5 5c0 1-1 2-1 3a4 4 0 0 0 2 3.5V17a3 3 0 0 0 6 0v-.5A4 4 0 0 0 18 13c0-1-1-2-1-3a5 5 0 0 0-5-5z"/><path d="M12 7v10"/></svg></span>
@@ -234,7 +356,6 @@
         <span class="rd">Your study app: spaced recall, cram sessions, and gap finders that tell you exactly what to review.</span>
         <span class="rgo"><span class="done-x">&#10003;</span> Opened</span>
       </div>
-      <!-- 3 Loops -->
       <div class="rc i-gold" id="rc-loops">
         <span class="num">03</span>
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 2l4 4-4 4"/><path d="M3 11V9a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v2a4 4 0 0 1-4 4H3"/></svg></span>
@@ -242,7 +363,6 @@
         <span class="rd">Lab-based practice questions on a loop. The fastest way to drill the structures you need for the practical.</span>
         <span class="rgo"><span class="done-x">&#10003;</span> Opened</span>
       </div>
-      <!-- 4 Videos / Calendar -->
       <div class="rc i-maroon" id="rc-videos">
         <span class="num">04</span>
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2"/><path d="M16 2v4M8 2v4M3 10h18"/><path d="M10 14l4 2-4 2z" fill="currentColor"/></svg></span>
@@ -250,7 +370,6 @@
         <span class="rd">Your calendar. Each class day has a concept lecture to watch and a worksheet, so you can try recall right away.</span>
         <span class="rgo"><span class="done-x">&#10003;</span> Opened</span>
       </div>
-      <!-- 5 Lab Sprints -->
       <div class="rc" id="rc-labs" data-link="hub">
         <span class="num">05</span>
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-4.5 8A2 2 0 0 0 7.3 20h9.4a2 2 0 0 0 1.8-3L14 9V3"/><path d="M8.5 14h7"/></svg></span>
@@ -258,7 +377,6 @@
         <span class="rd">Every lab day has parts: explore the structures, practice, spaced recall, then a build-your-own-exam scavenger hunt.</span>
         <span class="rgo"><span class="done-x">&#10003;</span> Opened</span>
       </div>
-      <!-- 6 Digital Atlas -->
       <div class="rc i-gold" id="rc-atlas">
         <span class="num">06</span>
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg></span>
@@ -266,7 +384,6 @@
         <span class="rd">A full interactive atlas you can explore anywhere. Rotate, zoom, and quiz yourself on real structures.</span>
         <span class="rgo"><span class="done-x">&#10003;</span> Opened</span>
       </div>
-      <!-- 7 Study With Me -->
       <div class="rc i-maroon" id="rc-swm">
         <span class="num">07</span>
         <span class="ic"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"/></svg></span>
@@ -298,39 +415,97 @@
   </div>
 </div>
 
+<div class="modal" id="resetModal" role="dialog" aria-modal="true" aria-labelledby="rmTitle">
+  <div class="modal-box">
+    <h3 id="rmTitle">Reset your section?</h3>
+    <p>This clears your saved class and starts you fresh at the welcome setup. Are you sure?</p>
+    <div class="modal-btns">
+      <button class="mb cancel" id="rmCancel" type="button">Cancel</button>
+      <button class="mb confirm" id="rmConfirm" type="button">Yes, reset</button>
+    </div>
+  </div>
+</div>
+
 <script>
 (function(){
   var SEC={
-    'mw':{label:'Mon / Wed · Afternoon',syl:'syllabus-class1.html',hub:'class1.html'}, 'tr-am':{label:'Tue / Thu · Morning',syl:'syllabus-class2.html',hub:'class2.html'}, 'tr-eve':{label:'Tue / Thu · Evening',syl:'syllabus-class3.html',hub:'class3.html'}
+    'mw':{label:'Mon / Wed · Afternoon',short:'Mon / Wed',syl:'syllabus-class1.html',hub:'class1.html'},
+    'tr-am':{label:'Tue / Thu · Morning',short:'Tue / Thu · Morning',syl:'syllabus-class2.html',hub:'class2.html'},
+    'tr-eve':{label:'Tue / Thu · Evening',short:'Tue / Thu · Evening',syl:'syllabus-class3.html',hub:'class3.html'}
   };
-  var KEY='bio004-section';
-  var sec=localStorage.getItem(KEY); if(!SEC[sec]) sec=null;
+  var KEY='bio004-section', DONEKEY='bio004-tour-done';
+  function paramSec(){ try{ var m=location.search.match(/[?&]sec=([^&#]+)/); if(m){ var v=decodeURIComponent(m[1]); if(SEC[v]) return v; } }catch(e){} return null; }
+  var sec=paramSec(); if(sec){ try{localStorage.setItem(KEY,sec);}catch(e){} }
+  if(!sec){ sec=localStorage.getItem(KEY); if(!SEC[sec]) sec=null; }
 
   var STEPS=[
-    {id:'rc-syllabus', link:'syl', title:'Syllabus', say:"Let's start with your syllabus. This is the whole plan: how your grade works, the five exams, the TBLs, and every policy. Open it once so you know it's here."}, {id:'rc-mastery', href:'mastery-os-fall-2026.html', title:'Mastery OS', say:"This is your Mastery OS, where you'll actually study. It has spaced recall, cram sessions, and gap finders that tell you exactly which topics you're weakest on, so you never have to guess what to review. Set it up first."}, {id:'rc-loops', href:'https://www.medmasterscollaborative.com/anatomy-loops', title:'Loops', say:"Loops are lab-based practice questions that play on a loop. When a structure won't stick, run the loop a few times. It's the fastest way to get ready for the lab practical."}, {id:'rc-videos', href:'bio004-course-calendar.html', title:"This week's videos", say:"Here's your calendar. Every class day has a short concept lecture to watch and a worksheet to fill in. Do it the night before and try to recall it right away. Then class is all active learning."}, {id:'rc-labs', link:'hub', title:'Lab Sprints', say:"This is your schedule, and every lab day has parts. You'll explore the structures, practice, do spaced recall, and build your own exam in a scavenger hunt. The Sprint is your list of what to find that day."}, {id:'rc-atlas', href:'https://share.articulate.com/UOHEe3p6DmTC4nXuUTE02', title:'Digital Atlas', say:"The Digital Atlas is a full interactive atlas you can open anywhere. Rotate it, zoom in, and quiz yourself on real structures between labs. Go ahead and open it."}, {id:'rc-swm', href:'https://drsrennie-stack.github.io/new-build-bio4-solano/study-session-signup.html', title:'Study With Me', say:"Last one, Study With Me. This is your study time: live sessions hosted by your peers. Find one that fits your schedule and join. Studying together really works, and I'd love for you to try it."}
+    {id:'rc-syllabus', link:'syl', title:'Syllabus',
+      say:"Let's start with your syllabus. This is the whole plan: how your grade works, the five exams, the TBLs, and every policy. Open it once so you know it's here."},
+    {id:'rc-mastery', href:'mastery-os-fall-2026.html', title:'Mastery OS',
+      say:"This is your Mastery OS, where you'll actually study. It has spaced recall, cram sessions, and gap finders that tell you exactly which topics you're weakest on, so you never have to guess what to review. Set it up first."},
+    {id:'rc-loops', href:'https://www.medmasterscollaborative.com/anatomy-loops', title:'Loops',
+      say:"Loops are lab-based practice questions that play on a loop. When a structure won't stick, run the loop a few times. It's the fastest way to get ready for the lab practical."},
+    {id:'rc-videos', href:'bio004-course-calendar.html', title:"This week's videos",
+      say:"Here's your calendar. Every class day has a short concept lecture to watch and a worksheet to fill in. Do it the night before and try to recall it right away. Then class is all active learning."},
+    {id:'rc-labs', link:'hub', title:'Lab Sprints',
+      say:"This is your schedule, and every lab day has parts. You'll explore the structures, practice, do spaced recall, and build your own exam in a scavenger hunt. The Sprint is your list of what to find that day."},
+    {id:'rc-atlas', href:'https://share.articulate.com/UOHEe3p6DmTC4nXuUTE02', title:'Digital Atlas',
+      say:"The Digital Atlas is a full interactive atlas you can open anywhere. Rotate it, zoom in, and quiz yourself on real structures between labs. Go ahead and open it."},
+    {id:'rc-swm', href:'https://drsrennie-stack.github.io/new-build-bio4-solano/study-session-signup.html', title:'Study With Me',
+      say:"Last one, Study With Me. This is your study time: live sessions hosted by your peers. Find one that fits your schedule and join. Studying together really works, and I'd love for you to try it."}
   ];
 
   var stage=document.getElementById('stage');
   var pTour=document.getElementById('pTour');
   function showPhase(id){
-    ['pWelcome','pSetup','pDone'].forEach(function(p){
+    ['pWelcome','pSetup','pBack','pDone'].forEach(function(p){
       document.getElementById(p).classList.toggle('is-active', p===id);
     });
     stage.style.display='flex'; pTour.classList.remove('is-active');
     window.scrollTo(0,0);
   }
-  function personalize(){
-    var s=SEC[sec]; if(!s) return;
-    var ds=document.getElementById('doneSec'); if(ds) ds.textContent=s.label;
-    document.querySelectorAll('.lnk-hub').forEach(function(a){a.setAttribute('href', s.hub);});
-  }
+
   function resolveHref(step){
     if(step.link==='syl') return (sec&&SEC[sec])?SEC[sec].syl:'fall-2026-syllabus.html';
     if(step.link==='hub') return (sec&&SEC[sec])?SEC[sec].hub:'class1.html';
     return step.href;
   }
-  function isExternal(step){ return step.link!=='syl' && step.link!=='hub' && /^https?:/.test(step.href||''); }
 
+  // ---- welcome-back builder ----
+  function buildBack(){
+    var s=SEC[sec]; if(!s) return;
+    var h=new Date().getHours();
+    var hi = h<12?'Good morning':(h<18?'Good afternoon':'Good evening');
+    document.getElementById('backHi').textContent=hi+', welcome back';
+    try{
+      var d=new Date();
+      var opts={weekday:'long',month:'long',day:'numeric'};
+      document.getElementById('liveDate').textContent=d.toLocaleDateString('en-US',opts);
+    }catch(e){document.getElementById('liveDate').textContent='Today';}
+    document.getElementById('backSec').textContent=s.short;
+    document.getElementById('footSec').textContent=s.short;
+    document.getElementById('s-prework').setAttribute('href', s.hub);
+    document.getElementById('s-labs').setAttribute('href', s.hub);
+    document.getElementById('s-syllabus').setAttribute('href', s.syl);
+    var ds=document.getElementById('doneSec'); if(ds) ds.textContent=s.label;
+    document.querySelectorAll('.lnk-hub').forEach(function(a){a.setAttribute('href', s.hub);});
+  }
+
+  // ---- animated greeting cycle (first run) ----
+  var greets=['Hello','Hola','Bonjour','Ciao','Olá','こんにちは','안녕하세요','Namaste','Welcome'];
+  var gEl=document.getElementById('greet'), gi=0, gTimer=null;
+  var reduce = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function runGreet(){
+    if(reduce){ gEl.textContent='Welcome'; return; }
+    gTimer=setInterval(function(){
+      gi++;
+      if(gi>=greets.length){ clearInterval(gTimer); return; }
+      gEl.classList.add('fade');
+      setTimeout(function(){ gEl.textContent=greets[gi]; gEl.classList.remove('fade'); }, 300);
+    }, 720);
+  }
+
+  // ---- section select ----
   function markSel(){
     document.querySelectorAll('#secOpts .opt').forEach(function(b){
       b.setAttribute('aria-pressed', b.getAttribute('data-sec')===sec?'true':'false');
@@ -340,122 +515,112 @@
     b.addEventListener('click',function(){
       sec=b.getAttribute('data-sec');
       try{localStorage.setItem(KEY,sec);}catch(e){}
-      markSel(); personalize();
+      markSel();
       document.getElementById('toTour').disabled=false;
     });
   });
-  if(sec){ markSel(); personalize(); }
 
-  document.getElementById('toSetup').addEventListener('click',function(){ showPhase('pSetup'); });
+  document.getElementById('toSetup').addEventListener('click',function(){ if(gTimer)clearInterval(gTimer); if(sec){ startTour(); } else { showPhase('pSetup'); } });
   document.getElementById('toTour').addEventListener('click',function(){ startTour(); });
+  document.getElementById('toBack').addEventListener('click',function(){ buildBack(); showPhase('pBack'); });
+  document.getElementById('retakeTour').addEventListener('click',function(){ startTour(); });
 
+  // ---- audio ----
   var voiceOn=true, synth=window.speechSynthesis||null;
   function speak(text){
     if(!voiceOn||!synth) return;
-    try{
-      synth.cancel();
-      var u=new SpeechSynthesisUtterance(text);
-      u.rate=0.98; u.pitch=1.0; u.volume=1.0; u.lang='en-US';
-      synth.speak(u);
-    }catch(e){}
+    try{ synth.cancel(); var u=new SpeechSynthesisUtterance(text); u.rate=0.98; u.pitch=1.0; u.lang='en-US'; synth.speak(u);}catch(e){}
   }
   function stopSpeak(){ try{ if(synth) synth.cancel(); }catch(e){} }
   var audBtn=document.getElementById('audBtn'), audLabel=document.getElementById('audLabel'), audIcon=document.getElementById('audIcon');
   var ICON_ON='<path d="M11 5 6 9H2v6h4l5 4z"/><path d="M15.5 8.5a5 5 0 0 1 0 7M19 5a9 9 0 0 1 0 14"/>';
   var ICON_OFF='<path d="M11 5 6 9H2v6h4l5 4z"/><path d="M22 9l-6 6M16 9l6 6"/>';
   audBtn.addEventListener('click',function(){
-    voiceOn=!voiceOn;
-    audBtn.setAttribute('aria-pressed', voiceOn?'true':'false');
-    audLabel.textContent=voiceOn?'Voice on':'Voice off';
-    audIcon.innerHTML=voiceOn?ICON_ON:ICON_OFF;
+    voiceOn=!voiceOn; audBtn.setAttribute('aria-pressed', voiceOn?'true':'false');
+    audLabel.textContent=voiceOn?'Voice on':'Voice off'; audIcon.innerHTML=voiceOn?ICON_ON:ICON_OFF;
     if(!voiceOn) stopSpeak(); else speak(STEPS[ti].say);
   });
 
-  var dimmer=document.getElementById('dimmer'), hand=document.getElementById('hand'), coach=document.getElementById('coach'), openBtn=document.getElementById('openBtn'), nextBtn=document.getElementById('nextBtn'), skipBtn=document.getElementById('skipBtn'), coachCount=document.getElementById('coachCount'), coachTitle=document.getElementById('coachTitle'), coachSay=document.getElementById('coachSay'), trail=document.getElementById('trail');
+  // ---- tour ----
+  var dimmer=document.getElementById('dimmer'), hand=document.getElementById('hand'),
+      coach=document.getElementById('coach'), openBtn=document.getElementById('openBtn'),
+      nextBtn=document.getElementById('nextBtn'), skipBtn=document.getElementById('skipBtn'),
+      coachCount=document.getElementById('coachCount'), coachTitle=document.getElementById('coachTitle'),
+      coachSay=document.getElementById('coachSay'), trail=document.getElementById('trail');
   var ti=0, opened=[], curCard=null;
-
   STEPS.forEach(function(){var d=document.createElement('span');d.className='td';trail.appendChild(d);});
   var trailDots=[].slice.call(trail.children);
 
   function startTour(){
+    if(gTimer)clearInterval(gTimer);
     stage.style.display='none';
     pTour.classList.add('is-active');
     window.scrollTo(0,0);
-    dimmer.classList.add('on');
-    coach.classList.add('up');
-    ti=0; opened=[];
-    setStep(0);
+    dimmer.classList.add('on'); coach.classList.add('up');
+    ti=0; opened=[]; setStep(0);
   }
-
   function placeHand(){
     if(!curCard) return;
     var r=curCard.getBoundingClientRect();
     hand.style.left=(r.left + r.width/2 - 20)+'px';
     hand.style.top=(r.top - 50)+'px';
   }
-
   function setStep(n){
     if(curCard){ curCard.classList.remove('is-spot'); }
-    ti=n;
-    var step=STEPS[n];
-    curCard=document.getElementById(step.id);
-
+    ti=n; var step=STEPS[n]; curCard=document.getElementById(step.id);
     coachCount.textContent=(n+1)+' / '+STEPS.length;
-    coachTitle.textContent=step.title;
-    coachSay.textContent=step.say;
-
-    var href=resolveHref(step);
-    openBtn.setAttribute('href', href);
-    openBtn.setAttribute('target', '_blank'); // always new tab so the tour stays alive
-    openBtn.setAttribute('rel', 'noopener');
+    coachTitle.textContent=step.title; coachSay.textContent=step.say;
+    openBtn.setAttribute('href', resolveHref(step));
+    openBtn.setAttribute('target','_blank'); openBtn.setAttribute('rel','noopener');
     openBtn.textContent = curCard.classList.contains('done') ? 'Open again →' : 'Open it →';
     nextBtn.textContent = (n===STEPS.length-1)?'Finish →':'Next →';
     nextBtn.disabled = !curCard.classList.contains('done');
-
     trailDots.forEach(function(d,i){ d.className='td'+(opened.indexOf(i)>-1?' done':'')+(i===n?' cur':''); });
-
     curCard.scrollIntoView({block:'center', behavior:'smooth'});
-    setTimeout(function(){
-      curCard.classList.add('is-spot');
-      hand.classList.add('show');
-      placeHand();
-    }, 260);
-
-    stopSpeak();
-    if(voiceOn) setTimeout(function(){ speak(step.say); }, 320);
+    setTimeout(function(){ curCard.classList.add('is-spot'); hand.classList.add('show'); placeHand(); }, 260);
+    stopSpeak(); if(voiceOn) setTimeout(function(){ speak(step.say); }, 320);
   }
-
-  openBtn.addEventListener('click',function(e){
+  openBtn.addEventListener('click',function(){
     curCard.classList.add('done');
     if(opened.indexOf(ti)===-1) opened.push(ti);
-    nextBtn.disabled=false;
-    openBtn.textContent='Open again →';
-    trailDots[ti].classList.add('done');
+    nextBtn.disabled=false; openBtn.textContent='Open again →'; trailDots[ti].classList.add('done');
   });
-
   nextBtn.addEventListener('click',function(){
     if(nextBtn.disabled) return;
     if(ti>=STEPS.length-1){ endTour(); return; }
     setStep(ti+1);
   });
-
   skipBtn.addEventListener('click', endTour);
-
   function endTour(){
     stopSpeak();
     if(curCard) curCard.classList.remove('is-spot');
-    hand.classList.remove('show');
-    dimmer.classList.remove('on');
-    coach.classList.remove('up');
-    personalize();
-    showPhase('pDone');
-    if(voiceOn) setTimeout(function(){ speak("That's everything. Your section is saved. Two things to do this week: set up your Mastery OS, and do the pre-work. You've got this."); }, 400);
+    hand.classList.remove('show'); dimmer.classList.remove('on'); coach.classList.remove('up');
+    try{localStorage.setItem(DONEKEY,'1');}catch(e){}
+    buildBack(); showPhase('pDone');
+    if(voiceOn) setTimeout(function(){ speak("That's everything. Your section is saved. From now on, this page welcomes you back and asks where you'd like to start. You've got this."); }, 400);
   }
-
   window.addEventListener('scroll',function(){ if(dimmer.classList.contains('on')) placeHand(); }, {passive:true});
   window.addEventListener('resize',function(){ if(dimmer.classList.contains('on')) placeHand(); });
 
-  showPhase('pWelcome');
+  // ---- change / reset ----
+  var modal=document.getElementById('resetModal');
+  document.getElementById('backChange').addEventListener('click',function(){
+    // let them re-pick: clear the pressed state and go to setup
+    markSel(); document.getElementById('toTour').disabled=false; showPhase('pSetup');
+  });
+  document.getElementById('backReset').addEventListener('click',function(){ modal.classList.add('on'); });
+  document.getElementById('rmCancel').addEventListener('click',function(){ modal.classList.remove('on'); });
+  modal.addEventListener('click',function(e){ if(e.target===modal) modal.classList.remove('on'); });
+  document.getElementById('rmConfirm').addEventListener('click',function(){
+    try{localStorage.removeItem(KEY);localStorage.removeItem(DONEKEY);}catch(e){}
+    window.location.reload();
+  });
+
+  // ---- route: first run vs returning ----
+  var tourDone=false; try{ tourDone=localStorage.getItem(DONEKEY)==='1'; }catch(e){}
+  if(sec){ markSel(); buildBack(); document.getElementById('toSetup').textContent='Show me around →'; }
+  if(sec && tourDone){ showPhase('pBack'); }
+  else { showPhase('pWelcome'); runGreet(); }
 })();
 </script>
 </body>

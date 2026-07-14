@@ -59,9 +59,9 @@
   .sw-change{display:none;background:none;border:none;font-family:var(--font-eyebrow);font-weight:700;font-size:.72rem;color:var(--terra-dark);cursor:pointer;text-decoration:underline;padding:6px 2px;align-self:center;}
   .sw-change:hover{color:var(--navy);}
   .switch.locked .sw-btn[aria-pressed="false"]{display:none;}
-  .switch.locked .sw-change{display:inline-block;}
-  .sw-reset{background:none;border:none;font-family:var(--font-eyebrow);font-weight:700;font-size:.72rem;color:var(--navy);opacity:.5;cursor:pointer;text-decoration:underline;padding:6px 2px;align-self:center;}
-  .sw-reset:hover{opacity:1;color:var(--terra-dark);}
+  .switch.locked .sw-btn[aria-pressed="true"]{pointer-events:none;}
+  .sw-change{display:none!important;}
+  .sw-reset{display:none!important;}
 
   /* reset confirm modal */
   .modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(6,10,24,.55);}
@@ -197,7 +197,7 @@
     <section class="cover">
       <p class="cover-eyebrow">BIO 004 &middot; Fall 2026 Course Calendar</p>
       <h1 class="cover-title">What to do, <span>day by day</span></h1>
-      <p class="cover-tag">Pick your section, then click any class day to see your lecture, your lab, and the pre-work to finish the night before. Everything in one place.</p>
+      <p class="cover-tag">Click any class day to see your lecture, your lab, and the pre-work to finish the night before. Everything in one place.</p>
       <div class="switch" role="group" aria-label="Choose your section">
         <span class="sw-lab">Your section</span>
         <button class="sw-btn" data-sec="class1" aria-pressed="true" type="button"><span class="swn">Mon / Wed</span><span class="swd">Afternoon &middot; CRN 80650</span></button>
@@ -435,13 +435,16 @@ const SECTIONS = {
     monthPtr=parse(up.d).getMonth();
   }
 
-  // init: lock to the student's saved section if they've chosen one
-  let saved=null; try{saved=localStorage.getItem(KEY);}catch(e){}
-  if(saved && MAP[saved]){
-    section=MAP[saved];
-    pressBtn(section);
-    switchEl.classList.add('locked');
+  // init: the schedule is set by the course you came from (?sec=) or your saved section.
+  // No toggle: this page just shows that one schedule.
+  function paramSec(){
+    try{ var m=location.search.match(/[?&]sec=([^&#]+)/); if(m){ var v=decodeURIComponent(m[1]); if(MAP[v]) return v; } }catch(e){}
+    return null;
   }
+  let seed=paramSec();
+  if(!seed){ try{ var ls=localStorage.getItem(KEY); if(MAP[ls]) seed=ls; }catch(e){} }
+  if(seed){ try{localStorage.setItem(KEY,seed);}catch(e){} section=MAP[seed]; pressBtn(section); }
+  switchEl.classList.add('locked'); // always locked; the course determines the section
   buildIndex();
   pickDefault();
   renderMonth();

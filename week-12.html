@@ -48,7 +48,9 @@
   .seg.locked button[aria-pressed="false"]{display:none;}
   .sw-change{display:none;background:none;border:none;font-family:var(--eb);font-weight:700;font-size:.72rem;color:var(--terra-dark);cursor:pointer;text-decoration:underline;padding:6px 2px;}
   .sw-change:hover{color:var(--navy);}
-  .seg.locked ~ .sw-change{display:inline-block;}
+  .seg.locked ~ .sw-change{display:none;}
+  .sw-change,.sw-reset{display:none!important;}
+  .seg.locked button[aria-pressed="true"]{pointer-events:none;}
   .sw-reset{background:none;border:none;font-family:var(--eb);font-weight:700;font-size:.72rem;color:var(--navy);opacity:.5;cursor:pointer;text-decoration:underline;padding:6px 2px;}
   .sw-reset:hover{opacity:1;color:var(--terra-dark);}
   .modal{position:fixed;inset:0;z-index:200;display:none;align-items:center;justify-content:center;padding:20px;background:rgba(6,10,24,.55);}
@@ -250,7 +252,9 @@
     'mw':{label:'Mon / Wed · Afternoon',crn:'80650',lec:'Lecture MW 12:30–1:50 pm · VC 118',lab:'Lab MW 2:00–4:50 pm · VC 1137',track:'mw',syl:'syllabus-class1.html',hub:'class1.html'}, 'tr-am':{label:'Tue / Thu · Morning',crn:'80654',lec:'Lecture TR 9:30–10:45 am · VC 212',lab:'Lab TR 11:00 am–1:50 pm · VC 1137',track:'tr',syl:'syllabus-class2.html',hub:'class2.html'}, 'tr-eve':{label:'Tue / Thu · Evening',crn:'80655',lec:'Lecture TR 5:30–6:45 pm · VC 118',lab:'Lab TR 7:00–9:50 pm · VC 1137',track:'tr',syl:'syllabus-class3.html',hub:'class3.html'}
   };
   var KEY='bio004-section';
-  var sec=localStorage.getItem(KEY); if(!SEC[sec]) sec='mw';
+  function _pSec(){try{var m=location.search.match(/[?&]sec=([^&#]+)/);if(m){var v=decodeURIComponent(m[1]);if(SEC[v])return v;}}catch(e){}return null;}
+  var sec=_pSec(); if(sec){try{localStorage.setItem(KEY,sec);}catch(e){}}
+  if(!sec){ sec=localStorage.getItem(KEY); if(!SEC[sec]) sec='mw'; }
   function $(s){return document.querySelector(s);}
   function apply(){
     var s=SEC[sec];
@@ -293,7 +297,7 @@
   var seg=document.querySelector('.seg');
   if(!seg) return;
   var saved=null; try{saved=localStorage.getItem(KEY);}catch(e){}
-  if(saved && VALID[saved]) seg.classList.add('locked');
+  seg.classList.add('locked');
   document.querySelectorAll('.seg [data-sec]').forEach(function(b){
     b.addEventListener('click',function(){ seg.classList.add('locked'); });
   });
