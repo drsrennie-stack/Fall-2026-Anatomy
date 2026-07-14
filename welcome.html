@@ -188,9 +188,40 @@
     position:relative;min-height:100vh;
     background:var(--navy);color:var(--offwhite-text);
     border-top:4px solid var(--border-blue);
-    padding:40px 20px 132px;
-    display:flex;flex-direction:column;
+    padding:44px 20px 64px;
   }
+  .tour-wrap{max-width:1040px;margin:0 auto;width:100%;}
+  .tour-bar{display:flex;align-items:center;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:20px 0 22px;}
+  .tour-progress{font-family:'DM Sans',sans-serif;font-weight:700;font-size:13px;letter-spacing:.08em;text-transform:uppercase;color:var(--gold);}
+  .tour-finish{padding:12px 24px;font-size:15px;}
+  .tour-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(228px,1fr));gap:16px;}
+  .tcard{position:relative;text-align:left;background:#fff;color:var(--navy);border:1px solid var(--border);border-radius:16px;padding:22px 20px;cursor:pointer;box-shadow:var(--shadow-rest);transition:transform .2s ease,box-shadow .2s ease,border-color .2s ease;display:flex;flex-direction:column;gap:8px;font-family:inherit;}
+  .tcard:hover{transform:translateY(-3px);box-shadow:var(--shadow-hover);border-color:var(--maroon);}
+  .tcard:focus-visible{outline:3px solid var(--gold);outline-offset:3px;}
+  .tcard .ico{width:46px;height:46px;border-radius:11px;display:flex;align-items:center;justify-content:center;background:rgba(122,42,34,.09);color:var(--maroon);}
+  .tcard h3{font-size:18px;font-weight:800;margin:2px 0 0;}
+  .tcard p{font-size:14px;color:#3a4358;margin:0;flex:1;}
+  .tcard .tcard-cta{font-weight:700;color:var(--maroon);font-size:14px;margin-top:6px;}
+  .tcard .tcard-num{position:absolute;top:16px;right:18px;font-family:'DM Sans',sans-serif;font-weight:700;font-size:12px;color:#8C90A0;}
+  .tcard .tcard-check{position:absolute;top:13px;right:14px;width:24px;height:24px;border-radius:50%;background:var(--maroon);color:#fff;display:none;align-items:center;justify-content:center;font-size:13px;font-weight:800;}
+  .tcard.done .tcard-check{display:flex;}
+  .tcard.done .tcard-num{display:none;}
+  .tcard.done{border-color:var(--maroon);}
+
+  .tmodal{position:fixed;inset:0;z-index:120;display:flex;align-items:center;justify-content:center;padding:24px;}
+  .tmodal[hidden]{display:none;}
+  .tmodal-backdrop{position:absolute;inset:0;background:rgba(6,10,24,.74);}
+  .tmodal-panel{position:relative;z-index:1;width:min(1040px,94vw);height:min(82vh,880px);background:#fff;border-radius:16px;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 24px 64px rgba(0,0,0,.5);}
+  .tmodal-head{display:flex;align-items:center;gap:12px;background:var(--navy);color:var(--offwhite-text);padding:12px 16px;}
+  .tmodal-title{font-weight:800;font-size:16px;color:#fff;margin:0;}
+  .tmodal-actions{margin-left:auto;display:flex;gap:8px;align-items:center;flex-wrap:wrap;}
+  .tmodal-btn{background:transparent;border:1.5px solid rgba(244,239,232,.4);color:var(--offwhite-text);border-radius:9px;padding:8px 14px;font-weight:700;font-size:13px;text-decoration:none;cursor:pointer;white-space:nowrap;}
+  .tmodal-btn:hover{border-color:var(--gold);}
+  .tmodal-voice[aria-pressed="true"]{background:var(--gold);border-color:var(--gold);color:var(--navy);}
+  .tmodal-body{flex:1;display:flex;flex-direction:column;background:#fff;min-height:0;}
+  .tmodal-frame{flex:1;width:100%;border:0;min-height:0;background:#fff;}
+  .tmodal-fallback{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-align:center;padding:30px;color:#3a4358;}
+  .tmodal-fallback strong{color:var(--navy);font-size:18px;}
   /* Inline preview panel (fills the space; resources open here, no leaving the page) */
   .tour-preview{
     position:relative;z-index:58;
@@ -398,8 +429,12 @@
 
   /* Pill groups: course material prominent, admin muted */
   .chips-eyebrow--course{color:var(--maroon);}
-  .chips--course a.chip{background:var(--navy);color:#F4EFE8;border-color:var(--navy);padding:12px 20px;font-size:15px;}
-  .chips--course a.chip:hover,.chips--course a.chip:focus-visible{background:var(--maroon);border-color:var(--gold);color:#fff;}
+  .chips--course a.chip{padding:12px 20px;font-size:15px;background:var(--navy);border-color:var(--navy);color:#F4EFE8;}
+  .chips--course a.chip:nth-child(5n+2){background:var(--maroon);border-color:var(--maroon);color:#fff;}
+  .chips--course a.chip:nth-child(5n+3){background:var(--gold);border-color:var(--gold);color:var(--navy);}
+  .chips--course a.chip:nth-child(5n+4){background:#1E2A47;border-color:#1E2A47;color:#F4EFE8;}
+  .chips--course a.chip:nth-child(5n+5){background:var(--maroon);border-color:var(--maroon);color:#fff;}
+  .chips--course a.chip:hover,.chips--course a.chip:focus-visible{transform:translateY(-2px);box-shadow:var(--shadow-hover);border-color:var(--gold);}
   .chips--admin{margin-top:12px;}
   .chips--admin a.chip{background:#fff;color:var(--navy);border:1px solid var(--border);padding:8px 15px;font-size:13px;font-weight:600;}
   .chips--admin a.chip:hover,.chips--admin a.chip:focus-visible{background:#fff;border-color:var(--maroon);color:var(--maroon);}
@@ -594,49 +629,34 @@
 
 <!-- ===================== TOUR ===================== -->
 <section id="screen-tour" class="screen" aria-labelledby="tour-h2">
-  <div class="tour-head">
-    <p class="eyebrow">Guided tour</p>
-    <h2 id="tour-h2">The 7 things that will carry you through this course</h2>
-    <p>Open each one at least once. You can replay this tour anytime from the welcome screen.</p>
-  </div>
-  <div class="res-rail" id="resRail" role="group" aria-label="Course resources"><!-- resource cards injected --></div>
-  <div class="tour-preview" id="tourPreview">
-    <div class="tp-head">
-      <p class="tp-title" id="tpTitle">Preview</p>
-      <div class="tp-actions">
-        <a class="tp-link" id="tpNewTab" href="#" target="_blank" rel="noopener" hidden>Open in new tab &#8599;</a>
-        <button type="button" class="tp-close" id="tpClose" hidden>Close</button>
-      </div>
+  <div class="tour-wrap">
+    <div class="tour-head">
+      <p class="eyebrow">Guided tour</p>
+      <h2 id="tour-h2">The 7 things that carry you through this course</h2>
+      <p>Tap any card to preview it right here. Explore what you like, then head to your dashboard whenever you are ready.</p>
     </div>
-    <div class="tp-body" id="tpBody">
-      <div class="tp-empty">
-        <strong>Your preview opens here</strong>
-        <span>Pick "Show it here" below (or click any card) to open a resource right here, scroll through it, then continue. No new tabs, no leaving the page.</span>
+    <div class="tour-bar">
+      <span class="tour-progress" id="tourProgress" aria-live="polite">0 of 7 explored</span>
+      <button type="button" class="btn btn-primary tour-finish" id="finishTour">Go to my dashboard &#8594;</button>
+    </div>
+    <div class="tour-grid" id="tourGrid" role="list"><!-- resource cards injected --></div>
+  </div>
+
+  <div class="tmodal" id="tModal" hidden>
+    <div class="tmodal-backdrop" id="tmBackdrop"></div>
+    <div class="tmodal-panel" role="dialog" aria-modal="true" aria-labelledby="tmTitle">
+      <div class="tmodal-head">
+        <p class="tmodal-title" id="tmTitle">Preview</p>
+        <div class="tmodal-actions">
+          <button type="button" class="tmodal-btn tmodal-voice" id="tmVoice" aria-pressed="false" hidden>&#9654; Listen</button>
+          <a class="tmodal-btn" id="tmNewTab" href="#" target="_blank" rel="noopener">Open in new tab &#8599;</a>
+          <button type="button" class="tmodal-btn tmodal-close" id="tmClose" aria-label="Close preview">Close &#10005;</button>
+        </div>
       </div>
+      <div class="tmodal-body" id="tmBody"></div>
     </div>
   </div>
-  <img class="hand" id="hand" alt="" aria-hidden="true"
-    src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path d='M30 4c-3 0-5 2-5 5v22l-4-5c-2-3-6-3-8-1s-2 5 0 8l10 15c3 5 8 8 14 8h6c7 0 12-5 12-12V22c0-3-2-5-5-5s-5 2-5 5v-2c0-3-2-5-5-5s-5 2-5 5v-3c0-3-2-5-5-5s-5 2-5 5V9c0-3-2-5-5-5z' fill='%23E8CE85' stroke='%236B1616' stroke-width='2'/></svg>">
 </section>
-
-<div class="tourdim" id="tourDim" aria-hidden="true"></div>
-
-<!-- Narrator bar -->
-<div class="narrator" id="narrator" role="region" aria-label="Tour narration">
-  <div class="narrator-inner">
-    <div class="n-text">
-      <p class="n-step" id="nStep">Step 1 of 7</p>
-      <p class="n-body" id="nBody" aria-live="polite">...</p>
-    </div>
-    <div class="dots" id="nDots" aria-hidden="true"></div>
-    <div class="n-actions">
-      <button type="button" class="nbtn voice" id="voiceBtn" aria-pressed="false" aria-label="Turn narration voice on">Voice off</button>
-      <button type="button" class="nbtn" id="nBackBtn">Back</button>
-      <button type="button" class="nbtn primary" id="nOpenBtn">Open it</button>
-      <button type="button" class="nbtn" id="nNextBtn" disabled>Next</button>
-    </div>
-  </div>
-</div>
 
 <!-- ===================== WELCOME BACK ===================== -->
 <section id="screen-back" class="screen" aria-labelledby="back-h2">
@@ -809,43 +829,42 @@
   }
 
   // ---------- Build tour rail ----------
-  function renderRail(){
-    var rail = document.getElementById('resRail');
-    rail.innerHTML = '';
+  function renderTourGrid(){
+    var grid = document.getElementById('tourGrid');
+    if(!grid) return;
+    grid.innerHTML = '';
     RESOURCES.forEach(function(res, idx){
-      var card = document.createElement('div');
-      card.className = 'rescard';
-      card.id = 'res-' + res.key;
-      card.setAttribute('role','button');
-      card.tabIndex = 0;
-      card.setAttribute('aria-label','Show ' + res.name + ' here');
-      card.style.cursor = 'pointer';
+      var card = document.createElement('button');
+      card.type = 'button';
+      card.className = 'tcard' + (opened[res.key] ? ' done' : '');
+      card.id = 'tcard-' + res.key;
+      card.setAttribute('role','listitem');
+      card.setAttribute('aria-label','Preview ' + res.name);
       card.innerHTML =
-        '<span class="num">'+(idx+1)+' / '+RESOURCES.length+'</span>' +
+        '<span class="tcard-num">'+(idx+1)+'</span>' +
+        '<span class="tcard-check" aria-hidden="true">&#10003;</span>' +
         '<span class="ico">'+res.icon+'</span>' +
         '<h3>'+res.name+'</h3>' +
-        '<p>'+res.desc+'</p>';
-      (function(i){
-        function activate(){ if(!document.body.classList.contains('touring')) return; tourIdx=i; renderStep(); openPreview(RESOURCES[i]); }
-        card.addEventListener('click', activate);
-        card.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); activate(); } });
-      })(idx);
-      rail.appendChild(card);
+        '<p>'+res.desc+'</p>' +
+        '<span class="tcard-cta">Preview &#8594;</span>';
+      card.addEventListener('click', function(){ openModal(res); });
+      grid.appendChild(card);
     });
-    // dots
-    var dots = document.getElementById('nDots');
-    dots.innerHTML = '';
-    RESOURCES.forEach(function(){ var d=document.createElement('i'); dots.appendChild(d); });
+    updateProgress();
+  }
+  function updateProgress(){
+    var n = 0; RESOURCES.forEach(function(r){ if(opened[r.key]) n++; });
+    var el = document.getElementById('tourProgress');
+    if(el) el.textContent = n + ' of ' + RESOURCES.length + ' explored';
   }
 
-  // ---------- Tour engine ----------
-  var tourIdx = 0;
-  var opened = {};      // key -> true once opened
-  var voiceOn = false;
+  // ---------- Tour state + narration ----------
+  var opened = {};       // key -> true once explored
+  var voiceOn = false;   // per-modal narration toggle
+  var modalRes = null;
+  var lastFocus = null;
 
-  // Narration. If a hosted clip exists at audio/tour-<key>.mp3 it plays that
-  // (realistic recorded or neural voice). If not, it falls back to the browser
-  // Web Speech voice so the tour still narrates on any device.
+  // Narration: play hosted audio/tour-<key>.mp3 if present, else browser Web Speech.
   var narrAudio = null;
   function stopNarration(){
     if(narrAudio){ try{ narrAudio.pause(); }catch(e){} narrAudio = null; }
@@ -859,100 +878,59 @@
       window.speechSynthesis.speak(u);
     }catch(e){}
   }
-  function speak(res){
+  function playNarration(res){
     stopNarration();
-    if(!voiceOn) return;
-    var text = (typeof res === 'string') ? res : res.say;
-    var key = (typeof res === 'string') ? null : res.key;
-    if(!key){ browserVoice(text); return; }
-    narrAudio = new Audio('audio/tour-' + key + '.mp3');
-    narrAudio.addEventListener('error', function(){ if(voiceOn) browserVoice(text); });
+    narrAudio = new Audio('audio/tour-' + res.key + '.mp3');
+    narrAudio.addEventListener('error', function(){ browserVoice(res.say); });
     var p = narrAudio.play();
-    if(p && p.catch){ p.catch(function(){ /* handled by error listener */ }); }
+    if(p && p.catch){ p.catch(function(){ browserVoice(res.say); }); }
   }
 
-  function positionHand(card){
-    var hand = document.getElementById('hand');
-    var tour = document.getElementById('screen-tour');
-    var cRect = card.getBoundingClientRect();
-    var tRect = tour.getBoundingClientRect();
-    hand.classList.add('show');
-    // place hand at top-right corner of the card, pointing in
-    hand.style.left = (cRect.right - tRect.left - 16) + 'px';
-    hand.style.top  = (cRect.top - tRect.top - 30) + 'px';
-  }
-
-  // Inline resource preview (fills the panel; no leaving the page)
-  function openPreview(res){
-    var body = document.getElementById('tpBody');
-    document.getElementById('tpTitle').textContent = 'Preview: ' + res.name;
-    var newtab = document.getElementById('tpNewTab');
-    newtab.href = res.url; newtab.hidden = false;
-    document.getElementById('tpClose').hidden = false;
+  // ---------- Preview modal (opens on demand, no permanent panel) ----------
+  function openModal(res){
+    modalRes = res;
+    lastFocus = document.activeElement;
+    document.getElementById('tmTitle').textContent = res.name;
+    document.getElementById('tmNewTab').href = res.url;
+    var voiceBtn = document.getElementById('tmVoice');
+    voiceBtn.hidden = false; voiceBtn.setAttribute('aria-pressed','false'); voiceBtn.innerHTML = '&#9654; Listen';
+    voiceOn = false; stopNarration();
+    var body = document.getElementById('tmBody');
     if(res.frame){
-      body.innerHTML = '<iframe class="tp-frame" title="Preview of ' + res.name + '"></iframe>' +
-        '<p class="tp-hint">Scroll inside to explore. Not loading? Use Open in new tab, top right.</p>';
+      body.innerHTML = '<iframe class="tmodal-frame" title="Preview of ' + res.name + '"></iframe>';
       body.querySelector('iframe').src = res.url;
     } else {
-      body.innerHTML = '<div class="tp-fallback"><strong>' + res.name + ' opens in its own tab.</strong>' +
+      body.innerHTML = '<div class="tmodal-fallback"><strong>' + res.name + ' opens in its own tab</strong>' +
         '<span>It is an interactive app that runs best full screen.</span>' +
         '<a class="btn btn-primary" href="' + res.url + '" target="_blank" rel="noopener">Open ' + res.name + ' &#8599;</a></div>';
     }
+    document.getElementById('tModal').hidden = false;
     opened[res.key] = true;
-    document.getElementById('nNextBtn').disabled = false;
-    document.getElementById('nOpenBtn').textContent = 'Show again';
+    var c = document.getElementById('tcard-' + res.key); if(c) c.classList.add('done');
+    updateProgress();
+    window.setTimeout(function(){ document.getElementById('tmClose').focus(); }, 40);
     postHeight();
   }
-  function resetPreview(){
-    var body = document.getElementById('tpBody');
-    if(!body) return;
-    body.innerHTML = '<div class="tp-empty"><strong>Your preview opens here</strong>' +
-      '<span>Pick "Show it here" below, or click a card, to open a resource right here. Scroll through it, then continue.</span></div>';
-    document.getElementById('tpNewTab').hidden = true;
-    document.getElementById('tpClose').hidden = true;
-    document.getElementById('tpTitle').textContent = 'Preview';
-  }
-
-  function renderStep(){
-    var res = RESOURCES[tourIdx];
-    // spotlight
-    document.querySelectorAll('.rescard').forEach(function(c){ c.classList.remove('spot'); });
-    var card = document.getElementById('res-'+res.key);
-    card.classList.add('spot');
-    card.scrollIntoView({behavior: reduceMotion ? 'auto' : 'smooth', block:'center'});
-    positionHand(card);
-
-    document.getElementById('nStep').textContent = 'Step '+(tourIdx+1)+' of '+RESOURCES.length+' · '+res.name;
-    document.getElementById('nBody').textContent = res.say;
-
-    // dots
-    var dots = document.getElementById('nDots').children;
-    for(var i=0;i<dots.length;i++){ dots[i].classList.toggle('on', i===tourIdx); }
-
-    // buttons
-    document.getElementById('nBackBtn').disabled = (tourIdx===0);
-    document.getElementById('nNextBtn').disabled = !opened[res.key];
-    document.getElementById('nNextBtn').textContent = (tourIdx===RESOURCES.length-1) ? 'Finish' : 'Next';
-    document.getElementById('nOpenBtn').textContent = opened[res.key] ? 'Show again' : 'Show it here';
-
-    resetPreview();
-    speak(res);
+  function closeModal(){
+    stopNarration();
+    document.getElementById('tModal').hidden = true;
+    document.getElementById('tmBody').innerHTML = '';
+    if(lastFocus && lastFocus.focus){ try{ lastFocus.focus(); }catch(e){} }
     postHeight();
   }
 
   function startTour(){
     document.body.classList.add('touring');
     show('screen-tour');
-    tourIdx = 0;
-    renderStep();
-    // focus the open button so keyboard users land in the controls
-    window.setTimeout(function(){ document.getElementById('nOpenBtn').focus(); }, 60);
+    renderTourGrid();
+    window.setTimeout(function(){
+      var first = document.querySelector('#tourGrid .tcard');
+      if(first) first.focus();
+    }, 60);
   }
-
-  function endTour(){
-    document.body.classList.remove('touring');
-    document.getElementById('hand').classList.remove('show');
+  function finishTour(){
     stopNarration();
+    document.body.classList.remove('touring');
     setLS(LS_DONE, '1');
     renderBack();
     show('screen-back');
@@ -1085,7 +1063,7 @@
         setLS(LS_SEC, section);
         RESOURCES = buildResources(section);
         showIntroReady();
-        renderRail();
+        renderTourGrid();
       });
     });
   }
@@ -1123,27 +1101,18 @@
       show('screen-back');
     });
 
-    document.getElementById('nOpenBtn').addEventListener('click', function(){
-      openPreview(RESOURCES[tourIdx]);
-    });
-    document.getElementById('tpClose').addEventListener('click', resetPreview);
-    document.getElementById('nNextBtn').addEventListener('click', function(){
-      if(tourIdx >= RESOURCES.length-1){ endTour(); return; }
-      tourIdx++;
-      renderStep();
-    });
-    document.getElementById('nBackBtn').addEventListener('click', function(){
-      if(tourIdx===0) return;
-      tourIdx--;
-      renderStep();
-    });
-    document.getElementById('voiceBtn').addEventListener('click', function(){
+    document.getElementById('finishTour').addEventListener('click', finishTour);
+    document.getElementById('tmClose').addEventListener('click', closeModal);
+    document.getElementById('tmBackdrop').addEventListener('click', closeModal);
+    document.getElementById('tmVoice').addEventListener('click', function(){
       voiceOn = !voiceOn;
       this.setAttribute('aria-pressed', voiceOn ? 'true' : 'false');
-      this.setAttribute('aria-label', voiceOn ? 'Turn narration voice off' : 'Turn narration voice on');
-      this.textContent = voiceOn ? 'Voice on' : 'Voice off';
-      if(voiceOn){ speak(RESOURCES[tourIdx]); }
+      this.innerHTML = voiceOn ? '&#10073;&#10073; Stop' : '&#9654; Listen';
+      if(voiceOn && modalRes){ playNarration(modalRes); }
       else { stopNarration(); }
+    });
+    document.addEventListener('keydown', function(e){
+      if(e.key === 'Escape'){ var m = document.getElementById('tModal'); if(m && !m.hidden) closeModal(); }
     });
 
     // Welcome-back management
@@ -1374,7 +1343,7 @@
     runIntro();
     if(section){
       RESOURCES = buildResources(section);
-      renderRail();
+      renderTourGrid();
       showIntroReady();
     } else {
       showIntroNeedsSection();

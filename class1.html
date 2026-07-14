@@ -11,7 +11,7 @@
   :root{
     --navy:#08101F; --navy-deep:#08101F; --navy-darkest:#060A18; --navy-tint:#ECEFF4;
     --terra:#8B1D1D; --terra-dark:#6B1616; --terra-deep:#A0452F;
-    --gold:#C9A14A; --gold-soft:#DCB45C;
+    --gold:#DCB45C; --gold-soft:#DCB45C;
     --white:#FFFFFF; --offwhite:#FAFAF9; --gray:#6B7280; --gray-light:#D1D5DB;
     --radius:8px;
     --shadow-rest:0 1px 3px rgba(0,0,0,0.08);
@@ -52,12 +52,12 @@
   .chipm{display:inline-flex;align-items:center;gap:7px;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:999px;padding:7px 14px;font-family:var(--font-display);font-weight:600;font-size:.86rem;color:#fff;}
   .chipm b{color:var(--gold-soft);font-weight:700;}
   .cover-times{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 0;}
-  .timecard{background:rgba(255,255,255,.06);border-left:3px solid var(--terra);border-radius:6px;padding:9px 14px;font-family:var(--font-display);font-weight:600;font-size:.9rem;color:#fff;}
+  .timecard{background:rgba(255,255,255,.06);border-radius:6px;padding:9px 14px;font-family:var(--font-display);font-weight:600;font-size:.9rem;color:#fff;}
   .timecard .tl{display:block;font-family:var(--font-eyebrow);font-weight:700;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-soft);margin-bottom:2px;}
 
   /* ---------- STATUS STRIP (countdown + jump) ---------- */
   .status{display:flex;flex-wrap:wrap;gap:14px;align-items:stretch;margin-top:18px;}
-  .countdown{flex:1 1 260px;display:flex;align-items:center;gap:16px;background:#fff;border:1px solid var(--navy-tint);border-left:4px solid var(--gold);border-radius:var(--radius);padding:16px 20px;box-shadow:var(--shadow-rest);}
+  .countdown{flex:1 1 260px;display:flex;align-items:center;gap:16px;background:#fff;border:1px solid var(--navy-tint);border-radius:var(--radius);padding:16px 20px;box-shadow:var(--shadow-rest);}
   .cd-num{font-family:var(--font-display);font-weight:800;font-size:2.4rem;line-height:1;color:var(--terra-dark);font-variant-numeric:tabular-nums;}
   .cd-num.done{font-size:1.5rem;color:var(--navy);}
   .cd-text{display:flex;flex-direction:column;gap:2px;}

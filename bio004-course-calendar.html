@@ -11,7 +11,7 @@
   :root{
     --navy:#08101F; --navy-deep:#08101F; --navy-darkest:#060A18; --navy-tint:#ECEFF4;
     --terra:#8B1D1D; --terra-dark:#6B1616; --terra-deep:#A0452F;
-    --gold:#C9A14A; --gold-soft:#DCB45C;
+    --gold:#DCB45C; --gold-soft:#DCB45C;
     --white:#FFFFFF; --offwhite:#FAFAF9; --gray:#6B7280; --gray-light:#D1D5DB;
     --radius:8px;
     --shadow-rest:0 1px 3px rgba(0,0,0,0.08);
@@ -92,7 +92,8 @@
   .hstep .hs-k{font-family:var(--font-eyebrow);font-weight:700;font-size:.6rem;letter-spacing:.09em;text-transform:uppercase;color:var(--terra-dark);}
   .hstep .hs-t{font-family:var(--font-display);font-weight:800;font-size:1.02rem;color:var(--navy);margin:3px 0 4px;}
   .hstep p{margin:0;font-size:.9rem;color:var(--navy);}
-  .how-note{margin:14px 0 0;font-size:.92rem;color:var(--navy);background:#FBF4E4;border-left:4px solid var(--gold);border-radius:6px;padding:10px 13px;}
+  .how-note{margin:14px 0 0;font-size:.92rem;color:#F4EFE8;background:#7A2A22;border-radius:10px;padding:12px 15px;}
+  .how-note b{color:#fff;}
   .how-note b{color:var(--terra-dark);}
 
   /* calendar layout */
@@ -117,14 +118,14 @@
   .cell .tag{margin-top:auto;font-family:var(--font-eyebrow);font-weight:700;font-size:.56rem;letter-spacing:.02em;text-transform:uppercase;padding:2px 4px;border-radius:4px;text-align:center;line-height:1.15;overflow:hidden;}
   .cell.lm-tbl .tag{background:var(--navy);color:#fff;}
   .cell.lm-interactive .tag{background:var(--terra);color:#fff;}
-  .cell.lm-game .tag{background:var(--gold);color:#08101F;}
+  .cell.lm-game .tag{background:#5F6B73;color:#fff;}
   .cell.lm-exam{background:#fbeae4;border-color:var(--terra-dark);}
   .cell.lm-exam .tag{background:var(--terra-dark);color:#fff;}
   .cell.lm-orientation .tag{background:var(--navy-tint);color:var(--navy);}
-  .cell.lm-holiday{background:repeating-linear-gradient(45deg,#FDF6E9,#FDF6E9 6px,#fff 6px,#fff 12px);cursor:pointer;border-color:var(--gold-soft);}
+  .cell.lm-holiday{background:repeating-linear-gradient(45deg,#ECEFF4,#ECEFF4 6px,#fff 6px,#fff 12px);cursor:pointer;border-color:#D1D5DB;}
   .cell.lm-holiday .tag{background:transparent;color:var(--terra-dark);font-size:.5rem;}
   .cell.selected{outline:3px solid var(--terra-dark);outline-offset:1px;}
-  .cell.today{box-shadow:inset 0 0 0 2px var(--gold);}
+  .cell.today{box-shadow:inset 0 0 0 2px var(--terra-dark);}
   .cell .lab-dot{position:absolute;top:5px;right:5px;width:7px;height:7px;border-radius:50%;background:var(--terra);}
   .cell.lm-holiday .lab-dot.cell.lm-exam .lab-dot{display:none;}
 
@@ -134,9 +135,12 @@
   .detail .d-title{font-family:var(--font-display);font-weight:800;font-size:1.5rem;color:var(--navy);margin:4px 0 2px;line-height:1.1;}
   .detail .d-meet{font-size:.86rem;color:var(--navy);opacity:.7;}
   .d-card{border:1px solid var(--navy-tint);border-radius:8px;padding:13px 14px;margin-top:12px;}
-  .d-card.prework{background:#FBF4E4;border-color:var(--gold);border-left:4px solid var(--gold);}
-  .d-card.lecture{border-left:4px solid var(--navy);}
-  .d-card.lab{border-left:4px solid var(--terra);}
+  .d-card.prework{background:#7A2A22;border-color:#7A2A22;}
+  .d-card.prework .dc-k{color:#E8CE85;} .d-card.prework .dc-t{color:#F4EFE8;} .d-card.prework .dc-when{color:#F4EFE8;opacity:.85;}
+  .d-card.prework .pw-link{color:#F4EFE8;border-color:rgba(244,239,232,.6);} .d-card.prework .pw-link:hover{background:#fff;color:#7A2A22;}
+  .d-card.prework .pw-link.pending{color:#F4EFE8;opacity:.75;border-color:rgba(244,239,232,.5);}
+  .d-card.lecture .dc-k{color:var(--navy);}
+  .d-card.lab .dc-k{color:var(--terra-dark);}
   .d-card .dc-k{font-family:var(--font-eyebrow);font-weight:700;font-size:.62rem;letter-spacing:.09em;text-transform:uppercase;color:var(--terra-dark);display:flex;align-items:center;gap:8px;}
   .d-card .dc-when{font-weight:600;font-size:.72rem;color:var(--navy);opacity:.7;margin-left:auto;text-transform:none;letter-spacing:0;}
   .d-card .dc-t{font-family:var(--font-display);font-weight:700;font-size:1.02rem;color:var(--navy);margin:5px 0 0;line-height:1.25;}
@@ -145,22 +149,22 @@
   .cb-icheck{background:var(--terra);color:#fff;}
   .cb-tbl{background:var(--navy);color:#fff;}
   .cb-exam{background:var(--terra-dark);color:#fff;}
-  .cb-game{background:var(--gold);color:#08101F;}
+  .cb-game{background:#5F6B73;color:#fff;}
   .cb-orient{background:var(--navy-tint);color:var(--navy);}
   .pw-link{display:inline-flex;align-items:center;gap:6px;margin-top:8px;font-family:var(--font-display);font-weight:700;font-size:.88rem;color:var(--terra-dark);text-decoration:none;border:1.5px solid var(--terra-dark);border-radius:7px;padding:6px 12px;transition:var(--t);}
   .pw-link:hover{background:var(--terra-dark);color:#fff;}
   .pw-link.pending{border-style:dashed;color:var(--navy);opacity:.6;border-color:var(--gray-light);pointer-events:none;}
   .d-holiday{text-align:center;padding:24px 8px;}
-  .d-holiday .dh-emoji{font-family:var(--font-display);font-weight:800;font-size:1.3rem;color:var(--gold);}
+  .d-holiday .dh-emoji{font-family:var(--font-display);font-weight:800;font-size:1.3rem;color:var(--navy);}
   .d-empty{color:var(--navy);opacity:.6;font-size:.92rem;padding:12px 2px;}
 
   /* legend */
   .legend{display:flex;flex-wrap:wrap;gap:9px 16px;margin-top:16px;padding:14px 16px;background:#fff;border:1px solid var(--navy-tint);border-radius:var(--radius);box-shadow:var(--shadow-rest);}
   .legend .lg{display:inline-flex;align-items:center;gap:7px;font-size:.82rem;font-weight:600;color:var(--navy);}
   .legend .sw{width:13px;height:13px;border-radius:4px;}
-  .sw.tbl{background:var(--navy);} .sw.interactive{background:var(--terra);} .sw.game{background:var(--gold);}
+  .sw.tbl{background:var(--navy);} .sw.interactive{background:var(--terra);} .sw.game{background:#5F6B73;}
   .sw.exam{background:var(--terra-dark);} .sw.orientation{background:var(--navy-tint);}
-  .sw.holiday{background:repeating-linear-gradient(45deg,#FDF6E9,#FDF6E9 4px,#fff 4px,#fff 8px);border:1px solid var(--gold-soft);}
+  .sw.holiday{background:repeating-linear-gradient(45deg,#ECEFF4,#ECEFF4 4px,#fff 4px,#fff 8px);border:1px solid #D1D5DB;}
   .sw.labd{background:var(--terra);border-radius:50%;}
 
   footer{background:var(--navy-darkest);color:var(--navy-tint);text-align:center;padding:1.8rem 1.5rem 1.6rem;border-top:2px solid #1E2A47;border-radius:var(--radius);margin-top:40px;}
@@ -251,7 +255,6 @@
   <footer>
     <div class="by">Dr. Sharilyn Rennie</div>
     <div class="role">Professor of Anatomy &amp; Physiology</div>
-    <div class="brand">MedMasters Collaborative</div>
   </footer>
 </div>
 
