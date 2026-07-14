@@ -43,7 +43,7 @@
   .logo-sub{font-family:var(--font-eyebrow);font-size:.72rem;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--navy);opacity:.72;}
 
   /* ---------- COVER HERO ---------- */
-  .cover{background:var(--navy-darkest);border-radius:var(--radius);padding:clamp(24px,4.5vw,42px);color:#fff;border-top:3px solid var(--terra);}
+  .cover{background:var(--navy-darkest);border-radius:var(--radius);padding:clamp(24px,4.5vw,42px);color:#fff;border-top:3px solid #1E2A47;}
   .cover-eyebrow{font-family:var(--font-eyebrow);font-size:.78rem;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--gold-soft);margin:0 0 12px;}
   .cover-title{font-family:var(--font-display);font-weight:800;font-size:clamp(28px,5vw,42px);line-height:1.05;letter-spacing:-.02em;color:#fff;margin:0;}
   .cover-title span{color:var(--terra);}
@@ -65,7 +65,7 @@
   .cd-main{font-family:var(--font-display);font-weight:700;font-size:1.02rem;color:var(--navy);}
   .cd-sub{font-size:.85rem;color:var(--navy);opacity:.7;}
   .jump{display:inline-flex;align-items:center;gap:8px;background:var(--navy);color:#fff;border:none;font-family:var(--font-display);font-weight:700;font-size:.95rem;padding:0 22px;border-radius:var(--radius);cursor:pointer;transition:var(--t);flex:0 0 auto;}
-  .jump:hover,.jump:focus-visible{background:var(--terra-dark);transform:translateY(-2px);box-shadow:var(--shadow-hover);}
+  .jump:hover.jump:focus-visible{background:var(--terra-dark);transform:translateY(-2px);box-shadow:var(--shadow-hover);}
   .jump[hidden]{display:none;}
 
   /* ---------- TOOLBAR (filters) ---------- */
@@ -134,7 +134,7 @@
   .detail-custom{white-space:pre-line;color:var(--navy);font-size:.98rem;}
 
   /* ---------- FOOTER ---------- */
-  footer{background:var(--navy-darkest);color:var(--navy-tint);text-align:center;padding:1.9rem 1.5rem 1.7rem;border-top:2px solid var(--terra);border-radius:var(--radius);margin-top:42px;}
+  footer{background:var(--navy-darkest);color:var(--navy-tint);text-align:center;padding:1.9rem 1.5rem 1.7rem;border-top:2px solid #1E2A47;border-radius:var(--radius);margin-top:42px;}
   footer .by{font-family:var(--font-display);font-weight:700;color:#fff;font-size:1rem;margin-bottom:.15rem;}
   footer .role{font-size:.82rem;color:var(--navy-tint);}
   footer .brand{font-family:var(--font-eyebrow);font-weight:700;color:var(--terra);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;margin-top:.9rem;}
@@ -149,7 +149,7 @@
     *{transition-duration:.01ms !important;animation:none !important;scroll-behavior:auto !important;}
   }
   @media print{
-    .status,.toolbar,.jump,.caret,.print-link,.cover-cta{display:none !important;}
+    .status.toolbar.jump.caret.print-link.cover-cta{display:none !important;}
     .week{break-inside:avoid;}
     .detail{max-height:none !important;overflow:visible;}
     body{background:#fff;}
@@ -232,60 +232,20 @@
 
 <script>
 /* ============================================================
-   EDIT HERE — everything below the two data blocks is the app.
+   EDIT HERE, everything below the two data blocks is the app.
    ============================================================ */
 
-/* 1) CLASS INFO — edit times, room, CRN as needed */
+/* 1) CLASS INFO, edit times, room, CRN as needed */
 const CONFIG = {
-    "section": "Class 1",
-    "crn": "80650",
-    "days": "Mon / Wed",
-    "when": "Afternoon",
-    "lecture": "Lecture · MW · 12:30–1:50 pm · VC 118",
-    "lab": "Lab · MW · 2:00–4:50 pm · VC 1137",
-    "room": "Vacaville Center 1137"
+    "section": "Class 1", "crn": "80650", "days": "Mon / Wed", "when": "Afternoon", "lecture": "Lecture · MW · 12:30–1:50 pm · VC 118", "lab": "Lab · MW · 2:00–4:50 pm · VC 1137", "room": "Vacaville Center 1137"
   };
 
-/* 2) SESSIONS — edit topics or fill "details" for click-to-expand.
+/* 2) SESSIONS, edit topics or fill "details" for click-to-expand.
       type: "lab" | "exam" | "holiday" | "open"
       details: leave "" for the friendly placeholder, or write text
                (line breaks are preserved) to show your own notes. */
 const SCHEDULE = [
-    { week:1, date:"2026-08-17", day:"Mon", type:"lab", topic:"Intro to Anatomy LAB; Cell Anatomy & Microscopy", details:"" },
-    { week:1, date:"2026-08-19", day:"Wed", type:"lab", topic:"Epithelial Tissues", details:"" },
-    { week:2, date:"2026-08-24", day:"Mon", type:"lab", topic:"Connective Tissue I", details:"" },
-    { week:2, date:"2026-08-26", day:"Wed", type:"lab", topic:"Connective Tissue II", details:"" },
-    { week:3, date:"2026-08-31", day:"Mon", type:"lab", topic:"Muscle Tissue & Nervous Tissue", details:"" },
-    { week:3, date:"2026-09-02", day:"Wed", type:"lab", topic:"Integumentary", details:"" },
-    { week:4, date:"2026-09-07", day:"Mon", type:"holiday", topic:"Labor Day — No Class", details:"" },
-    { week:4, date:"2026-09-09", day:"Wed", type:"exam", topic:"Exam 1", details:"" },
-    { week:5, date:"2026-09-14", day:"Mon", type:"lab", topic:"Bone Tissue, Long Bone & Microanatomy; Axial Skull", details:"" },
-    { week:5, date:"2026-09-16", day:"Wed", type:"lab", topic:"Axial Spine & Skull", details:"" },
-    { week:6, date:"2026-09-21", day:"Mon", type:"lab", topic:"Upper Extremity", details:"" },
-    { week:6, date:"2026-09-23", day:"Wed", type:"lab", topic:"Lower Extremity", details:"" },
-    { week:7, date:"2026-09-28", day:"Mon", type:"open", topic:"Open Lab", details:"" },
-    { week:7, date:"2026-09-30", day:"Wed", type:"exam", topic:"Exam 2", details:"" },
-    { week:8, date:"2026-10-05", day:"Mon", type:"lab", topic:"Thoracic Anatomy (Heart); BV Histology & Anatomy", details:"" },
-    { week:8, date:"2026-10-07", day:"Wed", type:"lab", topic:"Muscle Microanatomy & Sarcomere", details:"" },
-    { week:9, date:"2026-10-12", day:"Mon", type:"lab", topic:"Muscles of the Face, Chest & Back", details:"" },
-    { week:9, date:"2026-10-14", day:"Wed", type:"lab", topic:"Muscles & NAV of the Upper Arm; Anterior Forearm", details:"" },
-    { week:10, date:"2026-10-19", day:"Mon", type:"lab", topic:"Muscles & NAV of Posterior Forearm", details:"" },
-    { week:10, date:"2026-10-21", day:"Wed", type:"exam", topic:"Exam 3", details:"" },
-    { week:11, date:"2026-10-26", day:"Mon", type:"lab", topic:"Thoracic Anatomy (Respiratory) & Respiratory Histology", details:"" },
-    { week:11, date:"2026-10-28", day:"Wed", type:"lab", topic:"(Anterior) Lower Extremity Muscles & NAV", details:"" },
-    { week:12, date:"2026-11-02", day:"Mon", type:"lab", topic:"(Posterior) Thigh Muscle & NAV", details:"" },
-    { week:12, date:"2026-11-04", day:"Wed", type:"lab", topic:"Anterior/Posterior Lower Leg Muscles", details:"" },
-    { week:13, date:"2026-11-09", day:"Mon", type:"lab", topic:"GI Organs (Primary)", details:"" },
-    { week:13, date:"2026-11-11", day:"Wed", type:"holiday", topic:"Veteran's Day — No Class", details:"" },
-    { week:14, date:"2026-11-16", day:"Mon", type:"lab", topic:"GI Organs (Accessory)", details:"" },
-    { week:14, date:"2026-11-18", day:"Wed", type:"exam", topic:"Exam 4", details:"" },
-    { week:15, date:"2026-11-23", day:"Mon", type:"lab", topic:"Renal Anatomy; M & F Reproduction", details:"" },
-    { week:15, date:"2026-11-25", day:"Wed", type:"holiday", topic:"Travel Day — No Class", details:"" },
-    { week:16, date:"2026-11-30", day:"Mon", type:"lab", topic:"CNS Brain, Meninges & CSF", details:"" },
-    { week:16, date:"2026-12-02", day:"Wed", type:"lab", topic:"Brain Stem (CNS) & Cranial Nerves (PNS)", details:"" },
-    { week:17, date:"2026-12-07", day:"Mon", type:"lab", topic:"CNS Spinal Cord, Spinal Nerves", details:"" },
-    { week:17, date:"2026-12-09", day:"Wed", type:"exam", topic:"Exam 5", details:"" },
-  ];
+    { week:1, date:"2026-08-17", day:"Mon", type:"lab", topic:"Intro to Anatomy LAB; Cell Anatomy & Microscopy", details:"" }, { week:1, date:"2026-08-19", day:"Wed", type:"lab", topic:"Epithelial Tissues", details:"" }, { week:2, date:"2026-08-24", day:"Mon", type:"lab", topic:"Connective Tissue I", details:"" }, { week:2, date:"2026-08-26", day:"Wed", type:"lab", topic:"Connective Tissue II", details:"" }, { week:3, date:"2026-08-31", day:"Mon", type:"lab", topic:"Muscle Tissue & Nervous Tissue", details:"" }, { week:3, date:"2026-09-02", day:"Wed", type:"lab", topic:"Integumentary", details:"" }, { week:4, date:"2026-09-07", day:"Mon", type:"holiday", topic:"Labor Day, No Class", details:"" }, { week:4, date:"2026-09-09", day:"Wed", type:"exam", topic:"Exam 1", details:"" }, { week:5, date:"2026-09-14", day:"Mon", type:"lab", topic:"Bone Tissue, Long Bone & Microanatomy; Axial Skull", details:"" }, { week:5, date:"2026-09-16", day:"Wed", type:"lab", topic:"Axial Spine & Skull", details:"" }, { week:6, date:"2026-09-21", day:"Mon", type:"lab", topic:"Upper Extremity", details:"" }, { week:6, date:"2026-09-23", day:"Wed", type:"lab", topic:"Lower Extremity", details:"" }, { week:7, date:"2026-09-28", day:"Mon", type:"open", topic:"Open Lab", details:"" }, { week:7, date:"2026-09-30", day:"Wed", type:"exam", topic:"Exam 2", details:"" }, { week:8, date:"2026-10-05", day:"Mon", type:"lab", topic:"Thoracic Anatomy (Heart); BV Histology & Anatomy", details:"" }, { week:8, date:"2026-10-07", day:"Wed", type:"lab", topic:"Muscle Microanatomy & Sarcomere", details:"" }, { week:9, date:"2026-10-12", day:"Mon", type:"lab", topic:"Muscles of the Face, Chest & Back", details:"" }, { week:9, date:"2026-10-14", day:"Wed", type:"lab", topic:"Muscles & NAV of the Upper Arm; Anterior Forearm", details:"" }, { week:10, date:"2026-10-19", day:"Mon", type:"lab", topic:"Muscles & NAV of Posterior Forearm", details:"" }, { week:10, date:"2026-10-21", day:"Wed", type:"exam", topic:"Exam 3", details:"" }, { week:11, date:"2026-10-26", day:"Mon", type:"lab", topic:"Thoracic Anatomy (Respiratory) & Respiratory Histology", details:"" }, { week:11, date:"2026-10-28", day:"Wed", type:"lab", topic:"(Anterior) Lower Extremity Muscles & NAV", details:"" }, { week:12, date:"2026-11-02", day:"Mon", type:"lab", topic:"(Posterior) Thigh Muscle & NAV", details:"" }, { week:12, date:"2026-11-04", day:"Wed", type:"lab", topic:"Anterior/Posterior Lower Leg Muscles", details:"" }, { week:13, date:"2026-11-09", day:"Mon", type:"lab", topic:"GI Organs (Primary)", details:"" }, { week:13, date:"2026-11-11", day:"Wed", type:"holiday", topic:"Veteran's Day, No Class", details:"" }, { week:14, date:"2026-11-16", day:"Mon", type:"lab", topic:"GI Organs (Accessory)", details:"" }, { week:14, date:"2026-11-18", day:"Wed", type:"exam", topic:"Exam 4", details:"" }, { week:15, date:"2026-11-23", day:"Mon", type:"lab", topic:"Renal Anatomy; M & F Reproduction", details:"" }, { week:15, date:"2026-11-25", day:"Wed", type:"holiday", topic:"Travel Day, No Class", details:"" }, { week:16, date:"2026-11-30", day:"Mon", type:"lab", topic:"CNS Brain, Meninges & CSF", details:"" }, { week:16, date:"2026-12-02", day:"Wed", type:"lab", topic:"Brain Stem (CNS) & Cranial Nerves (PNS)", details:"" }, { week:17, date:"2026-12-07", day:"Mon", type:"lab", topic:"CNS Spinal Cord, Spinal Nerves", details:"" }, { week:17, date:"2026-12-09", day:"Wed", type:"exam", topic:"Exam 5", details:"" }, ];
 
 /* ---------- app (no need to edit below) ---------- */
 (function(){
@@ -351,8 +311,8 @@ const SCHEDULE = [
     }
     if(s.type==='exam'){
       return '<div class="detail-inner">'
-        +'<div class="detail-block"><p class="detail-h">Exam Day</p><p class="detail-p">'+escapeHTML(s.topic)+' — bring a pencil and your student ID. No notes unless announced.</p></div>'
-        +'<div class="detail-block"><p class="detail-note">Details coming soon — your instructor will post the exact stations, coverage, and format here.</p></div>'
+        +'<div class="detail-block"><p class="detail-h">Exam Day</p><p class="detail-p">'+escapeHTML(s.topic)+', bring a pencil and your student ID. No notes unless announced.</p></div>'
+        +'<div class="detail-block"><p class="detail-note">Details coming soon, your instructor will post the exact stations, coverage, and format here.</p></div>'
         +'</div>';
     }
     // lab / open

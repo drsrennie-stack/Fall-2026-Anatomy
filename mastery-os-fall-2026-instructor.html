@@ -99,7 +99,7 @@ section.block:first-of-type{border-top:none}
 .g3{grid-template-columns:repeat(3,1fr)}
 .g4{grid-template-columns:repeat(4,1fr)}
 @media(max-width:860px){.g4{grid-template-columns:repeat(2,1fr)}.g3{grid-template-columns:repeat(2,1fr)}}
-@media(max-width:600px){.g2,.g3,.g4{grid-template-columns:1fr}}
+@media(max-width:600px){.g2.g3.g4{grid-template-columns:1fr}}
 
 /* ---------- Section 1: Today's plan ---------- */
 .plan{background:var(--navy);background:radial-gradient(140% 135% at 12% 0%,#12203f 0%,var(--navy) 48%,var(--near-black) 100%);color:var(--cream);border-radius:var(--r-lg);padding:28px;box-shadow:var(--lift)}
@@ -268,8 +268,8 @@ section.block:first-of-type{border-top:none}
 /* instructor config fields */
 .field{margin-bottom:16px}
 .field label{display:block;font-family:var(--mono);font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px}
-.field input,.field textarea{width:100%;font-family:inherit;font-size:15px;padding:11px 13px;border:1.5px solid var(--line);border-radius:var(--r);background:var(--offwhite)}
-.field input:focus,.field textarea:focus{border-color:var(--gold);outline:none;background:#fff}
+.field input.field textarea{width:100%;font-family:inherit;font-size:15px;padding:11px 13px;border:1.5px solid var(--line);border-radius:var(--r);background:var(--offwhite)}
+.field input:focus.field textarea:focus{border-color:var(--gold);outline:none;background:#fff}
 .field .hint{font-size:12px;color:var(--ink-faint);margin-top:5px;font-family:var(--serif);font-style:normal}
 .note{background:var(--cream);border:1px solid var(--line);border-radius:var(--r);padding:14px 16px;font-size:13px;color:var(--ink-soft);line-height:1.5;margin-bottom:18px}
 
@@ -447,7 +447,7 @@ section.block:first-of-type{border-top:none}
 .pomo-float .pm-step[aria-pressed="true"] .lbl{color:#fff;opacity:.75}
 .pf-body .btn{font-size:12.5px;padding:7px 11px;background:rgba(255,255,255,.08);border:1.5px solid rgba(255,255,255,.22);color:#fff}
 .pf-body .btn:hover{background:rgba(255,255,255,.16);border-color:rgba(255,255,255,.4);box-shadow:none}
-.pf-body .btn.primary,.pf-body .btn.gold{background:var(--gold);border-color:var(--gold);color:var(--navy)}
+.pf-body .btn.primary.pf-body .btn.gold{background:var(--gold);border-color:var(--gold);color:var(--navy)}
 .pf-sound{border-top:1px solid rgba(255,255,255,.10);padding:10px 12px;display:grid;gap:8px}
 .pf-slabel{font-family:var(--mono);font-size:10px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:rgba(245,241,232,.55)}
 .pf-sbtns{display:flex;gap:6px;flex-wrap:wrap}
@@ -469,7 +469,7 @@ section.block:first-of-type{border-top:none}
 .pomo-float.mini #pfMin{width:30px;height:30px;border-radius:50%;background:var(--navy);border:1.5px solid rgba(255,255,255,.35);box-shadow:0 4px 10px rgba(0,0,0,.4)}
 .pomo-float.mini .pf-ring{width:130px;height:130px;margin:10px}
 .pomo-float.mini .pf-clock{font-size:28px}
-.pomo-float.mini .pf-body,.pomo-float.mini .pf-sound{display:none}
+.pomo-float.mini .pf-body.pomo-float.mini .pf-sound{display:none}
 
 @media (prefers-reduced-motion:reduce){
   *{animation-duration:.001ms!important;transition-duration:.001ms!important;scroll-behavior:auto!important}
@@ -665,7 +665,7 @@ section.block:first-of-type{border-top:none}
       <div class="note">Upload once. Mastery OS generates the daily plans, spaced-recall schedule, competency tracking, weakness dashboard, and recommendations automatically. Students never build the course structure.</div>
       <div class="note" id="instrSchedInfo" style="background:var(--navy);color:var(--cream);border-color:var(--navy)"></div>
       <div class="field"><label>Term start and end</label><div style="display:flex;gap:8px"><input id="cfgStart" type="date" aria-label="Term start"><input id="cfgEnd" type="date" aria-label="Term end"></div><p class="hint">Set the semester dates. The course length (8, 16, or any) comes from the schedule you import.</p></div>
-      <div class="field"><label for="cfgPaste">Import schedule</label><textarea id="cfgPaste" rows="4" placeholder="Paste your schedule.js contents or JSON, or choose a file below."></textarea><input id="cfgFile" type="file" accept=".js,.json,.txt,.html" style="margin-top:8px"><div style="margin-top:8px"><button class="btn gold" id="cfgImport">Import schedule</button></div><p class="hint" id="cfgImportInfo">It reads the weeks and exam dates automatically.</p></div>
+      <div class="field"><label for="cfgPaste">Import schedule</label><textarea id="cfgPaste" rows="4" placeholder="Paste your schedule.js contents or JSON, or choose a file below."></textarea><input id="cfgFile" type="file" accept=".js.json.txt.html" style="margin-top:8px"><div style="margin-top:8px"><button class="btn gold" id="cfgImport">Import schedule</button></div><p class="hint" id="cfgImportInfo">It reads the weeks and exam dates automatically.</p></div>
       <button class="btn block" id="instrReload" style="margin-bottom:18px">Reload plan from current schedule</button>
       <div class="field"><label for="cfgCourse">Course label</label><input id="cfgCourse" type="text"></div>
       <div class="field"><label for="cfgExam">Next practical / exam date</label><input id="cfgExam" type="date"><p class="hint">Drives the exam countdown and how aggressively recall is scheduled.</p></div>
@@ -738,9 +738,7 @@ section.block:first-of-type{border-top:none}
 ========================================================= */
 var mem={};
 var store={
-  get:function(k){try{var v=localStorage.getItem(k);return v==null?(mem[k]||null):JSON.parse(v);}catch(e){return mem[k]||null;}},
-  set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}mem[k]=v;},
-  del:function(k){try{localStorage.removeItem(k);}catch(e){}delete mem[k];}
+  get:function(k){try{var v=localStorage.getItem(k);return v==null?(mem[k]||null):JSON.parse(v);}catch(e){return mem[k]||null;}}, set:function(k,v){try{localStorage.setItem(k,JSON.stringify(v));}catch(e){}mem[k]=v;}, del:function(k){try{localStorage.removeItem(k);}catch(e){}delete mem[k];}
 };
 var KEY='mastery-os-redesign';
 /* ===== INSTRUCTOR TEST BUILD =====
@@ -760,27 +758,7 @@ var TODAY=(function(){
    ICONS
 ========================================================= */
 var I={
-  target:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></svg>',
-  flask:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3"/><path d="M7 15h10"/></svg>',
-  recall:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4M9 4h6"/><rect x="5" y="8" width="14" height="12" rx="2"/><path d="M9 13h6M9 16h4"/></svg>',
-  weak:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>',
-  bolt:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>',
-  clock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>',
-  diagnose:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>',
-  repair:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2-2z"/></svg>',
-  retrieve:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v6h6"/><path d="M4 10a8 8 0 1 1 2 5"/></svg>',
-  apply:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 7v6c0 5 3.4 7.7 8 9 4.6-1.3 8-4 8-9V7z"/></svg>',
-  teach:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11h-6M19 8v6"/></svg>',
-  reflect:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0-4 10.5V17h8v-3.5A6 6 0 0 0 12 3z"/><path d="M9 21h6"/></svg>',
-  draw:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"/></svg>',
-  label:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 12 22l-9-9V3h10z"/><circle cx="7.5" cy="7.5" r="1.5" fill="currentColor"/></svg>',
-  eye:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>',
-  micro:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 19v3"/></svg>',
-  speak:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>',
-  clinical:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M12 9v6M9 12h6"/></svg>',
-  build:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3"/></svg>',
-  check:'<svg viewBox="0 0 24 24" fill="none" stroke="#08101F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></svg>',
-  chev:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>'
+  target:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><circle cx="12" cy="12" r="5"/><circle cx="12" cy="12" r="1.4" fill="currentColor"/></svg>', flask:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 1.8 3h10.4A2 2 0 0 0 19 18l-5-9V3"/><path d="M7 15h10"/></svg>', recall:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 8V4M9 4h6"/><rect x="5" y="8" width="14" height="12" rx="2"/><path d="M9 13h6M9 16h4"/></svg>', weak:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 9v4M12 17h.01"/><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/></svg>', bolt:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M13 2 3 14h7l-1 8 10-12h-7z"/></svg>', clock:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>', diagnose:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="11" cy="11" r="7"/><path d="M21 21l-4.3-4.3"/></svg>', repair:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.7 6.3a4 4 0 0 0-5.4 5.4L3 18v3h3l6.3-6.3a4 4 0 0 0 5.4-5.4l-2.5 2.5-2-2z"/></svg>', retrieve:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4v6h6"/><path d="M4 10a8 8 0 1 1 2 5"/></svg>', apply:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 7v6c0 5 3.4 7.7 8 9 4.6-1.3 8-4 8-9V7z"/></svg>', teach:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 11h-6M19 8v6"/></svg>', reflect:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0-4 10.5V17h8v-3.5A6 6 0 0 0 12 3z"/><path d="M9 21h6"/></svg>', draw:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19l7-7 3 3-7 7-3-3z"/><path d="M18 13l-1.5-7.5L2 2l3.5 14.5L13 18z"/></svg>', label:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.6 13.4 12 22l-9-9V3h10z"/><circle cx="7.5" cy="7.5" r="1.5" fill="currentColor"/></svg>', eye:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7-11-7-11-7z"/><circle cx="12" cy="12" r="3"/></svg>', micro:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="9" y="2" width="6" height="12" rx="3"/><path d="M5 10a7 7 0 0 0 14 0M12 19v3"/></svg>', speak:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>', clinical:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2z"/><path d="M12 9v6M9 12h6"/></svg>', build:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v4M12 18v4M4.9 4.9l2.8 2.8M16.3 16.3l2.8 2.8M2 12h4M18 12h4M4.9 19.1l2.8-2.8M16.3 7.7l2.8-2.8"/><circle cx="12" cy="12" r="3"/></svg>', check:'<svg viewBox="0 0 24 24" fill="none" stroke="#08101F" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5 9-11"/></svg>', chev:'<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>'
 };
 
 /* =========================================================
@@ -789,84 +767,25 @@ var I={
 ========================================================= */
 function C(id,name,mastery,conf,last,next,ev,today){return {id:id,name:name,mastery:mastery,conf:conf,last:last,next:next,ev:ev||[],today:today||null};}
 var SEED={
-  profile:{onboarded:false,name:'',grade:'',days:4,minutes:45,activities:['retrieval','draw'],confidence:'building'},
-  course:{
-    label:'BIO 004 Human Anatomy',
-    exam:'2026-07-13',
-    lecture:['Muscle Naming Logic','Muscles of the Upper Limb'],
-    lab:['Upper Limb Cadaver ID','Muscle Histology'],
-    highyield:'Tissue types, heart blood flow, brachial plexus, skin layers'
-  },
-  dims:[
-    {k:'lecture',name:'Lecture Mastery',val:0},
-    {k:'lab',name:'Lab Mastery',val:0},
-    {k:'cadaver',name:'Cadaver Mastery',val:0},
-    {k:'histo',name:'Histology Mastery',val:0},
-    {k:'clinical',name:'Clinical Application',val:0},
-    {k:'imaging',name:'Imaging',val:0},
-    {k:'draw',name:'Draw-to-Know-It',val:0},
-    {k:'recall',name:'Spaced Recall',val:0}
-  ],
-  skills:[
-    {name:'Planning',sub:'Setting a plan before you study',val:0},
-    {name:'Retrieval',sub:'Pulling from memory, not rereading',val:0},
-    {name:'Gap Identification',sub:'Naming what you do not know',val:0},
-    {name:'Repair Skills',sub:'Closing a gap once you find it',val:0},
-    {name:'Spaced Recall Consistency',sub:'Returning on schedule',val:0},
-    {name:'Reflection',sub:'Learning from each session',val:0},
-    {name:'Transfer',sub:'Using it in a new context',val:0},
-    {name:'Teaching Ability',sub:'Explaining it to someone else',val:0}
-  ],
-  units:[
+  profile:{onboarded:false,name:'',grade:'',days:4,minutes:45,activities:['retrieval','draw'],confidence:'building'}, course:{
+    label:'BIO 004 Human Anatomy', exam:'2026-07-13', lecture:['Muscle Naming Logic','Muscles of the Upper Limb'], lab:['Upper Limb Cadaver ID','Muscle Histology'], highyield:'Tissue types, heart blood flow, brachial plexus, skin layers'
+  }, dims:[
+    {k:'lecture',name:'Lecture Mastery',val:0}, {k:'lab',name:'Lab Mastery',val:0}, {k:'cadaver',name:'Cadaver Mastery',val:0}, {k:'histo',name:'Histology Mastery',val:0}, {k:'clinical',name:'Clinical Application',val:0}, {k:'imaging',name:'Imaging',val:0}, {k:'draw',name:'Draw-to-Know-It',val:0}, {k:'recall',name:'Spaced Recall',val:0}
+  ], skills:[
+    {name:'Planning',sub:'Setting a plan before you study',val:0}, {name:'Retrieval',sub:'Pulling from memory, not rereading',val:0}, {name:'Gap Identification',sub:'Naming what you do not know',val:0}, {name:'Repair Skills',sub:'Closing a gap once you find it',val:0}, {name:'Spaced Recall Consistency',sub:'Returning on schedule',val:0}, {name:'Reflection',sub:'Learning from each session',val:0}, {name:'Transfer',sub:'Using it in a new context',val:0}, {name:'Teaching Ability',sub:'Explaining it to someone else',val:0}
+  ], units:[
     {id:'u-integ',name:'Integumentary System',week:1,comps:[
-      C('skin-layers','Skin Layers',78,'high','2026-06-29','2026-07-04',['retrieval','draw','histo']),
-      C('accessory','Accessory Structures',52,'med','2026-06-25','2026-07-01',['retrieval']),
-      C('hair','Hair',44,'low','2026-06-22','2026-06-29',['label']),
-      C('nails','Nails',61,'med','2026-06-27','2026-07-03',['retrieval']),
-      C('sweat','Sweat Glands',38,'low','2026-06-20','2026-06-28',[]),
-      C('sebaceous','Sebaceous Glands',49,'low','2026-06-24','2026-06-30',['histo']),
-      C('integ-clin','Clinical Applications',41,'low','2026-06-21','2026-06-29',['clinical']),
-      C('integ-histo','Histology',64,'med','2026-06-28','2026-07-05',['histo','label']),
-      C('integ-cad','Cadaver Identification',47,'low','2026-06-23','2026-07-01',['cadaver'])
-    ]},
-    {id:'u-tissue',name:'Tissues and Histology Foundations',week:1,comps:[
-      C('epithelial','Epithelial Tissue',71,'high','2026-06-28','2026-07-05',['retrieval','histo','draw']),
-      C('connective','Connective Tissue',66,'med','2026-06-27','2026-07-04',['retrieval','histo']),
-      C('muscle-t','Muscle Tissue',58,'med','2026-06-26','2026-07-02',['histo']),
-      C('nervous-t','Nervous Tissue',54,'low','2026-06-24','2026-07-01',['retrieval']),
-      C('membranes','Body Membranes',62,'med','2026-06-27','2026-07-03',['retrieval'])
-    ]},
-    {id:'u-skel',name:'Skeletal System',week:2,comps:[
-      C('axial','Axial Skeleton',69,'high','2026-06-29','2026-07-06',['retrieval','label']),
-      C('append','Appendicular Skeleton',57,'med','2026-06-26','2026-07-02',['label','cadaver']),
-      C('bone-histo','Bone Histology',50,'low','2026-06-25','2026-07-01',['histo']),
-      C('joints','Joints',63,'med','2026-06-28','2026-07-04',['retrieval','clinical']),
-      C('skel-cad','Cadaver Identification',48,'low','2026-06-23','2026-06-30',['cadaver']),
-      C('skel-img','Imaging',42,'low','2026-06-22','2026-06-29',['clinical'])
-    ]},
-    {id:'u-musc',name:'Muscular System',week:3,comps:[
-      C('muscle-naming','Muscle Naming Logic',60,'med','2026-06-30','2026-07-05',['retrieval'],'lecture'),
-      C('head-neck','Head and Neck Muscles',46,'low','2026-06-24','2026-07-01',['label']),
-      C('trunk-m','Trunk Muscles',51,'med','2026-06-26','2026-07-02',['retrieval']),
-      C('upper-limb','Muscles of the Upper Limb',39,'low','2026-06-21','2026-06-30',['label'],'lecture'),
-      C('lower-limb','Muscles of the Lower Limb',43,'low','2026-06-23','2026-07-01',[]),
-      C('musc-histo','Muscle Histology',55,'med','2026-06-27','2026-07-03',['histo'],'lab'),
-      C('musc-cad','Upper Limb Cadaver ID',37,'low','2026-06-20','2026-06-28',['cadaver'],'lab')
-    ]},
-    {id:'u-nerv',name:'Nervous System',week:4,comps:[
-      C('neuron','Neuron Structure',67,'med','2026-06-29','2026-07-05',['retrieval','draw']),
-      C('brain','Brain Regions',49,'low','2026-06-24','2026-07-01',['label']),
-      C('spinal','Spinal Cord',53,'med','2026-06-26','2026-07-02',['retrieval']),
-      C('cranial','Cranial Nerves',35,'low','2026-06-19','2026-06-27',[]),
-      C('nerv-cad','Cadaver Identification',45,'low','2026-06-23','2026-07-01',['cadaver'])
-    ]},
-    {id:'u-cardio',name:'Cardiovascular System',week:5,comps:[
-      C('chambers','Heart Chambers',72,'high','2026-06-30','2026-07-06',['retrieval','draw']),
-      C('valves','Heart Valves',59,'med','2026-06-27','2026-07-03',['retrieval']),
-      C('vessels','Great Vessels',54,'med','2026-06-26','2026-07-02',['label']),
-      C('coronary','Coronary Circulation',48,'low','2026-06-24','2026-07-01',['clinical']),
-      C('cardio-histo','Cardiac Histology',56,'med','2026-06-27','2026-07-03',['histo']),
-      C('cardio-cad','Cadaver Identification',44,'low','2026-06-23','2026-06-30',['cadaver'])
+      C('skin-layers','Skin Layers',78,'high','2026-06-29','2026-07-04',['retrieval','draw','histo']), C('accessory','Accessory Structures',52,'med','2026-06-25','2026-07-01',['retrieval']), C('hair','Hair',44,'low','2026-06-22','2026-06-29',['label']), C('nails','Nails',61,'med','2026-06-27','2026-07-03',['retrieval']), C('sweat','Sweat Glands',38,'low','2026-06-20','2026-06-28',[]), C('sebaceous','Sebaceous Glands',49,'low','2026-06-24','2026-06-30',['histo']), C('integ-clin','Clinical Applications',41,'low','2026-06-21','2026-06-29',['clinical']), C('integ-histo','Histology',64,'med','2026-06-28','2026-07-05',['histo','label']), C('integ-cad','Cadaver Identification',47,'low','2026-06-23','2026-07-01',['cadaver'])
+    ]}, {id:'u-tissue',name:'Tissues and Histology Foundations',week:1,comps:[
+      C('epithelial','Epithelial Tissue',71,'high','2026-06-28','2026-07-05',['retrieval','histo','draw']), C('connective','Connective Tissue',66,'med','2026-06-27','2026-07-04',['retrieval','histo']), C('muscle-t','Muscle Tissue',58,'med','2026-06-26','2026-07-02',['histo']), C('nervous-t','Nervous Tissue',54,'low','2026-06-24','2026-07-01',['retrieval']), C('membranes','Body Membranes',62,'med','2026-06-27','2026-07-03',['retrieval'])
+    ]}, {id:'u-skel',name:'Skeletal System',week:2,comps:[
+      C('axial','Axial Skeleton',69,'high','2026-06-29','2026-07-06',['retrieval','label']), C('append','Appendicular Skeleton',57,'med','2026-06-26','2026-07-02',['label','cadaver']), C('bone-histo','Bone Histology',50,'low','2026-06-25','2026-07-01',['histo']), C('joints','Joints',63,'med','2026-06-28','2026-07-04',['retrieval','clinical']), C('skel-cad','Cadaver Identification',48,'low','2026-06-23','2026-06-30',['cadaver']), C('skel-img','Imaging',42,'low','2026-06-22','2026-06-29',['clinical'])
+    ]}, {id:'u-musc',name:'Muscular System',week:3,comps:[
+      C('muscle-naming','Muscle Naming Logic',60,'med','2026-06-30','2026-07-05',['retrieval'],'lecture'), C('head-neck','Head and Neck Muscles',46,'low','2026-06-24','2026-07-01',['label']), C('trunk-m','Trunk Muscles',51,'med','2026-06-26','2026-07-02',['retrieval']), C('upper-limb','Muscles of the Upper Limb',39,'low','2026-06-21','2026-06-30',['label'],'lecture'), C('lower-limb','Muscles of the Lower Limb',43,'low','2026-06-23','2026-07-01',[]), C('musc-histo','Muscle Histology',55,'med','2026-06-27','2026-07-03',['histo'],'lab'), C('musc-cad','Upper Limb Cadaver ID',37,'low','2026-06-20','2026-06-28',['cadaver'],'lab')
+    ]}, {id:'u-nerv',name:'Nervous System',week:4,comps:[
+      C('neuron','Neuron Structure',67,'med','2026-06-29','2026-07-05',['retrieval','draw']), C('brain','Brain Regions',49,'low','2026-06-24','2026-07-01',['label']), C('spinal','Spinal Cord',53,'med','2026-06-26','2026-07-02',['retrieval']), C('cranial','Cranial Nerves',35,'low','2026-06-19','2026-06-27',[]), C('nerv-cad','Cadaver Identification',45,'low','2026-06-23','2026-07-01',['cadaver'])
+    ]}, {id:'u-cardio',name:'Cardiovascular System',week:5,comps:[
+      C('chambers','Heart Chambers',72,'high','2026-06-30','2026-07-06',['retrieval','draw']), C('valves','Heart Valves',59,'med','2026-06-27','2026-07-03',['retrieval']), C('vessels','Great Vessels',54,'med','2026-06-26','2026-07-02',['label']), C('coronary','Coronary Circulation',48,'low','2026-06-24','2026-07-01',['clinical']), C('cardio-histo','Cardiac Histology',56,'med','2026-06-27','2026-07-03',['histo']), C('cardio-cad','Cadaver Identification',44,'low','2026-06-23','2026-06-30',['cadaver'])
     ]}
   ]
 };
@@ -875,61 +794,19 @@ var SEED={
    REAL COURSE SCHEDULE (BIO 004 Summer 2026)
    Embedded for the self-contained prototype. In production this
    can be loaded from schedule.js (window.BIO004_SCHEDULE).
-   Instructor adjustments applied: TBL on Mondays with lab exams,
-   no TBL Week 4, Week 4 lecture midterm Mon Jul 13, Week 8
+   Instructor adjustments applied: TBL on Mondays with lab exams, no TBL Week 4, Week 4 lecture midterm Mon Jul 13, Week 8
    cumulative lecture final + cumulative lab final Thu Aug 6.
 ========================================================= */
 var FALL_MW={course:'BIO 004 Human Anatomy',section:'Mon / Wed (Afternoon)',term:'Fall 2026',start:'2026-08-17',end:'2026-12-11',highyield:'Tissue types, bone and skeletal landmarks, heart blood flow, muscle actions and NAV, cranial nerves, GI and renal organs',weeks:[
-{n:1,start:'2026-08-17',title:'Cells, Tissues and Epithelium',lecture:['Intro and Team Formation','Guided Cell Activity (iCheck)'],lab:['Cell Anatomy and Microscopy','Epithelial Tissues'],labExam:null,tbl:null},
-{n:2,start:'2026-08-24',title:'Cell Anatomy and Connective Tissue',lecture:['TBL 1: Cell Anatomy','Interactive Histology Lecture (iCheck)'],lab:['Connective Tissue I','Connective Tissue II'],labExam:null,tbl:'2026-08-24'},
-{n:3,start:'2026-08-31',title:'Histology and Integument',lecture:['TBL 2: Histology','Exam 1 Review Game'],lab:['Muscle and Nervous Tissue','Integumentary'],labExam:null,tbl:'2026-08-31'},
-{n:4,start:'2026-09-07',title:'Exam 1',lecture:['Labor Day (no class)','Exam 1'],lab:['Cell, Tissue and Integument Review'],labExam:{name:'Exam 1',date:'2026-09-09',covers:'Cells, tissues, histology, integument'},tbl:null},
-{n:5,start:'2026-09-14',title:'Bone and Axial Skeleton',lecture:['Long Bone and Bone Microanatomy (iCheck)','Skull Walk-Through (iCheck)'],lab:['Bone Tissue and Long Bone Microanatomy','Axial Skull and Spine'],labExam:null,tbl:null},
-{n:6,start:'2026-09-21',title:'Skeleton and Appendicular',lecture:['Spine Walk-Through (iCheck)','TBL 3: Bone, Cartilage and Micro'],lab:['Upper Extremity','Lower Extremity'],labExam:null,tbl:'2026-09-23'},
-{n:7,start:'2026-09-28',title:'Exam 2',lecture:['Kahoot Review: Bone','Exam 2'],lab:['Skeletal and Joints Review'],labExam:{name:'Exam 2',date:'2026-09-30',covers:'Bone, cartilage, axial and appendicular skeleton'},tbl:null},
-{n:8,start:'2026-10-05',title:'Heart and Muscle Microanatomy',lecture:['Interactive Heart Lecture; Cardiac Conduction (iCheck)','Muscle Microanatomy and Sarcomere (iCheck)'],lab:['Thoracic Anatomy (Heart) and BV Histology','Muscle Microanatomy and Sarcomere'],labExam:null,tbl:null},
-{n:9,start:'2026-10-12',title:'Heart, Blood and Upper Limb',lecture:['TBL 4: Heart Anatomy','Blood Cell Interactive Lecture (iCheck)'],lab:['Muscles of Face, Chest and Back','Upper Arm and Anterior Forearm (NAV)'],labExam:null,tbl:'2026-10-12'},
-{n:10,start:'2026-10-19',title:'Blood and Exam 3',lecture:['TBL 5: Blood','Exam 3'],lab:['Posterior Forearm (NAV)','Heart, Muscle and Blood Review'],labExam:{name:'Exam 3',date:'2026-10-21',covers:'Heart, muscle microanatomy, blood, upper limb'},tbl:'2026-10-19'},
-{n:11,start:'2026-10-26',title:'Respiratory and Endocrine',lecture:['Respiratory Anatomy and Histology Walk-Through (iCheck)','Endocrine Walk-Through (iCheck)'],lab:['Respiratory Anatomy and Histology','Anterior Lower Extremity Muscles and NAV'],labExam:null,tbl:null},
-{n:12,start:'2026-11-02',title:'Respiratory and Lower Limb',lecture:['TBL 6: Respiratory','GI Map Activity I (iCheck)'],lab:['Posterior Thigh Muscle and NAV','Anterior/Posterior Lower Leg Muscles'],labExam:null,tbl:'2026-11-02'},
-{n:13,start:'2026-11-09',title:'GI System I',lecture:['GI Map Activity II (iCheck)','Veterans Day (no class)'],lab:['GI Organs (Primary)'],labExam:null,tbl:null},
-{n:14,start:'2026-11-16',title:'GI System and Exam 4',lecture:['TBL 7: GI System','Exam 4'],lab:['GI Organs (Accessory)','Respiratory, Endocrine and GI Review'],labExam:{name:'Exam 4',date:'2026-11-18',covers:'Respiratory, endocrine, GI, urinary and renal, reproductive'},tbl:'2026-11-16'},
-{n:15,start:'2026-11-23',title:'Renal and Reproduction',lecture:['Renal Map Walk-Through (iCheck)','Travel Day (no class)'],lab:['Renal Anatomy and M and F Reproduction'],labExam:null,tbl:null},
-{n:16,start:'2026-11-30',title:'Renal and CNS',lecture:['TBL 8: Renal','Clinical: Cranial Nerve Stations (iCheck)'],lab:['CNS Brain, Meninges and CSF','Brain Stem and Cranial Nerves (PNS)'],labExam:null,tbl:'2026-11-30'},
-{n:17,start:'2026-12-07',title:'Neuro and Final Exam 5',lecture:['TBL 9: Cranial Nerves','Exam 5'],lab:['CNS Spinal Cord and Spinal Nerves','Neuro Review'],labExam:{name:'Exam 5',date:'2026-12-09',covers:'Nervous system: brain, brainstem, cranial nerves, spinal cord, PNS and ANS'},tbl:'2026-12-07'}
+{n:1,start:'2026-08-17',title:'Cells, Tissues and Epithelium',lecture:['Intro and Team Formation','Guided Cell Activity (iCheck)'],lab:['Cell Anatomy and Microscopy','Epithelial Tissues'],labExam:null,tbl:null}, {n:2,start:'2026-08-24',title:'Cell Anatomy and Connective Tissue',lecture:['TBL 1: Cell Anatomy','Interactive Histology Lecture (iCheck)'],lab:['Connective Tissue I','Connective Tissue II'],labExam:null,tbl:'2026-08-24'}, {n:3,start:'2026-08-31',title:'Histology and Integument',lecture:['TBL 2: Histology','Exam 1 Review Game'],lab:['Muscle and Nervous Tissue','Integumentary'],labExam:null,tbl:'2026-08-31'}, {n:4,start:'2026-09-07',title:'Exam 1',lecture:['Labor Day (no class)','Exam 1'],lab:['Cell, Tissue and Integument Review'],labExam:{name:'Exam 1',date:'2026-09-09',covers:'Cells, tissues, histology, integument'},tbl:null}, {n:5,start:'2026-09-14',title:'Bone and Axial Skeleton',lecture:['Long Bone and Bone Microanatomy (iCheck)','Skull Walk-Through (iCheck)'],lab:['Bone Tissue and Long Bone Microanatomy','Axial Skull and Spine'],labExam:null,tbl:null}, {n:6,start:'2026-09-21',title:'Skeleton and Appendicular',lecture:['Spine Walk-Through (iCheck)','TBL 3: Bone, Cartilage and Micro'],lab:['Upper Extremity','Lower Extremity'],labExam:null,tbl:'2026-09-23'}, {n:7,start:'2026-09-28',title:'Exam 2',lecture:['Kahoot Review: Bone','Exam 2'],lab:['Skeletal and Joints Review'],labExam:{name:'Exam 2',date:'2026-09-30',covers:'Bone, cartilage, axial and appendicular skeleton'},tbl:null}, {n:8,start:'2026-10-05',title:'Heart and Muscle Microanatomy',lecture:['Interactive Heart Lecture; Cardiac Conduction (iCheck)','Muscle Microanatomy and Sarcomere (iCheck)'],lab:['Thoracic Anatomy (Heart) and BV Histology','Muscle Microanatomy and Sarcomere'],labExam:null,tbl:null}, {n:9,start:'2026-10-12',title:'Heart, Blood and Upper Limb',lecture:['TBL 4: Heart Anatomy','Blood Cell Interactive Lecture (iCheck)'],lab:['Muscles of Face, Chest and Back','Upper Arm and Anterior Forearm (NAV)'],labExam:null,tbl:'2026-10-12'}, {n:10,start:'2026-10-19',title:'Blood and Exam 3',lecture:['TBL 5: Blood','Exam 3'],lab:['Posterior Forearm (NAV)','Heart, Muscle and Blood Review'],labExam:{name:'Exam 3',date:'2026-10-21',covers:'Heart, muscle microanatomy, blood, upper limb'},tbl:'2026-10-19'}, {n:11,start:'2026-10-26',title:'Respiratory and Endocrine',lecture:['Respiratory Anatomy and Histology Walk-Through (iCheck)','Endocrine Walk-Through (iCheck)'],lab:['Respiratory Anatomy and Histology','Anterior Lower Extremity Muscles and NAV'],labExam:null,tbl:null}, {n:12,start:'2026-11-02',title:'Respiratory and Lower Limb',lecture:['TBL 6: Respiratory','GI Map Activity I (iCheck)'],lab:['Posterior Thigh Muscle and NAV','Anterior/Posterior Lower Leg Muscles'],labExam:null,tbl:'2026-11-02'}, {n:13,start:'2026-11-09',title:'GI System I',lecture:['GI Map Activity II (iCheck)','Veterans Day (no class)'],lab:['GI Organs (Primary)'],labExam:null,tbl:null}, {n:14,start:'2026-11-16',title:'GI System and Exam 4',lecture:['TBL 7: GI System','Exam 4'],lab:['GI Organs (Accessory)','Respiratory, Endocrine and GI Review'],labExam:{name:'Exam 4',date:'2026-11-18',covers:'Respiratory, endocrine, GI, urinary and renal, reproductive'},tbl:'2026-11-16'}, {n:15,start:'2026-11-23',title:'Renal and Reproduction',lecture:['Renal Map Walk-Through (iCheck)','Travel Day (no class)'],lab:['Renal Anatomy and M and F Reproduction'],labExam:null,tbl:null}, {n:16,start:'2026-11-30',title:'Renal and CNS',lecture:['TBL 8: Renal','Clinical: Cranial Nerve Stations (iCheck)'],lab:['CNS Brain, Meninges and CSF','Brain Stem and Cranial Nerves (PNS)'],labExam:null,tbl:'2026-11-30'}, {n:17,start:'2026-12-07',title:'Neuro and Final Exam 5',lecture:['TBL 9: Cranial Nerves','Exam 5'],lab:['CNS Spinal Cord and Spinal Nerves','Neuro Review'],labExam:{name:'Exam 5',date:'2026-12-09',covers:'Nervous system: brain, brainstem, cranial nerves, spinal cord, PNS and ANS'},tbl:'2026-12-07'}
 ]};
 var FALL_TR={course:'BIO 004 Human Anatomy',section:'Tue / Thu',term:'Fall 2026',start:'2026-08-18',end:'2026-12-11',highyield:'Tissue types, bone and skeletal landmarks, heart blood flow, muscle actions and NAV, cranial nerves, GI and renal organs',weeks:[
-{n:1,start:'2026-08-17',title:'Cells, Tissues and Epithelium',lecture:['Intro and Team Formation','Guided Cell Activity (iCheck)'],lab:['Cell Anatomy and Microscopy','Epithelial Tissues'],labExam:null,tbl:null},
-{n:2,start:'2026-08-24',title:'Cell Anatomy and Connective Tissue',lecture:['TBL 1: Cell Anatomy','Interactive Histology Lecture (iCheck)'],lab:['Connective Tissue I','Connective Tissue II'],labExam:null,tbl:'2026-08-25'},
-{n:3,start:'2026-08-31',title:'Histology and Integument',lecture:['TBL 2: Histology','Exam 1 Review Game'],lab:['Muscle and Nervous Tissue','Integumentary'],labExam:null,tbl:'2026-09-01'},
-{n:4,start:'2026-09-07',title:'Exam 1 and Bone',lecture:['Exam 1','Long Bone and Bone Microanatomy (iCheck)'],lab:['Cell, Tissue and Integument Review','Bone Tissue and Long Bone Microanatomy'],labExam:{name:'Exam 1',date:'2026-09-08',covers:'Cells, tissues, histology, integument'},tbl:null},
-{n:5,start:'2026-09-14',title:'Axial Skeleton',lecture:['Skull Walk-Through (iCheck)','Spine Walk-Through (iCheck)'],lab:['Axial Spine and Skull','Axial Skull and Spine (cont.)'],labExam:null,tbl:null},
-{n:6,start:'2026-09-21',title:'Skeleton and Appendicular',lecture:['TBL 3: Bone, Cartilage and Micro','Kahoot Review: Bone'],lab:['Upper Extremity','Lower Extremity'],labExam:null,tbl:'2026-09-22'},
-{n:7,start:'2026-09-28',title:'Exam 2 and Heart',lecture:['Exam 2','Interactive Heart Lecture; Cardiac Conduction (iCheck)'],lab:['Skeletal and Joints Review','Thoracic Anatomy (Heart) and BV Histology'],labExam:{name:'Exam 2',date:'2026-09-29',covers:'Bone, cartilage, axial and appendicular skeleton'},tbl:null},
-{n:8,start:'2026-10-05',title:'Muscle Micro and Heart',lecture:['Muscle Microanatomy and Sarcomere (iCheck)','TBL 4: Heart Anatomy'],lab:['Muscle Microanatomy and Sarcomere','Muscles of Face, Chest and Back'],labExam:null,tbl:'2026-10-08'},
-{n:9,start:'2026-10-12',title:'Blood and Upper Limb',lecture:['Professional Development (no class)','Blood Cell Interactive Lecture (iCheck)'],lab:['Upper Arm and Anterior Forearm (NAV)'],labExam:null,tbl:null},
-{n:10,start:'2026-10-19',title:'Blood and Exam 3',lecture:['TBL 5: Blood','Exam 3'],lab:['Posterior Forearm (NAV)','Heart, Muscle and Blood Review'],labExam:{name:'Exam 3',date:'2026-10-22',covers:'Heart, muscle microanatomy, blood, upper limb'},tbl:'2026-10-20'},
-{n:11,start:'2026-10-26',title:'Respiratory and Endocrine',lecture:['Respiratory Anatomy and Histology Walk-Through (iCheck)','Endocrine Walk-Through (iCheck)'],lab:['Respiratory Anatomy and Histology','Anterior Thigh Muscles and NAV'],labExam:null,tbl:null},
-{n:12,start:'2026-11-02',title:'Respiratory and Lower Limb',lecture:['TBL 6: Respiratory','GI Map Activity I (iCheck)'],lab:['Posterior Thigh Muscle and NAV','Anterior/Posterior Lower Leg Muscles'],labExam:null,tbl:'2026-11-03'},
-{n:13,start:'2026-11-09',title:'GI System',lecture:['GI Map Activity II (iCheck)','TBL 7: GI System'],lab:['GI Organs (Primary)','GI Organs (Accessory)'],labExam:null,tbl:'2026-11-12'},
-{n:14,start:'2026-11-16',title:'Exam 4 and Renal',lecture:['Exam 4','Renal Map Walk-Through (iCheck)'],lab:['Respiratory, Endocrine and GI Review','Renal Anatomy and M and F Reproduction'],labExam:{name:'Exam 4',date:'2026-11-17',covers:'Respiratory, endocrine, GI, urinary and renal, reproductive'},tbl:null},
-{n:15,start:'2026-11-23',title:'Reproduction',lecture:['Kahoot Review: Renal','Thanksgiving (no class)'],lab:['M and F Reproductive Anatomy'],labExam:null,tbl:null},
-{n:16,start:'2026-11-30',title:'Renal and CNS',lecture:['TBL 8: Renal','Clinical: Cranial Nerve Stations (iCheck)'],lab:['CNS Brain, Meninges and CSF','Brain Stem and Cranial Nerves (PNS)'],labExam:null,tbl:'2026-12-01'},
-{n:17,start:'2026-12-07',title:'Neuro and Final Exam 5',lecture:['TBL 9: Cranial Nerves','Exam 5'],lab:['CNS Spinal Cord and Spinal Nerves','Neuro Review'],labExam:{name:'Exam 5',date:'2026-12-10',covers:'Nervous system: brain, brainstem, cranial nerves, spinal cord, PNS and ANS'},tbl:'2026-12-08'}
+{n:1,start:'2026-08-17',title:'Cells, Tissues and Epithelium',lecture:['Intro and Team Formation','Guided Cell Activity (iCheck)'],lab:['Cell Anatomy and Microscopy','Epithelial Tissues'],labExam:null,tbl:null}, {n:2,start:'2026-08-24',title:'Cell Anatomy and Connective Tissue',lecture:['TBL 1: Cell Anatomy','Interactive Histology Lecture (iCheck)'],lab:['Connective Tissue I','Connective Tissue II'],labExam:null,tbl:'2026-08-25'}, {n:3,start:'2026-08-31',title:'Histology and Integument',lecture:['TBL 2: Histology','Exam 1 Review Game'],lab:['Muscle and Nervous Tissue','Integumentary'],labExam:null,tbl:'2026-09-01'}, {n:4,start:'2026-09-07',title:'Exam 1 and Bone',lecture:['Exam 1','Long Bone and Bone Microanatomy (iCheck)'],lab:['Cell, Tissue and Integument Review','Bone Tissue and Long Bone Microanatomy'],labExam:{name:'Exam 1',date:'2026-09-08',covers:'Cells, tissues, histology, integument'},tbl:null}, {n:5,start:'2026-09-14',title:'Axial Skeleton',lecture:['Skull Walk-Through (iCheck)','Spine Walk-Through (iCheck)'],lab:['Axial Spine and Skull','Axial Skull and Spine (cont.)'],labExam:null,tbl:null}, {n:6,start:'2026-09-21',title:'Skeleton and Appendicular',lecture:['TBL 3: Bone, Cartilage and Micro','Kahoot Review: Bone'],lab:['Upper Extremity','Lower Extremity'],labExam:null,tbl:'2026-09-22'}, {n:7,start:'2026-09-28',title:'Exam 2 and Heart',lecture:['Exam 2','Interactive Heart Lecture; Cardiac Conduction (iCheck)'],lab:['Skeletal and Joints Review','Thoracic Anatomy (Heart) and BV Histology'],labExam:{name:'Exam 2',date:'2026-09-29',covers:'Bone, cartilage, axial and appendicular skeleton'},tbl:null}, {n:8,start:'2026-10-05',title:'Muscle Micro and Heart',lecture:['Muscle Microanatomy and Sarcomere (iCheck)','TBL 4: Heart Anatomy'],lab:['Muscle Microanatomy and Sarcomere','Muscles of Face, Chest and Back'],labExam:null,tbl:'2026-10-08'}, {n:9,start:'2026-10-12',title:'Blood and Upper Limb',lecture:['Professional Development (no class)','Blood Cell Interactive Lecture (iCheck)'],lab:['Upper Arm and Anterior Forearm (NAV)'],labExam:null,tbl:null}, {n:10,start:'2026-10-19',title:'Blood and Exam 3',lecture:['TBL 5: Blood','Exam 3'],lab:['Posterior Forearm (NAV)','Heart, Muscle and Blood Review'],labExam:{name:'Exam 3',date:'2026-10-22',covers:'Heart, muscle microanatomy, blood, upper limb'},tbl:'2026-10-20'}, {n:11,start:'2026-10-26',title:'Respiratory and Endocrine',lecture:['Respiratory Anatomy and Histology Walk-Through (iCheck)','Endocrine Walk-Through (iCheck)'],lab:['Respiratory Anatomy and Histology','Anterior Thigh Muscles and NAV'],labExam:null,tbl:null}, {n:12,start:'2026-11-02',title:'Respiratory and Lower Limb',lecture:['TBL 6: Respiratory','GI Map Activity I (iCheck)'],lab:['Posterior Thigh Muscle and NAV','Anterior/Posterior Lower Leg Muscles'],labExam:null,tbl:'2026-11-03'}, {n:13,start:'2026-11-09',title:'GI System',lecture:['GI Map Activity II (iCheck)','TBL 7: GI System'],lab:['GI Organs (Primary)','GI Organs (Accessory)'],labExam:null,tbl:'2026-11-12'}, {n:14,start:'2026-11-16',title:'Exam 4 and Renal',lecture:['Exam 4','Renal Map Walk-Through (iCheck)'],lab:['Respiratory, Endocrine and GI Review','Renal Anatomy and M and F Reproduction'],labExam:{name:'Exam 4',date:'2026-11-17',covers:'Respiratory, endocrine, GI, urinary and renal, reproductive'},tbl:null}, {n:15,start:'2026-11-23',title:'Reproduction',lecture:['Kahoot Review: Renal','Thanksgiving (no class)'],lab:['M and F Reproductive Anatomy'],labExam:null,tbl:null}, {n:16,start:'2026-11-30',title:'Renal and CNS',lecture:['TBL 8: Renal','Clinical: Cranial Nerve Stations (iCheck)'],lab:['CNS Brain, Meninges and CSF','Brain Stem and Cranial Nerves (PNS)'],labExam:null,tbl:'2026-12-01'}, {n:17,start:'2026-12-07',title:'Neuro and Final Exam 5',lecture:['TBL 9: Cranial Nerves','Exam 5'],lab:['CNS Spinal Cord and Spinal Nerves','Neuro Review'],labExam:{name:'Exam 5',date:'2026-12-10',covers:'Nervous system: brain, brainstem, cranial nerves, spinal cord, PNS and ANS'},tbl:'2026-12-08'}
 ]};
 var FALL_SECTIONS={mw:FALL_MW,'tr-early':FALL_TR,'tr-eve':FALL_TR,tr:FALL_TR};
 var SCHEDULE=store.get('mos-schedule')||(window.BIO004_SCHEDULE)||FALL_SECTIONS[store.get('mos-section')||'mw']||{
-  course:'BIO 004 Human Anatomy',term:'Summer 2026',start:'2026-06-15',end:'2026-08-06',
-  highyield:'Tissue types, heart blood flow, brachial plexus, skin layers, cranial nerves',
-  weeks:[
-    {n:1,start:'2026-06-15',title:'Foundations and Integumentary System',lecture:['Foundations','Integumentary'],lab:['Foundations','Tissues','Integumentary'],labExam:{name:'Lab Exam 1',date:'2026-06-22'},tbl:'2026-06-22'},
-    {n:2,start:'2026-06-22',title:'Skeletal, Axial and Appendicular Skeleton, and Joints',lecture:['Axial Skeleton','Appendicular Skeleton','Joints'],lab:['Bone Microanatomy','Axial Skeleton','Appendicular Skeleton','Joints'],labExam:{name:'Lab Exam 2',date:'2026-06-29'},tbl:'2026-06-29'},
-    {n:3,start:'2026-06-29',title:'Cardiovascular, Respiratory, and Regional BV/N 1',lecture:['Cardiovascular','Respiratory','Regional BV/N 1'],lab:['Cardiovascular','Respiratory','Regional BV/N 1'],labExam:{name:'Lab Exam 3',date:'2026-07-06'},tbl:'2026-07-06'},
-    {n:4,start:'2026-07-06',title:'Muscle Microanatomy, Upper Extremity and Thoracic Muscles, Lymphatic, and Blood',lecture:['Muscle Microanatomy','Upper Extremity and Thoracic Muscles','Lymphatic and Immune','Blood'],lab:['Muscle Microanatomy','Thoracic and Back Muscles','Upper Extremity Muscles','Lymphatic and Immune','Blood','Regional BV/N 2'],labExam:{name:'Lab Exam 4',date:'2026-07-13'},tbl:null,lectureMidterm:{name:'Lecture Midterm',date:'2026-07-13',covers:'Weeks 1 to 4'}},
-    {n:5,start:'2026-07-13',title:'Digestive System, Abdominal and Pelvic Regional Anatomy, and Regional BV/N 3',lecture:['Digestive System','Abdominal and Pelvic Anatomy','Regional BV/N 3'],lab:['Digestive System','Abdominal and Pelvic Wall','Lower Extremity Muscles','Regional BV/N 3'],labExam:{name:'Lab Exam 5',date:'2026-07-20'},tbl:'2026-07-20'},
-    {n:6,start:'2026-07-20',title:'Urinary, Reproductive, and Endocrine Systems',lecture:['Urinary','Reproductive','Endocrine'],lab:['Urinary','Reproductive','Endocrine'],labExam:{name:'Lab Exam 6',date:'2026-07-27'},tbl:'2026-07-27'},
-    {n:7,start:'2026-07-27',title:'Nervous, Head and Neck Muscles, CNS Brain, CSF, and Meninges',lecture:['Head and Neck Muscles','CNS Brain','Ventricles, CSF, Meninges'],lab:['CNS Brain','Ventricles, CSF, Meninges','Head and Neck Muscles'],labExam:{name:'Lab Exam 7',date:'2026-08-03'},tbl:'2026-08-03'},
-    {n:8,start:'2026-08-03',title:'Nervous, Spinal Cord, Peripheral and Cranial Nerves, Plexuses, and Integration',lecture:['Spinal Cord','Peripheral Nerves and Plexuses','Cranial Nerves','Autonomic Nervous System','Integration'],lab:null,labExam:null,tbl:null,cumulative:{lab:'2026-08-06',lecture:'2026-08-06'}}
+  course:'BIO 004 Human Anatomy',term:'Summer 2026',start:'2026-06-15',end:'2026-08-06', highyield:'Tissue types, heart blood flow, brachial plexus, skin layers, cranial nerves', weeks:[
+    {n:1,start:'2026-06-15',title:'Foundations and Integumentary System',lecture:['Foundations','Integumentary'],lab:['Foundations','Tissues','Integumentary'],labExam:{name:'Lab Exam 1',date:'2026-06-22'},tbl:'2026-06-22'}, {n:2,start:'2026-06-22',title:'Skeletal, Axial and Appendicular Skeleton, and Joints',lecture:['Axial Skeleton','Appendicular Skeleton','Joints'],lab:['Bone Microanatomy','Axial Skeleton','Appendicular Skeleton','Joints'],labExam:{name:'Lab Exam 2',date:'2026-06-29'},tbl:'2026-06-29'}, {n:3,start:'2026-06-29',title:'Cardiovascular, Respiratory, and Regional BV/N 1',lecture:['Cardiovascular','Respiratory','Regional BV/N 1'],lab:['Cardiovascular','Respiratory','Regional BV/N 1'],labExam:{name:'Lab Exam 3',date:'2026-07-06'},tbl:'2026-07-06'}, {n:4,start:'2026-07-06',title:'Muscle Microanatomy, Upper Extremity and Thoracic Muscles, Lymphatic, and Blood',lecture:['Muscle Microanatomy','Upper Extremity and Thoracic Muscles','Lymphatic and Immune','Blood'],lab:['Muscle Microanatomy','Thoracic and Back Muscles','Upper Extremity Muscles','Lymphatic and Immune','Blood','Regional BV/N 2'],labExam:{name:'Lab Exam 4',date:'2026-07-13'},tbl:null,lectureMidterm:{name:'Lecture Midterm',date:'2026-07-13',covers:'Weeks 1 to 4'}}, {n:5,start:'2026-07-13',title:'Digestive System, Abdominal and Pelvic Regional Anatomy, and Regional BV/N 3',lecture:['Digestive System','Abdominal and Pelvic Anatomy','Regional BV/N 3'],lab:['Digestive System','Abdominal and Pelvic Wall','Lower Extremity Muscles','Regional BV/N 3'],labExam:{name:'Lab Exam 5',date:'2026-07-20'},tbl:'2026-07-20'}, {n:6,start:'2026-07-20',title:'Urinary, Reproductive, and Endocrine Systems',lecture:['Urinary','Reproductive','Endocrine'],lab:['Urinary','Reproductive','Endocrine'],labExam:{name:'Lab Exam 6',date:'2026-07-27'},tbl:'2026-07-27'}, {n:7,start:'2026-07-27',title:'Nervous, Head and Neck Muscles, CNS Brain, CSF, and Meninges',lecture:['Head and Neck Muscles','CNS Brain','Ventricles, CSF, Meninges'],lab:['CNS Brain','Ventricles, CSF, Meninges','Head and Neck Muscles'],labExam:{name:'Lab Exam 7',date:'2026-08-03'},tbl:'2026-08-03'}, {n:8,start:'2026-08-03',title:'Nervous, Spinal Cord, Peripheral and Cranial Nerves, Plexuses, and Integration',lecture:['Spinal Cord','Peripheral Nerves and Plexuses','Cranial Nerves','Autonomic Nervous System','Integration'],lab:null,labExam:null,tbl:null,cumulative:{lab:'2026-08-06',lecture:'2026-08-06'}}
   ]
 };
 function scheduleCurrentWeek(){var cw=SCHEDULE.weeks[0];SCHEDULE.weeks.forEach(function(w){if(dayDiff(w.start,TODAY)<=0)cw=w;});return cw;}
@@ -1031,27 +908,13 @@ function ingestRecall(){
 
 /* evidence method metadata */
 var EVIDENCE=[
-  {k:'retrieval',name:'Retrieval practice',icon:I.recall,desc:'Answer questions from memory across DOK levels.',cta:'Open Spaced Recall',href:'spaced-recall.html'},
-  {k:'draw',name:'Draw from memory',icon:I.draw,desc:'Reconstruct the structure with nothing in front of you.',cta:'Open drawing canvas',href:'mastery-canvas.html'},
-  {k:'label',name:'Label diagrams',icon:I.label,desc:'Place every marker on a blank figure.',cta:'Open drawing canvas',href:'mastery-canvas.html'},
-  {k:'cadaver',name:'Cadaver identification',icon:I.eye,desc:'Name the structure on the specimen, not the textbook.',cta:'Mark it done',href:null},
-  {k:'histo',name:'Histology identification',icon:I.micro,desc:'Identify the tissue at the microscope level.',cta:'Mark it done',href:null},
-  {k:'explain',name:'Explain aloud',icon:I.speak,desc:'Say it out loud in plain language, no notes.',cta:'Start explaining',href:null},
-  {k:'teachai',name:'Teach it to an AI',icon:I.teach,desc:'Explain it out loud to a free AI tutor, like teaching a 5-year-old, and let it quiz you back.',cta:'Open AI tutor',href:null},
-  {k:'teach',name:'Teach another learner',icon:I.teach,desc:'The real test: can someone else follow you?',cta:'Start teaching',href:null},
-  {k:'clinical',name:'Clinical case',icon:I.clinical,desc:'Apply the structure to a patient scenario.',cta:'Mark it done',href:null},
-  {k:'questions',name:'Create practice questions',icon:I.build,desc:'Write items that would trip up a classmate.',cta:'Mark it done',href:null}
+  {k:'retrieval',name:'Retrieval practice',icon:I.recall,desc:'Answer questions from memory across DOK levels.',cta:'Open Spaced Recall',href:'spaced-recall.html'}, {k:'draw',name:'Draw from memory',icon:I.draw,desc:'Reconstruct the structure with nothing in front of you.',cta:'Open drawing canvas',href:'mastery-canvas.html'}, {k:'label',name:'Label diagrams',icon:I.label,desc:'Place every marker on a blank figure.',cta:'Open drawing canvas',href:'mastery-canvas.html'}, {k:'cadaver',name:'Cadaver identification',icon:I.eye,desc:'Name the structure on the specimen, not the textbook.',cta:'Mark it done',href:null}, {k:'histo',name:'Histology identification',icon:I.micro,desc:'Identify the tissue at the microscope level.',cta:'Mark it done',href:null}, {k:'explain',name:'Explain aloud',icon:I.speak,desc:'Say it out loud in plain language, no notes.',cta:'Start explaining',href:null}, {k:'teachai',name:'Teach it to an AI',icon:I.teach,desc:'Explain it out loud to a free AI tutor, like teaching a 5-year-old, and let it quiz you back.',cta:'Open AI tutor',href:null}, {k:'teach',name:'Teach another learner',icon:I.teach,desc:'The real test: can someone else follow you?',cta:'Start teaching',href:null}, {k:'clinical',name:'Clinical case',icon:I.clinical,desc:'Apply the structure to a patient scenario.',cta:'Mark it done',href:null}, {k:'questions',name:'Create practice questions',icon:I.build,desc:'Write items that would trip up a classmate.',cta:'Mark it done',href:null}
 ];
 var EVMAP={};EVIDENCE.forEach(function(e){EVMAP[e.k]=e;});
 
 /* workflow stages */
 var STAGES=[
-  {k:'diagnose',n:'Step 1',t:'Diagnose',icon:I.diagnose,p:'Where are the gaps? Start by naming what you cannot yet do.'},
-  {k:'repair',n:'Step 2',t:'Repair',icon:I.repair,p:'Close the gap. Reread, redraw, or relearn the exact missing piece.'},
-  {k:'retrieve',n:'Step 3',t:'Retrieve',icon:I.retrieve,p:'Pull it back from memory. No notes. This is where memory is built.'},
-  {k:'apply',n:'Step 4',t:'Apply',icon:I.apply,p:'Use it in a new context: a case, an image, an unfamiliar angle.'},
-  {k:'teach',n:'Step 5',t:'Teach',icon:I.teach,p:'Explain it to someone else. If they follow you, you know it.'},
-  {k:'reflect',n:'Step 6',t:'Reflect',icon:I.reflect,p:'What stuck, what slipped, and what returns tomorrow?'}
+  {k:'diagnose',n:'Step 1',t:'Diagnose',icon:I.diagnose,p:'Where are the gaps? Start by naming what you cannot yet do.'}, {k:'repair',n:'Step 2',t:'Repair',icon:I.repair,p:'Close the gap. Reread, redraw, or relearn the exact missing piece.'}, {k:'retrieve',n:'Step 3',t:'Retrieve',icon:I.retrieve,p:'Pull it back from memory. No notes. This is where memory is built.'}, {k:'apply',n:'Step 4',t:'Apply',icon:I.apply,p:'Use it in a new context: a case, an image, an unfamiliar angle.'}, {k:'teach',n:'Step 5',t:'Teach',icon:I.teach,p:'Explain it to someone else. If they follow you, you know it.'}, {k:'reflect',n:'Step 6',t:'Reflect',icon:I.reflect,p:'What stuck, what slipped, and what returns tomorrow?'}
 ];
 
 /* =========================================================
@@ -1151,7 +1014,7 @@ function renderPlan(){
   '<div class="plan-cta">'+
     '<button class="btn gold big" data-planwizard>'+I.bolt+'Start today</button>'+
   '</div>'+
-  '<p style="font-size:12.5px;color:var(--gold-light);margin-top:10px;opacity:.85">One step at a time. We\'ll recommend what to do first — you stay in control.</p>'+
+  '<p style="font-size:12.5px;color:var(--gold-light);margin-top:10px;opacity:.85">One step at a time. We\'ll recommend what to do first, you stay in control.</p>'+
   cramMeter();
   $('#planCard').innerHTML=html;
 }
@@ -1302,15 +1165,7 @@ function renderSkills(){
    RENDER: SECTION 8 - COACH
 ========================================================= */
 var COACH_PROMPTS=[
-  {id:'study-today',t:'What should I study today?'},
-  {id:'twenty',t:'I only have 20 minutes.'},
-  {id:'prep-lab',t:'Help me prepare for lab.'},
-  {id:'test-weak',t:'Test me on my weaknesses.'},
-  {id:'forget',t:'I keep forgetting this topic.'},
-  {id:'ready',t:'Am I ready for the exam?'},
-  {id:'another',t:'Explain this another way.'},
-  {id:'durable',t:'Help me build durable memory.'},
-  {id:'grades',t:'How are my grades trending?'}
+  {id:'study-today',t:'What should I study today?'}, {id:'twenty',t:'I only have 20 minutes.'}, {id:'prep-lab',t:'Help me prepare for lab.'}, {id:'test-weak',t:'Test me on my weaknesses.'}, {id:'forget',t:'I keep forgetting this topic.'}, {id:'ready',t:'Am I ready for the exam?'}, {id:'another',t:'Explain this another way.'}, {id:'durable',t:'Help me build durable memory.'}, {id:'grades',t:'How are my grades trending?'}
 ];
 function renderCoachPrompts(){
   $('#coachPrompts').innerHTML=COACH_PROMPTS.map(function(p){return '<button class="pchip" data-prompt="'+p.id+'">'+esc(p.t)+'</button>';}).join('');
@@ -1391,24 +1246,20 @@ var SESS=null;
 function buildTodaySession(){
   var due=dueToday(),weak=weaknesses(),lec=todayLecture(),lab=todayLab();
   var picks=weak.slice(0,3).map(function(x){return x.c;});
-  return {title:'Today\'s Session',sub:'Full mastery cycle',comps:picks,
-    steps:STAGES.map(function(st){return stageStep(st,{due:due,weak:weak,lec:lec,lab:lab,picks:picks});})};
+  return {title:'Today\'s Session',sub:'Full mastery cycle',comps:picks, steps:STAGES.map(function(st){return stageStep(st,{due:due,weak:weak,lec:lec,lab:lab,picks:picks});})};
 }
 function buildRepairSession(){
   var weak=weaknesses(),picks=weak.slice(0,4).map(function(x){return x.c;});
   var pick=['diagnose','repair','retrieve','reflect'];
-  return {title:'Repair Session',sub:weak.length+' weak competencies',comps:picks,
-    steps:STAGES.filter(function(s){return pick.indexOf(s.k)>-1;}).map(function(st){return stageStep(st,{weak:weak,picks:picks});})};
+  return {title:'Repair Session',sub:weak.length+' weak competencies',comps:picks, steps:STAGES.filter(function(s){return pick.indexOf(s.k)>-1;}).map(function(st){return stageStep(st,{weak:weak,picks:picks});})};
 }
 function buildMicroSession(){
   var weak=weaknesses(),picks=weak.slice(0,2).map(function(x){return x.c;});
-  return {title:'20-Minute Micro-Session',sub:'Two weakest competencies',comps:picks,
-    steps:[stageStep(STAGES[2],{picks:picks}),stageStep(STAGES[0],{weak:weak,picks:picks}),stageStep(STAGES[5],{picks:picks})]};
+  return {title:'20-Minute Micro-Session',sub:'Two weakest competencies',comps:picks, steps:[stageStep(STAGES[2],{picks:picks}),stageStep(STAGES[0],{weak:weak,picks:picks}),stageStep(STAGES[5],{picks:picks})]};
 }
 function buildLabSession(){
   var lab=todayLab(),picks=lab.map(function(x){return x.c;});
-  return {title:'Lab Prep',sub:'Identification under pressure',comps:picks,
-    steps:[stageStep(STAGES[0],{picks:picks}),stageStep(STAGES[1],{picks:picks}),stageStep(STAGES[2],{picks:picks}),stageStep(STAGES[3],{picks:picks})]};
+  return {title:'Lab Prep',sub:'Identification under pressure',comps:picks, steps:[stageStep(STAGES[0],{picks:picks}),stageStep(STAGES[1],{picks:picks}),stageStep(STAGES[2],{picks:picks}),stageStep(STAGES[3],{picks:picks})]};
 }
 function buildStageSession(k){
   var st=STAGES.filter(function(s){return s.k===k;})[0]||STAGES[0];
@@ -1514,8 +1365,7 @@ function logEvidence(k,compId){
 ========================================================= */
 var PROVE_READY=['retrieval','draw','explain','teach','teachai'];
 var PROVE_HOW={
-  explain:'Say it out loud in plain language, no notes, as if teaching a friend. Where you get stuck is your gap.',
-  teach:'Explain it to another person until they can say it back. Their questions show you what you missed.'
+  explain:'Say it out loud in plain language, no notes, as if teaching a friend. Where you get stuck is your gap.', teach:'Explain it to another person until they can say it back. Their questions show you what you missed.'
 };
 function openProve(id){
   var f=findComp(id);if(!f)return;var c=f.c;CUR_EX=c;
@@ -1590,14 +1440,14 @@ function aiTutorScreen(c){
       '<button class="btn" id="aiClaude">Claude</button>'+
       '<button class="btn" id="aiGemini">Gemini</button>'+
       '<button class="btn ghost" id="aiCopy">Copy prompt</button></div>'+
-    '<p style="font-size:12px;color:var(--ink-faint);margin-top:8px">Pick your AI and it opens with the prompt loaded. <b>If the box is empty</b> (Gemini usually is), the prompt is already on your clipboard — click the message box, paste it (<b>Ctrl+V</b>, or <b>&#8984;+V</b> on Mac), and press <b>Enter</b>. Then explain it out loud.</p>'+
+    '<p style="font-size:12px;color:var(--ink-faint);margin-top:8px">Pick your AI and it opens with the prompt loaded. <b>If the box is empty</b> (Gemini usually is), the prompt is already on your clipboard, click the message box, paste it (<b>Ctrl+V</b>, or <b>&#8984;+V</b> on Mac), and press <b>Enter</b>. Then explain it out loud.</p>'+
     '<div class="g-actions" style="margin-top:14px"><button class="btn gold" id="proveDone">I did it, mark done</button><button class="btn" id="proveBack">Back</button></div>'+
     '</div>');
   function aiLaunch(url,msg){try{navigator.clipboard.writeText(prompt);}catch(e){}try{window.open(url,'_blank','noopener');}catch(e){location.href=url;}if(msg)toast(msg);}
   var g;
   g=$('#aiChatgpt');if(g)g.onclick=function(){aiLaunch('https://chatgpt.com/?q='+enc,'Opening ChatGPT with your prompt');};
   g=$('#aiClaude');if(g)g.onclick=function(){aiLaunch('https://claude.ai/new?q='+enc,'Opening Claude with your prompt');};
-  g=$('#aiGemini');if(g)g.onclick=function(){aiLaunch('https://gemini.google.com/app','Prompt copied — paste into Gemini (Ctrl+V / ⌘+V) and press Enter');};
+  g=$('#aiGemini');if(g)g.onclick=function(){aiLaunch('https://gemini.google.com/app','Prompt copied, paste into Gemini (Ctrl+V / ⌘+V) and press Enter');};
   var pc=$('#aiCopy');if(pc)pc.onclick=function(){try{navigator.clipboard.writeText(prompt);toast('Prompt copied');}catch(e){toast('Select the prompt above and copy it');}};
   $('#proveDone').onclick=function(){logEvidence('teachai',c.id);proveComplete(c,'teachai');};
   $('#proveBack').onclick=function(){openProve(c.id);};
@@ -1654,15 +1504,7 @@ var OB_LOGO='<svg viewBox="40 10 125 148" width="70" height="83" aria-hidden="tr
   '<g transform="translate(140,0) rotate(-8 0 130)"><circle cx="0" cy="20" r="10" fill="#F5F1E8"/><path d="M 0,32 C -10,32 -16,36 -16,42 C -16,55 -13,68 -11,82 C -10,100 -12,118 -14,130 L 14,130 C 12,118 10,100 11,82 C 13,68 16,55 16,42 C 16,36 10,32 0,32 Z" fill="#F5F1E8"/></g>'+
   '</g></svg>';
 var OB_STEPS=[
-  {t:'Welcome to Mastery OS',s:'This is your learning operating system. It tells you the single highest-value thing to do next, then coaches you through proving you know it.',kind:'intro'},
-  {t:'What should we call you?',s:'Just a first name is fine. It stays on this device.',kind:'name'},
-  {t:'Which class are you in?',s:'Pick your section so every date matches your class: your exams, TBLs, and nightly pre-work.',kind:'section',opts:[['mw','Mon / Wed — Afternoon','Lecture 12:30–1:50 pm, Lab 2:00–4:50 pm (CRN 80650)'],['tr-early','Tue / Thu — Early','Lecture 9:30–10:45 am, Lab 11:00 am–1:50 pm (CRN 80654)'],['tr-eve','Tue / Thu — Evening','Lecture 5:30–6:45 pm, Lab 7:00–9:50 pm (CRN 80655)']]},
-  {t:'What grade are you aiming for?',s:'Anatomy is heavy. Your goal sets a realistic weekly time commitment outside class.',kind:'grade',opts:[['A','Mastery. Plan on about 20 hours a week outside class. Recall stays tight, gaps repaired fast.'],['B','Strong. Plan on about 16 hours a week outside class.'],['C to pass','The high-yield essentials to clear the bar. About 14 hours a week.']]},
-  {t:'How many days a week will you study?',s:'Be honest. A plan you keep beats a plan you admire.',kind:'days'},
-  {t:'Your weekly study plan',s:'Based on your goal and the days you picked. You can adjust anytime.',kind:'plan'},
-  {t:'Which ways of proving mastery do you like?',s:'Pick any. We weight your plan toward these, but still stretch you.',kind:'activities',opts:[['retrieval','Retrieval practice'],['draw','Draw from memory'],['label','Label diagrams'],['cadaver','Cadaver ID'],['histo','Histology ID'],['teach','Teach someone'],['clinical','Clinical cases']]},
-  {t:'How confident do you feel right now?',s:'No wrong answer. It just tunes the tone of your coach.',kind:'confidence',opts:[['shaky','Shaky. I need structure.'],['building','Building. I know some of it.'],['solid','Solid. I want to be pushed.']]},
-  {t:'You are set',s:'Your Mastery OS is built. Every day it shows you the one best move. One thing to remember: this is a study aid, not a replacement for class, the structure list, or the syllabus, and it does not guarantee a grade. Use it alongside your course materials.',kind:'done'}
+  {t:'Welcome to Mastery OS',s:'This is your learning operating system. It tells you the single highest-value thing to do next, then coaches you through proving you know it.',kind:'intro'}, {t:'What should we call you?',s:'Just a first name is fine. It stays on this device.',kind:'name'}, {t:'Which class are you in?',s:'Pick your section so every date matches your class: your exams, TBLs, and nightly pre-work.',kind:'section',opts:[['mw','Mon / Wed, Afternoon','Lecture 12:30–1:50 pm, Lab 2:00–4:50 pm (CRN 80650)'],['tr-early','Tue / Thu, Early','Lecture 9:30–10:45 am, Lab 11:00 am–1:50 pm (CRN 80654)'],['tr-eve','Tue / Thu, Evening','Lecture 5:30–6:45 pm, Lab 7:00–9:50 pm (CRN 80655)']]}, {t:'What grade are you aiming for?',s:'Anatomy is heavy. Your goal sets a realistic weekly time commitment outside class.',kind:'grade',opts:[['A','Mastery. Plan on about 20 hours a week outside class. Recall stays tight, gaps repaired fast.'],['B','Strong. Plan on about 16 hours a week outside class.'],['C to pass','The high-yield essentials to clear the bar. About 14 hours a week.']]}, {t:'How many days a week will you study?',s:'Be honest. A plan you keep beats a plan you admire.',kind:'days'}, {t:'Your weekly study plan',s:'Based on your goal and the days you picked. You can adjust anytime.',kind:'plan'}, {t:'Which ways of proving mastery do you like?',s:'Pick any. We weight your plan toward these, but still stretch you.',kind:'activities',opts:[['retrieval','Retrieval practice'],['draw','Draw from memory'],['label','Label diagrams'],['cadaver','Cadaver ID'],['histo','Histology ID'],['teach','Teach someone'],['clinical','Clinical cases']]}, {t:'How confident do you feel right now?',s:'No wrong answer. It just tunes the tone of your coach.',kind:'confidence',opts:[['shaky','Shaky. I need structure.'],['building','Building. I know some of it.'],['solid','Solid. I want to be pushed.']]}, {t:'You are set',s:'Your Mastery OS is built. Every day it shows you the one best move. One thing to remember: this is a study aid, not a replacement for class, the structure list, or the syllabus, and it does not guarantee a grade. Use it alongside your course materials.',kind:'done'}
 ];
 function showOnboard(){
   var ob=$('#onboard');ob.hidden=false;
@@ -1717,37 +1559,16 @@ function obBack(){if(OB.step>0){OB.step--;renderOB();}}
    STUDY TOGETHER + SIGNATURE EXERCISES (fake data prototypes)
 ========================================================= */
 var GAME_BANK=[
-  {q:'Which heart chamber has the thickest wall?',opts:['Right atrium','Left ventricle','Left atrium','Right ventricle'],c:1},
-  {q:'The transverse plane divides the body into which parts?',opts:['Right and left','Anterior and posterior','Superior and inferior','Medial and lateral'],c:2},
-  {q:'Dense regular connective tissue forms which structures?',opts:['Tendons and ligaments','The dermis','Fat stores','Blood vessels'],c:0},
-  {q:'What is the regional term for the thumb?',opts:['Hallux','Pollex','Carpal','Tarsal'],c:1},
-  {q:'Which muscle tissue is joined by intercalated discs?',opts:['Skeletal','Smooth','Cardiac','Areolar'],c:2},
-  {q:'The epidermis is made of which tissue?',opts:['Simple columnar','Stratified squamous epithelium','Pseudostratified','Transitional'],c:1},
-  {q:'Blood returning from the lungs enters which chamber?',opts:['Right atrium','Right ventricle','Left atrium','Left ventricle'],c:2},
-  {q:'How many pulmonary veins return blood to the heart?',opts:['Two','Three','Four','Six'],c:2},
-  {q:'Which plane separates anterior from posterior?',opts:['Transverse','Frontal (coronal)','Midsagittal','Oblique'],c:1},
-  {q:'Cartilage heals slowly mainly because it is:',opts:['Highly vascular','Avascular','Made of bone','All elastic fibers'],c:1}
+  {q:'Which heart chamber has the thickest wall?',opts:['Right atrium','Left ventricle','Left atrium','Right ventricle'],c:1}, {q:'The transverse plane divides the body into which parts?',opts:['Right and left','Anterior and posterior','Superior and inferior','Medial and lateral'],c:2}, {q:'Dense regular connective tissue forms which structures?',opts:['Tendons and ligaments','The dermis','Fat stores','Blood vessels'],c:0}, {q:'What is the regional term for the thumb?',opts:['Hallux','Pollex','Carpal','Tarsal'],c:1}, {q:'Which muscle tissue is joined by intercalated discs?',opts:['Skeletal','Smooth','Cardiac','Areolar'],c:2}, {q:'The epidermis is made of which tissue?',opts:['Simple columnar','Stratified squamous epithelium','Pseudostratified','Transitional'],c:1}, {q:'Blood returning from the lungs enters which chamber?',opts:['Right atrium','Right ventricle','Left atrium','Left ventricle'],c:2}, {q:'How many pulmonary veins return blood to the heart?',opts:['Two','Three','Four','Six'],c:2}, {q:'Which plane separates anterior from posterior?',opts:['Transverse','Frontal (coronal)','Midsagittal','Oblique'],c:1}, {q:'Cartilage heals slowly mainly because it is:',opts:['Highly vascular','Avascular','Made of bone','All elastic fibers'],c:1}
 ];
 var LAB_BANK=[
-  {prompt:'Muscle that abducts the arm to about 90 degrees',opts:['Deltoid','Trapezius','Biceps brachii','Pectoralis major'],c:0},
-  {prompt:'Bone of the medial forearm',opts:['Radius','Ulna','Humerus','Femur'],c:1},
-  {prompt:'The heart pacemaker',opts:['AV node','SA node','Purkinje fibers','Bundle of His'],c:1},
-  {prompt:'Largest tarsal bone, the heel',opts:['Talus','Calcaneus','Navicular','Cuboid'],c:1},
-  {prompt:'Cranial nerve for vision',opts:['Olfactory (I)','Optic (II)','Facial (VII)','Vagus (X)'],c:1},
-  {prompt:'Muscle that flexes the elbow',opts:['Triceps brachii','Biceps brachii','Deltoid','Gluteus maximus'],c:1},
-  {prompt:'Outer layer of the skin',opts:['Dermis','Hypodermis','Epidermis','Fascia'],c:2},
-  {prompt:'Valve between left atrium and left ventricle',opts:['Tricuspid','Mitral (bicuspid)','Pulmonary','Aortic'],c:1}
+  {prompt:'Muscle that abducts the arm to about 90 degrees',opts:['Deltoid','Trapezius','Biceps brachii','Pectoralis major'],c:0}, {prompt:'Bone of the medial forearm',opts:['Radius','Ulna','Humerus','Femur'],c:1}, {prompt:'The heart pacemaker',opts:['AV node','SA node','Purkinje fibers','Bundle of His'],c:1}, {prompt:'Largest tarsal bone, the heel',opts:['Talus','Calcaneus','Navicular','Cuboid'],c:1}, {prompt:'Cranial nerve for vision',opts:['Olfactory (I)','Optic (II)','Facial (VII)','Vagus (X)'],c:1}, {prompt:'Muscle that flexes the elbow',opts:['Triceps brachii','Biceps brachii','Deltoid','Gluteus maximus'],c:1}, {prompt:'Outer layer of the skin',opts:['Dermis','Hypodermis','Epidermis','Fascia'],c:2}, {prompt:'Valve between left atrium and left ventricle',opts:['Tricuspid','Mitral (bicuspid)','Pulmonary','Aortic'],c:1}
 ];
 var ESCAPE={title:'Locked in the Cadaver Lab',intro:'The lab door sealed behind you. Four locks stand between your team and the exit. Each opens with a correct anatomy call. You have five minutes.',puzzles:[
-  {clue:'<b>Lock 1.</b> The wall panel reads: name the chamber that pumps blood to the entire body.',opts:['Right atrium','Left ventricle','Left atrium','Right ventricle'],c:1},
-  {clue:'<b>Lock 2.</b> A slide is loaded. The tissue lining the airways looks layered but is a single layer, many cells ciliated. Identify it.',opts:['Stratified squamous','Pseudostratified ciliated','Simple squamous','Transitional'],c:1},
-  {clue:'<b>Lock 3.</b> The keypad wants the plane that gives a CT cross-section, dividing superior from inferior.',opts:['Sagittal','Frontal','Transverse','Oblique'],c:2},
-  {clue:'<b>Lock 4.</b> Final bolt: the regional term on the specimen tag points to the thumb.',opts:['Hallux','Pollex','Carpal','Digital'],c:1}
+  {clue:'<b>Lock 1.</b> The wall panel reads: name the chamber that pumps blood to the entire body.',opts:['Right atrium','Left ventricle','Left atrium','Right ventricle'],c:1}, {clue:'<b>Lock 2.</b> A slide is loaded. The tissue lining the airways looks layered but is a single layer, many cells ciliated. Identify it.',opts:['Stratified squamous','Pseudostratified ciliated','Simple squamous','Transitional'],c:1}, {clue:'<b>Lock 3.</b> The keypad wants the plane that gives a CT cross-section, dividing superior from inferior.',opts:['Sagittal','Frontal','Transverse','Oblique'],c:2}, {clue:'<b>Lock 4.</b> Final bolt: the regional term on the specimen tag points to the thumb.',opts:['Hallux','Pollex','Carpal','Digital'],c:1}
 ]};
 var DRAW_BANK=[
-  {name:'The heart, chambers and great vessels',points:['Four chambers: two atria on top, two ventricles below','Left ventricle wall is the thickest','Aorta arching off the top','Pulmonary trunk splitting toward both lungs','Superior and inferior vena cava entering the right atrium']},
-  {name:'The skin layers',points:['Epidermis on top, stratified squamous','Dermis beneath, with hair follicles and glands','Hypodermis, the subcutaneous fat, at the base','Sweat and sebaceous glands in the dermis','Blood vessels in the dermis, not the epidermis']},
-  {name:'A neuron',points:['Cell body, the soma, with the nucleus','Dendrites branching inward','A single axon carrying the signal out','Myelin sheath broken by nodes','Axon terminals at the far end']}
+  {name:'The heart, chambers and great vessels',points:['Four chambers: two atria on top, two ventricles below','Left ventricle wall is the thickest','Aorta arching off the top','Pulmonary trunk splitting toward both lungs','Superior and inferior vena cava entering the right atrium']}, {name:'The skin layers',points:['Epidermis on top, stratified squamous','Dermis beneath, with hair follicles and glands','Hypodermis, the subcutaneous fat, at the base','Sweat and sebaceous glands in the dermis','Blood vessels in the dermis, not the epidermis']}, {name:'A neuron',points:['Cell body, the soma, with the nucleus','Dendrites branching inward','A single axon carrying the signal out','Myelin sheath broken by nodes','Axon terminals at the far end']}
 ];
 var FAKE=['Maya','Devon','Priya','Marcus','Sofia','Jamal','Lena','Theo'];
 var QUIZ_TITLE='Anatomy Blitz';
@@ -1902,9 +1723,7 @@ function mindMap(){
   gSet('Mind-Map then Recall','Signature exercise');
   var w=weaknesses();var c=(w[0]&&w[0].c)||allComps()[0].c;CUR_EX=c;var step=0;
   var steps=[
-    {emoji:'🗺️',h:'Map it from your notes',p:'Open your notes for '+c.name+'. On paper or a whiteboard, build a mind-map: put '+c.name+' in the centre and branch out every related structure, term, and connection you can find. Take about five minutes.',cta:'I have mapped it'},
-    {emoji:'🧠',h:'Now rebuild it from memory',p:'Close your notes. On a fresh page, redraw the whole mind-map from memory, no peeking. This retrieval is what builds durable memory.',cta:'I have rebuilt it'},
-    {emoji:'🔍',h:'Compare and score',p:'Put the two side by side. What did you miss? Those gaps are your next repair targets for '+c.name+'. How much came back?',cta:null}
+    {emoji:'🗺️',h:'Map it from your notes',p:'Open your notes for '+c.name+'. On paper or a whiteboard, build a mind-map: put '+c.name+' in the centre and branch out every related structure, term, and connection you can find. Take about five minutes.',cta:'I have mapped it'}, {emoji:'🧠',h:'Now rebuild it from memory',p:'Close your notes. On a fresh page, redraw the whole mind-map from memory, no peeking. This retrieval is what builds durable memory.',cta:'I have rebuilt it'}, {emoji:'🔍',h:'Compare and score',p:'Put the two side by side. What did you miss? Those gaps are your next repair targets for '+c.name+'. How much came back?',cta:null}
   ];
   function render(){var s=steps[step];var b='<div class="g-center"><div class="g-emoji">'+s.emoji+'</div><h3>'+esc(s.h)+'</h3><p>'+esc(s.p)+'</p>';if(step<2)b+='<div class="g-actions"><button class="btn gold" id="mmNext">'+esc(s.cta)+'</button></div>';else b+='<div class="g-actions"><button class="btn" data-mmscore="2">Under half</button><button class="btn" data-mmscore="4">Most of it</button><button class="btn gold" data-mmscore="6">Almost all</button></div>';b+='</div>';gBody(b);if(step<2){var n=$('#mmNext');if(n)n.onclick=function(){step++;render();};}}
   render();
@@ -2005,8 +1824,7 @@ function planRecommendation(){
 function openPlanWizard(){clearG();var ov=$('#gameOverlay');ov.classList.add('open');ov.setAttribute('aria-hidden','false');lastFocus=document.activeElement;pwDecide();}
 function pwDecide(){
   PW_REC=null;PW_FROM='';
-  pwWrap('Plan today','Step 1 of 2',
-    '<p style="color:var(--ink-soft);font-size:14px;margin-bottom:16px">How do you want to choose today\'s work?</p>'+
+  pwWrap('Plan today','Step 1 of 2', '<p style="color:var(--ink-soft);font-size:14px;margin-bottom:16px">How do you want to choose today\'s work?</p>'+
     '<div style="display:grid;gap:12px">'+
       pwCard('pwSys','Let Mastery OS decide','We read your due recall, weak spots, and next exam, then pick the single highest-value move.',true,'Recommended')+
       pwCard('pwMe',"I\'ll choose",'Pick from the full menu yourself.',false,'')+
@@ -2015,8 +1833,7 @@ function pwDecide(){
 }
 function pwRecommend(){
   var r=planRecommendation();PW_REC=r;PW_FROM='rec';
-  pwWrap('Recommended for today','The system picked',
-    '<div style="background:var(--cream);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;margin-bottom:16px">'+
+  pwWrap('Recommended for today','The system picked', '<div style="background:var(--cream);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;margin-bottom:16px">'+
       '<div style="font-family:var(--mono);font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--terra-dark);margin-bottom:6px">Do this first</div>'+
       '<div style="font-family:var(--disp);font-weight:800;font-size:19px;color:var(--navy);margin-bottom:4px">'+esc(r.label)+'</div>'+
       '<div style="font-size:13.5px;color:var(--ink-soft)">'+r.why+'</div></div>'+
@@ -2027,8 +1844,7 @@ function pwRecommend(){
 }
 function pwMenu(){
   PW_FROM='menu';
-  pwWrap('Choose your work','You decide',
-    '<p style="color:var(--ink-soft);font-size:13.5px;margin-bottom:14px">Pick one. You can always come back.</p>'+
+  pwWrap('Choose your work','You decide', '<p style="color:var(--ink-soft);font-size:13.5px;margin-bottom:14px">Pick one. You can always come back.</p>'+
     '<div style="display:grid;gap:10px">'+
       pwRow('today',"Today's full session",'New material plus due recall, full cycle')+
       pwRow('repair','Repair weaknesses only','Go straight at your flagged weak spots')+
@@ -2050,12 +1866,11 @@ function pwProceed(key,isStudy){
   if(key==='cram'){openCram();return;}
 }
 function pwTiming(kind){
-  pwWrap('Time your session','Last step',
-    '<p style="color:var(--ink-soft);font-size:13.5px;margin-bottom:14px">How do you want to pace it?</p>'+
+  pwWrap('Time your session','Last step', '<p style="color:var(--ink-soft);font-size:13.5px;margin-bottom:14px">How do you want to pace it?</p>'+
     '<div style="display:grid;gap:10px">'+
-      pwRowT('setup','Pomodoro — guided setup','Presets, or find your natural focus length')+
-      pwRowT('set','Pomodoro — set my time','Pick your focus and break length now')+
-      pwRowT('free','Freestyle — no timer','Just run the session, no clock')+
+      pwRowT('setup','Pomodoro, guided setup','Presets, or find your natural focus length')+
+      pwRowT('set','Pomodoro, set my time','Pick your focus and break length now')+
+      pwRowT('free','Freestyle, no timer','Just run the session, no clock')+
     '</div>'+
     '<div class="g-actions" style="margin-top:16px"><button class="btn" id="pwTBack">Back</button></div>');
   $$('#gameBody [data-pwt]').forEach(function(b){b.onclick=function(){var m=b.getAttribute('data-pwt');
@@ -2070,8 +1885,7 @@ function pwRowT(k,title,desc){
 }
 function pwSetTime(kind){
   var pm=pomo();
-  pwWrap('Set your time','Focus and break',
-    '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">'+
+  pwWrap('Set your time','Focus and break', '<div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px">'+
       pbField('Focus min','pbFocus',FOCUS_VALS,pm.focus)+
       pbField('Break min','pbShort',[3,5,8,10,15,20],pm.shortBrk)+
     '</div>'+
@@ -2431,19 +2245,12 @@ function drawKnow(){
   render();
 }
 var EXERCISES=[
-  {k:'drawknow',name:'Draw it to Know it',icon:I.draw,tag:'Given not Googled',desc:'Draw a structure or build a mini mind-map from memory, then reveal a self-check list to grade your own coverage.'},
-  {k:'mindmap',name:'Mind-Map then Recall',icon:I.draw,tag:'Notes to memory',desc:'Map a section from your notes, then rebuild the mind-map from memory. The gap is your repair list.'},
-  {k:'braindump',name:'Blank-Page Brain Dump',icon:I.recall,tag:'Free recall',desc:'Write everything you know about a competency cold, then check what you missed.'}
+  {k:'drawknow',name:'Draw it to Know it',icon:I.draw,tag:'Given not Googled',desc:'Draw a structure or build a mini mind-map from memory, then reveal a self-check list to grade your own coverage.'}, {k:'mindmap',name:'Mind-Map then Recall',icon:I.draw,tag:'Notes to memory',desc:'Map a section from your notes, then rebuild the mind-map from memory. The gap is your repair list.'}, {k:'braindump',name:'Blank-Page Brain Dump',icon:I.recall,tag:'Free recall',desc:'Write everything you know about a competency cold, then check what you missed.'}
 ];
 function renderExercises(){var el=$('#exGrid');if(!el)return;el.innerHTML=EXERCISES.map(function(e){return '<div class="card hover exercise-card"><span class="ei">'+e.icon+'</span><span class="tagline">'+esc(e.tag)+'</span><h3>'+esc(e.name)+'</h3><p>'+esc(e.desc)+'</p><button class="btn primary" data-exercise="'+e.k+'">Start exercise</button></div>';}).join('');}
 
 var MODES=[
-  {k:'studywith',cls:'tbl',emoji:'📅',tag:'Live · peer-hosted',name:'Study With Me',players:'Real sessions',desc:'Find and join a peer-hosted study session on the live hosting schedule.',link:'https://www.medmasterscollaborative.com/student-hosting-schedule',cta:'Find a session'},
-  {k:'quiz',cls:'quiz',emoji:'🎯',tag:'Live · 2 to 40 players',name:'Live Quiz',players:'Kahoot-style race',desc:'Fast multiple-choice showdown on your question bank. Speed and accuracy both score, with a live leaderboard between questions.'},
-  {k:'tbl',cls:'tbl',emoji:'👥',tag:'Teams',name:'Practice TBL',players:'iRAT, tRAT, appeals',desc:'Answer alone, then as a team with scratch-to-reveal scoring, then appeal. Confidence-based and 4S ready.'},
-  {k:'race',cls:'race',emoji:'🏁',tag:'Head to head',name:'Lab Races',players:'Timed sprint',desc:'Identify structures against the clock and a rival. First to the finish wins. Built for practical prep.'},
-  {k:'escape',cls:'escape',emoji:'🚪',tag:'Co-op',name:'Escape Room',players:'Team puzzle',desc:'A locked clinical case. Solve each anatomy puzzle to open the next lock and escape before time runs out.'},
-  {k:'draw',cls:'draw',emoji:'✏️',tag:'Bonus',name:'Draw and Guess',players:'Given not Googled',desc:'Draw a structure from memory on the clock, then check it against the key. Drawing as the integrity test.'}
+  {k:'studywith',cls:'tbl',emoji:'📅',tag:'Live · peer-hosted',name:'Study With Me',players:'Real sessions',desc:'Find and join a peer-hosted study session on the live hosting schedule.',link:'https://www.medmasterscollaborative.com/student-hosting-schedule',cta:'Find a session'}, {k:'quiz',cls:'quiz',emoji:'🎯',tag:'Live · 2 to 40 players',name:'Live Quiz',players:'Kahoot-style race',desc:'Fast multiple-choice showdown on your question bank. Speed and accuracy both score, with a live leaderboard between questions.'}, {k:'tbl',cls:'tbl',emoji:'👥',tag:'Teams',name:'Practice TBL',players:'iRAT, tRAT, appeals',desc:'Answer alone, then as a team with scratch-to-reveal scoring, then appeal. Confidence-based and 4S ready.'}, {k:'race',cls:'race',emoji:'🏁',tag:'Head to head',name:'Lab Races',players:'Timed sprint',desc:'Identify structures against the clock and a rival. First to the finish wins. Built for practical prep.'}, {k:'escape',cls:'escape',emoji:'🚪',tag:'Co-op',name:'Escape Room',players:'Team puzzle',desc:'A locked clinical case. Solve each anatomy puzzle to open the next lock and escape before time runs out.'}, {k:'draw',cls:'draw',emoji:'✏️',tag:'Bonus',name:'Draw and Guess',players:'Given not Googled',desc:'Draw a structure from memory on the clock, then check it against the key. Drawing as the integrity test.'}
 ];
 function renderTogether(){var el=$('#togetherGrid');if(!el)return;el.innerHTML=MODES.map(function(m){
   if(m.link){

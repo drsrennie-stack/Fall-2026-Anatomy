@@ -44,19 +44,12 @@ body {
 a { color: inherit; }
 
 /* ===== KEYBOARD FOCUS ===== */
-a:focus-visible,
-button:focus-visible,
-summary:focus-visible {
+a:focus-visible, button:focus-visible, summary:focus-visible {
   outline: 3px solid #6B1616;
   outline-offset: 3px;
   border-radius: 4px;
 }
-.advantage-section a:focus-visible,
-.devices-section a:focus-visible,
-.makeup-section a:focus-visible,
-.final-word a:focus-visible,
-.cta-section a:focus-visible,
-.footer-section a:focus-visible {
+.advantage-section a:focus-visible.devices-section a:focus-visible.makeup-section a:focus-visible.final-word a:focus-visible.cta-section a:focus-visible.footer-section a:focus-visible {
   outline-color: #C9A14A;
 }
 .skip-link {
@@ -76,9 +69,7 @@ summary:focus-visible {
 .skip-link:focus { top: 8px; }
 
 /* ===== SECTION PADDING ===== */
-.site-header, .hero-card, .toc-section, .syl-section,
-.advantage-section, .devices-section, .makeup-section,
-.final-word, .cta-section, .footer-section {
+.site-header.hero-card.toc-section.syl-section.advantage-section.devices-section.makeup-section.final-word.cta-section.footer-section {
   padding-left: max(40px, 5vw);
   padding-right: max(40px, 5vw);
 }
@@ -280,7 +271,7 @@ summary:focus-visible {
 .syl-section .body p:last-child { margin-bottom: 0; }
 .syl-section .body strong { color: #0B1530; font-weight: 700; }
 .syl-section .body em { color: #0B1530; font-style: italic; }
-.syl-section .body ul, .syl-section .body ol { margin: 8px 0 14px; padding-left: 22px; }
+.syl-section .body ul.syl-section .body ol { margin: 8px 0 14px; padding-left: 22px; }
 .syl-section .body li { margin-bottom: 8px; }
 .syl-section .body li::marker { color: #6B1616; }
 .syl-section .body a.inline {
@@ -377,7 +368,7 @@ summary:focus-visible {
   text-align: left;
   border-bottom: 2px solid #C9A14A;
 }
-.tbl tbody td, .tbl tbody th {
+.tbl tbody td.tbl tbody th {
   padding: 12px 14px;
   border-bottom: 1px solid rgba(11, 21, 48, 0.08);
   vertical-align: top;
@@ -392,7 +383,7 @@ summary:focus-visible {
   letter-spacing: 0.10em;
   text-transform: uppercase;
 }
-.tbl tbody tr:last-child td, .tbl tbody tr:last-child th { border-bottom: none; }
+.tbl tbody tr:last-child td.tbl tbody tr:last-child th { border-bottom: none; }
 .tbl tbody tr:nth-child(even) td:not(.wt) { background: rgba(245, 241, 232, 0.55); }
 .tbl .wt {
   font-weight: 800;
@@ -472,9 +463,7 @@ summary:focus-visible {
   border-radius: 13px;
   overflow: hidden;
   margin: 22px 0 12px;
-  box-shadow: 0 24px 46px -18px rgba(11, 21, 48, 0.55),
-              0 8px 16px rgba(11, 21, 48, 0.20),
-              inset 0 1px 0 rgba(255, 255, 255, 0.18);
+  box-shadow: 0 24px 46px -18px rgba(11, 21, 48, 0.55), 0 8px 16px rgba(11, 21, 48, 0.20), inset 0 1px 0 rgba(255, 255, 255, 0.18);
 }
 .weight-seg {
   position: relative;
@@ -487,10 +476,7 @@ summary:focus-visible {
   font-size: 16.8px;
   text-align: center;
   padding: 0 6px;
-  background-image: linear-gradient(to bottom,
-      rgba(255, 255, 255, 0.22),
-      rgba(255, 255, 255, 0.03) 46%,
-      rgba(0, 0, 0, 0.16));
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0.03) 46%, rgba(0, 0, 0, 0.16));
   box-shadow: inset -1px 0 0 rgba(11, 21, 48, 0.16);
 }
 .weight-bar > .weight-seg:last-child { box-shadow: none; }
@@ -508,8 +494,8 @@ summary:focus-visible {
 .seg-lab   { background-color: #8B1D1D; flex: 30 1 0; }
 .seg-quiz  { background-color: #C9A14A; color: #0B1530; flex: 5 1 0; }
 .seg-check { background-color: #F1E9D6; color: #0B1530; flex: 5 1 0; }
-.seg-quiz, .seg-check { font-size: 13.4px; }
-.seg-quiz .seg-label, .seg-check .seg-label { font-size: 9px; letter-spacing: 0.03em; opacity: 0.86; }
+.seg-quiz.seg-check { font-size: 13.4px; }
+.seg-quiz .seg-label.seg-check .seg-label { font-size: 9px; letter-spacing: 0.03em; opacity: 0.86; }
 .weight-bar-caption {
   font-size: 12.3px;
   font-weight: 600;
@@ -883,26 +869,26 @@ html { scroll-behavior: smooth; }
 /* ===== PRINT ===== */
 @media print {
   body { background: #FFFFFF; }
-  .advantage-section, .devices-section, .makeup-section, .final-word, .cta-section, .footer-section {
+  .advantage-section.devices-section.makeup-section.final-word.cta-section.footer-section {
     background: #FFFFFF; color: #0B1530;
   }
-  .advantage-section .section-eyebrow, .devices-section .section-eyebrow, .makeup-section .section-eyebrow, .final-eyebrow, .cta-eyebrow {
+  .advantage-section .section-eyebrow.devices-section .section-eyebrow.makeup-section .section-eyebrow.final-eyebrow.cta-eyebrow {
     color: #6B1616;
   }
-  .advantage-section .section-headline, .devices-section .section-headline, .makeup-headline, .final-headline, .cta-headline {
+  .advantage-section .section-headline.devices-section .section-headline.makeup-headline.final-headline.cta-headline {
     color: #0B1530;
   }
-  .advantage-body, .devices-body, .makeup-body, .final-body { color: #0B1530; opacity: 1; }
-  .advantage-body strong, .devices-body strong, .makeup-body strong { color: #6B1616; }
+  .advantage-body.devices-body.makeup-body.final-body { color: #0B1530; opacity: 1; }
+  .advantage-body strong.devices-body strong.makeup-body strong { color: #6B1616; }
   .scale-cell { background: #FFFFFF; border: 1px solid #8C90A0; }
   .scale-letter { color: #6B1616; }
   .scale-range { color: #0B1530; opacity: 0.8; }
-  .cta-button, .cta-primary, .cta-secondary { display: none; }
-  .footer-link, .footer-tagline, .footer-copyright { color: #0B1530; opacity: 1; }
-  .footer-col-header, .footer-byline, .footer-logo .logo-accent { color: #6B1616; }
+  .cta-button.cta-primary.cta-secondary { display: none; }
+  .footer-link.footer-tagline.footer-copyright { color: #0B1530; opacity: 1; }
+  .footer-col-header.footer-byline.footer-logo .logo-accent { color: #6B1616; }
   .footer-logo .logo-title { color: #0B1530; }
   .footer-logo .logo-sub { color: #0B1530; opacity: 0.7; }
-  section, .s-card, .scholar-card, .hub-card, .tbl tr, .fact, .scale-cell, .callout {
+  section.s-card.scholar-card.hub-card.tbl tr.fact.scale-cell.callout {
     break-inside: avoid;
   }
   h1, h2, h3 { break-after: avoid; }
@@ -1013,13 +999,13 @@ html { scroll-behavior: smooth; }
     <p><strong>Dr. Sharilyn Rennie</strong> &middot; Professor of Biology, Solano Community College.</p>
     <dl class="def-list">
       <dt>Email</dt><dd>sharilyn.rennie@solano.edu</dd>
-      <dt>Best channel</dt><dd>Canvas Inbox &mdash; keeps all course messages in one place.</dd>
+      <dt>Best channel</dt><dd>Canvas Inbox, keeps all course messages in one place.</dd>
       <dt>Reply time</dt><dd>48 to 72 hours on weekdays. Do not expect a same-day reply the night before a deadline.</dd>
       <dt>Virtual office</dt><dd>Post to the "Virtual Office" board in Canvas. If you have a question, a classmate probably does too.</dd>
       <dt>Office hours</dt><dd>30 minutes before each class, in our room. By appointment otherwise.</dd>
     </dl>
     <div class="callout is-rust">
-      <p>Anatomy is cumulative &mdash; small gaps become large gaps fast. Reach out <strong>before</strong> you fall behind, not after.</p>
+      <p>Anatomy is cumulative, small gaps become large gaps fast. Reach out <strong>before</strong> you fall behind, not after.</p>
     </div>
   </div>
 </section>
@@ -1030,7 +1016,7 @@ html { scroll-behavior: smooth; }
   <h2 class="section-headline">Course description and <span class="accent">outcomes</span>.</h2>
   <div class="body">
     <p>BIO 004 studies the structural organization of the human body from cell to organism. You will work in three modes: microscopic study of prepared slides, gross (macroscopic) anatomy, and examination of prosected human material.</p>
-    <p><strong>This is pure anatomy.</strong> The focus is structure &mdash; what it is, where it is, what it looks like, how it relates to what is around it. Clinical context is threaded in so the anatomy connects to real practice.</p>
+    <p><strong>This is pure anatomy.</strong> The focus is structure, what it is, where it is, what it looks like, how it relates to what is around it. Clinical context is threaded in so the anatomy connects to real practice.</p>
     <h3>By the end, you should be able to:</h3>
     <ol>
       <li>Identify and distinguish tissues using currently recognized criteria.</li>
@@ -1049,14 +1035,14 @@ html { scroll-behavior: smooth; }
     <p>Each week you'll have the <strong>full concept lecture online</strong> and a <strong>guided worksheet</strong>. Class time is where you work through it together and make it stick.</p>
     <h3>What a class day looks like</h3>
     <ul>
-      <li><strong>Most days &mdash; guided lecture.</strong> We work through the <strong>high-yield concepts</strong> &mdash; the ones that matter most, not every single detail &mdash; and you fill in your worksheet as we go. A few quick <strong>check-in questions</strong> run during the lecture to keep everyone on track &mdash; <strong>studying the night before means higher scores on them.</strong> The complete detail lives in the online lecture and your worksheet.</li>
-      <li><strong>Some days &mdash; active learning.</strong> Instead of lecture, we run activities and games that make the anatomy stick.</li>
-      <li><strong>A few days &mdash; TBL.</strong> Several times across the term you'll do a Team-Based Learning session covering that module's material (what that is, below).</li>
+      <li><strong>Most days, guided lecture.</strong> We work through the <strong>high-yield concepts</strong>, the ones that matter most, not every single detail, and you fill in your worksheet as we go. A few quick <strong>check-in questions</strong> run during the lecture to keep everyone on track, <strong>studying the night before means higher scores on them.</strong> The complete detail lives in the online lecture and your worksheet.</li>
+      <li><strong>Some days, active learning.</strong> Instead of lecture, we run activities and games that make the anatomy stick.</li>
+      <li><strong>A few days, TBL.</strong> Several times across the term you'll do a Team-Based Learning session covering that module's material (what that is, below).</li>
     </ul>
-    <p>And <strong>lab runs most class days.</strong> The online lecture and worksheet are your prep &mdash; look them over the night before and class makes far more sense.</p>
+    <p>And <strong>lab runs most class days.</strong> The online lecture and worksheet are your prep, look them over the night before and class makes far more sense.</p>
     <div class="s-card">
       <h4>What's a TBL?</h4>
-      <p><strong>Team-Based Learning.</strong> You take a short readiness quiz <strong>on your own</strong> first, then take the same quiz again <strong>with your team</strong> and talk through the answers. It covers that module's material and counts toward your grade &mdash; it rewards preparing and learning from your teammates. You keep the same team all term.</p>
+      <p><strong>Team-Based Learning.</strong> You take a short readiness quiz <strong>on your own</strong> first, then take the same quiz again <strong>with your team</strong> and talk through the answers. It covers that module's material and counts toward your grade, it rewards preparing and learning from your teammates. You keep the same team all term.</p>
     </div>
     <div class="callout is-rust">
       <p><strong>The one habit that makes it work:</strong> look over the lecture and worksheet before class. Come in prepared and the check questions, activities, TBLs, and lab all click.</p>
@@ -1099,29 +1085,29 @@ html { scroll-behavior: smooth; }
     <h3>Required software</h3>
     <ul>
       <li><strong>InteDashboard</strong> (TBL platform). Set up in class in Week 1. A 14-day free trial covers the add/drop window and financial-aid timing.</li>
-      <li><strong>InteDashboard proctoring</strong> &mdash; free download, required for TBL and assessments. No cost.</li>
-      <li><strong>Canvas</strong> &mdash; the college LMS. You already have access through your Solano account.</li>
+      <li><strong>InteDashboard proctoring</strong>, free download, required for TBL and assessments. No cost.</li>
+      <li><strong>Canvas</strong>, the college LMS. You already have access through your Solano account.</li>
     </ul>
     <h3>Textbook (recommended, not required)</h3>
     <ul>
-      <li><strong>OpenStax Anatomy &amp; Physiology, 2nd ed.</strong> &mdash; free online / free PDF at openstax.org. Sufficient for the course.</li>
+      <li><strong>OpenStax Anatomy &amp; Physiology, 2nd ed.</strong>, free online / free PDF at openstax.org. Sufficient for the course.</li>
       <li><strong>Marieb, Brady &amp; Mallatt, Human Anatomy, 9th ed.</strong> (ISBN 9780135240601). Used copies widely available.</li>
-      <li><strong>Marieb, Human Anatomy &amp; Physiology</strong> &mdash; any recent 2-semester edition works if you own it.</li>
+      <li><strong>Marieb, Human Anatomy &amp; Physiology</strong>, any recent 2-semester edition works if you own it.</li>
     </ul>
     <p>Mastering A&amp;P is optional and not required for any graded work. Don't buy it just because it's bundled.</p>
     <h3>Lab supplies (have by Week 2)</h3>
     <ul>
-      <li>Non-latex <strong>nitrile gloves</strong> &mdash; split a box with your group.</li>
+      <li>Non-latex <strong>nitrile gloves</strong>, split a box with your group.</li>
       <li>A <strong>lab coat</strong> (required, your own). Stored in the lab through the term; not shared with chemistry.</li>
     </ul>
     <h3>Technology you need</h3>
     <ul>
       <li>A laptop, tablet, or phone that runs InteDashboard + proctoring, and a reliable internet connection.</li>
       <li>A way to convert files to PDF for anything you submit in Canvas.</li>
-      <li>The <a class="inline" href="mastery-os-fall-2026.html" target="_top">Mastery OS</a> study app &mdash; free, browser-based, and set up in Week 1.</li>
+      <li>The <a class="inline" href="mastery-os-fall-2026.html" target="_top">Mastery OS</a> study app, free, browser-based, and set up in Week 1.</li>
     </ul>
     <div class="callout is-rust">
-      <p><strong>Order early.</strong> Have gloves and a lab coat in hand by Week 2 &mdash; histology and lab work start immediately.</p>
+      <p><strong>Order early.</strong> Have gloves and a lab coat in hand by Week 2, histology and lab work start immediately.</p>
     </div>
   </div>
 </section>
@@ -1155,43 +1141,43 @@ html { scroll-behavior: smooth; }
     </table>
   </div>
   <div class="body">
-    <h3>Team-Based Learning &mdash; 30%</h3>
+    <h3>Team-Based Learning, 30%</h3>
     <ul>
       <li><strong>9 TBLs</strong> across the term, done with your assigned team on TBL days.</li>
       <li><strong>iRAT</strong> (individual) then <strong>tRAT</strong> (same questions, with your team). Your individual prep drives the score.</li>
-      <li>Application and case work follow the tRAT &mdash; ungraded, but be ready to think out loud.</li>
+      <li>Application and case work follow the tRAT, ungraded, but be ready to think out loud.</li>
       <li><strong>No make-ups. No dropped TBLs.</strong></li>
     </ul>
 
-    <h3>Lecture exams &mdash; 30%</h3>
+    <h3>Lecture exams, 30%</h3>
     <ul>
       <li><strong>5 exams</strong>, one at the close of each module, covering the concept material (the online lectures and in-class recap).</li>
       <li>Mostly <strong>DOK 2&ndash;3</strong> (apply and reason), not pure recall.</li>
     </ul>
 
-    <h3>Lab practical exams &mdash; 30%</h3>
+    <h3>Lab practical exams, 30%</h3>
     <ul>
       <li><strong>5 practicals</strong>, one per module. Identify anatomy from slides, models, charts, and prosected material.</li>
       <li>Timed station rotation. <strong>Spelling counts. Pen only</strong> (no pencil).</li>
-      <li><strong>Doors lock at start</strong> &mdash; late means you can't enter. Cover your answers; keep eyes on your own station.</li>
+      <li><strong>Doors lock at start</strong>, late means you can't enter. Cover your answers; keep eyes on your own station.</li>
       <li>No make-ups, none dropped.</li>
     </ul>
 
-    <h3>Lab quizzes &mdash; 5%</h3>
+    <h3>Lab quizzes, 5%</h3>
     <ul>
       <li>At the end of most labs, one randomly chosen student answers one question on that day's lab. <strong>The whole class earns that score.</strong></li>
       <li>Present earns the class score; absent earns a zero. No make-ups, none dropped.</li>
     </ul>
 
-    <h3>iChecks &amp; tChecks &mdash; 5%</h3>
+    <h3>iChecks &amp; tChecks, 5%</h3>
     <ul>
       <li>The quick check-in questions during class lectures and guided walk-throughs.</li>
       <li><strong>iCheck</strong> = individual, weighted <strong>2&times;</strong>. <strong>tCheck</strong> = team, weighted <strong>1&times;</strong>.</li>
-      <li>Low-stakes and quick &mdash; they reward showing up prepared and paying attention.</li>
+      <li>Low-stakes and quick, they reward showing up prepared and paying attention.</li>
     </ul>
 
     <div class="callout is-rust">
-      <p><strong>Exam cap:</strong> exams include built-in bonus questions, but <strong>no exam score counts above 102%</strong>. This is the only bonus inside exams &mdash; there is no other extra credit besides Scholar Points below.</p>
+      <p><strong>Exam cap:</strong> exams include built-in bonus questions, but <strong>no exam score counts above 102%</strong>. This is the only bonus inside exams, there is no other extra credit besides Scholar Points below.</p>
     </div>
   </div>
 </section>
@@ -1201,8 +1187,8 @@ html { scroll-behavior: smooth; }
   <div class="section-eyebrow">The workload, honestly</div>
   <h2 class="section-headline">Plan about <span class="accent">two hours of study for every hour</span> in class.</h2>
   <div class="advantage-body">
-    <p>California community colleges follow the <strong>Carnegie standard</strong>: for every hour of lecture, expect about two hours of independent study &mdash; the classic "<strong>three hours of work for one hour of class</strong>."</p>
-    <p>Normally, <strong>lab hours carry no outside-study expectation</strong>: in a wet lab you run an experiment and leave. <strong>Anatomy lab is different.</strong> There's no experiment &mdash; the lab work <em>is</em> memorization. Slides, models, relationships, cadaver structures &mdash; you have to carry all of it in your head into a timed practical. So here, <strong>lab and lecture both earn the three-for-one weight.</strong> Both are memory-based.</p>
+    <p>California community colleges follow the <strong>Carnegie standard</strong>: for every hour of lecture, expect about two hours of independent study, the classic "<strong>three hours of work for one hour of class</strong>."</p>
+    <p>Normally, <strong>lab hours carry no outside-study expectation</strong>: in a wet lab you run an experiment and leave. <strong>Anatomy lab is different.</strong> There's no experiment, the lab work <em>is</em> memorization. Slides, models, relationships, cadaver structures, you have to carry all of it in your head into a timed practical. So here, <strong>lab and lecture both earn the three-for-one weight.</strong> Both are memory-based.</p>
     <p><strong>The math for this course:</strong> roughly <strong>8 hours a week in class</strong> (lecture + lab) &rarr; about <strong>15 to 17 hours of focused study outside class</strong> &rarr; near <strong>24 hours a week total</strong> on this one course. Front-load it; anatomy is cumulative and the gap compounds.</p>
   </div>
 </section>
@@ -1222,7 +1208,7 @@ html { scroll-behavior: smooth; }
     <div class="scale-cell" style="background:#FFFFFF;border:1px solid #8C90A0;"><span class="scale-letter" style="color:#6B1616;">F</span><div class="scale-range" style="color:#0B1530;opacity:0.78;">0 to 59.4%</div></div>
   </div>
   <div class="body" style="margin-top:20px;">
-    <p>This is a <strong>mastery-based</strong> course. Attending and turning things in does not by itself earn the grade &mdash; the study hours above are what do. Plan for roughly <strong>15 or more hours of study each week</strong> outside class.</p>
+    <p>This is a <strong>mastery-based</strong> course. Attending and turning things in does not by itself earn the grade, the study hours above are what do. Plan for roughly <strong>15 or more hours of study each week</strong> outside class.</p>
   </div>
 </section>
 
@@ -1231,20 +1217,20 @@ html { scroll-behavior: smooth; }
   <div class="section-eyebrow">Section 8</div>
   <h2 class="section-headline">Scholar Points <span class="accent">(up to +3%)</span>.</h2>
   <div class="body">
-    <p>Scholar Points reward steady, proactive learning &mdash; not missed work. Applied at the end of the term. Earn the <strong>+2%</strong> through engagement hours, then add the <strong>+1%</strong> performance boost on top. Struggling? The Success Sprint (below) opens after Exam 1 as a catch-up path.</p>
+    <p>Scholar Points reward steady, proactive learning, not missed work. Applied at the end of the term. Earn the <strong>+2%</strong> through engagement hours, then add the <strong>+1%</strong> performance boost on top. Struggling? The Success Sprint (below) opens after Exam 1 as a catch-up path.</p>
   </div>
   <div class="scholar-grid">
     <div class="scholar-card">
       <div class="scholar-tag">Engagement</div>
       <div class="scholar-pct">+2.0%</div>
       <h3 class="scholar-title">36 verified hours</h3>
-      <p class="scholar-desc">Across the term, log 36 hours of tutoring, study-with-me sessions, or faculty review &mdash; <strong>hosting or attending, in any combination.</strong> A maximum of 3 hours per week is counted, so it spreads out instead of piling up.</p>
+      <p class="scholar-desc">Across the term, log 36 hours of tutoring, study-with-me sessions, or faculty review, <strong>hosting or attending, in any combination.</strong> A maximum of 3 hours per week is counted, so it spreads out instead of piling up.</p>
     </div>
     <div class="scholar-card is-bonus">
       <div class="scholar-tag">Reset &amp; catch up</div>
       <div class="scholar-pct">10 hrs</div>
       <h3 class="scholar-title">Success Sprint</h3>
-      <p class="scholar-desc">A free <strong>catch-up program that opens after Exam 1</strong> and runs through Exams 2&ndash;5 &mdash; for anyone feeling underwater. You complete a step tied to each of those exams; finish the full sprint to bank <strong>10 of your 36 hours</strong> and rebuild your study system. Full steps are posted in Canvas.</p>
+      <p class="scholar-desc">A free <strong>catch-up program that opens after Exam 1</strong> and runs through Exams 2&ndash;5, for anyone feeling underwater. You complete a step tied to each of those exams; finish the full sprint to bank <strong>10 of your 36 hours</strong> and rebuild your study system. Full steps are posted in Canvas.</p>
     </div>
     <div class="scholar-card">
       <div class="scholar-tag">Performance</div>
@@ -1255,10 +1241,10 @@ html { scroll-behavior: smooth; }
   </div>
   <div class="body">
     <div class="callout">
-      <p><strong>Built to be reachable.</strong> You don't need money or a car: tutoring others counts the same as being tutored, in person counts the same as online, and hosting counts the same as attending. And if you fall behind, the Success Sprint opens after Exam 1 as a 10-hour path back &mdash; while the 3-hour weekly cap means students working jobs or caring for family can still get there a little at a time.</p>
+      <p><strong>Built to be reachable.</strong> You don't need money or a car: tutoring others counts the same as being tutored, in person counts the same as online, and hosting counts the same as attending. And if you fall behind, the Success Sprint opens after Exam 1 as a 10-hour path back, while the 3-hour weekly cap means students working jobs or caring for family can still get there a little at a time.</p>
     </div>
     <div class="callout is-rust">
-      <p><strong>No other extra credit.</strong> Scholar Points and the in-exam bonus (to 102%) are the only boosts. Please don't ask for more &mdash; no exceptions.</p>
+      <p><strong>No other extra credit.</strong> Scholar Points and the in-exam bonus (to 102%) are the only boosts. Please don't ask for more, no exceptions.</p>
     </div>
   </div>
 </section>
@@ -1268,7 +1254,7 @@ html { scroll-behavior: smooth; }
   <div class="section-eyebrow">Section 9</div>
   <h2 class="section-headline">Your <span class="accent">schedule</span>.</h2>
   <div class="body">
-    <p><strong>17 weeks, five modules, five exams, nine TBLs</strong> &mdash; for the <strong>Tue / Thu &middot; Evening</strong> section. Each module ends in an exam (lecture + lab practical on the same day). Dates below are yours; they can shift, so if you miss class, check with your team.</p>
+    <p><strong>17 weeks, five modules, five exams, nine TBLs</strong>, for the <strong>Tue / Thu &middot; Evening</strong> section. Each module ends in an exam (lecture + lab practical on the same day). Dates below are yours; they can shift, so if you miss class, check with your team.</p>
   </div>
   <div class="tbl-wrap">
     <table class="tbl">
@@ -1298,40 +1284,40 @@ html { scroll-behavior: smooth; }
         <tr><td class="wk-cell">Thu Aug 27</td><td>Interactive Histology Lecture <em>(iCheck)</em></td><td>Connective Tissue II</td></tr>
         <tr><td class="wk-cell" rowspan="2">3</td><td class="wk-cell">Tue Sep 1</td><td><strong>TBL 2</strong> &middot; Histology</td><td>Muscle &amp; Nervous Tissue</td></tr>
         <tr><td class="wk-cell">Thu Sep 3</td><td>Exam 1 Review Game</td><td>Integumentary</td></tr>
-        <tr style="background:#F6ECD3;"><td class="wk-cell" rowspan="2">4</td><td class="wk-cell">Tue Sep 8</td><td colspan="2"><strong>Exam 1</strong> &mdash; lecture exam + lab practical. Doors lock at start.</td></tr>
+        <tr style="background:#F6ECD3;"><td class="wk-cell" rowspan="2">4</td><td class="wk-cell">Tue Sep 8</td><td colspan="2"><strong>Exam 1</strong>, lecture exam + lab practical. Doors lock at start.</td></tr>
         <tr><td class="wk-cell">Thu Sep 10</td><td>Exam 1 rebuttals + Guided DITKI Long Bone &amp; Bone Microanatomy <em>(iCheck)</em></td><td>Bone Tissue, Long Bone &amp; Microanatomy</td></tr>
         <tr><td class="wk-cell" rowspan="2">5</td><td class="wk-cell">Tue Sep 15</td><td>Skull Walk-Through <em>(iCheck)</em></td><td>Axial Spine &amp; Skull</td></tr>
         <tr><td class="wk-cell">Thu Sep 17</td><td>Spine Walk-Through <em>(iCheck)</em></td><td>Axial Spine &amp; Skull</td></tr>
         <tr><td class="wk-cell" rowspan="2">6</td><td class="wk-cell">Tue Sep 22</td><td><strong>TBL 3</strong> &middot; Bone Tissue, Cartilage &amp; Microanatomy</td><td>Upper Extremity</td></tr>
         <tr><td class="wk-cell">Thu Sep 24</td><td>Kahoot Review: Bone</td><td>Lower Extremity</td></tr>
-        <tr style="background:#F6ECD3;"><td class="wk-cell" rowspan="2">7</td><td class="wk-cell">Tue Sep 29</td><td colspan="2"><strong>Exam 2</strong> &mdash; lecture exam + lab practical. Doors lock at start.</td></tr>
+        <tr style="background:#F6ECD3;"><td class="wk-cell" rowspan="2">7</td><td class="wk-cell">Tue Sep 29</td><td colspan="2"><strong>Exam 2</strong>, lecture exam + lab practical. Doors lock at start.</td></tr>
         <tr><td class="wk-cell">Thu Oct 1</td><td>Exam 2 rebuttals + Interactive Heart Lecture &amp; Cardiac Conduction <em>(iCheck)</em></td><td>Thoracic Anatomy (Heart); Blood Vessel Histology &amp; Anatomy</td></tr>
         <tr><td class="wk-cell" rowspan="2">8</td><td class="wk-cell">Tue Oct 6</td><td>DITKI Muscle Microanatomy &amp; Sarcomere <em>(iCheck)</em></td><td>Muscle Microanatomy &amp; Sarcomere</td></tr>
         <tr><td class="wk-cell">Thu Oct 8</td><td><strong>TBL 4</strong> &middot; Heart Anatomy</td><td>Muscles of the Face, Chest &amp; Back</td></tr>
-        <tr style="background:#F1EFEA;color:#0B1530;"><td class="wk-cell" rowspan="2">9</td><td class="wk-cell" style="opacity:.75;">Tue Oct 13</td><td colspan="2" style="opacity:.72;">Professional Development &mdash; no class</td></tr>
+        <tr style="background:#F1EFEA;color:#0B1530;"><td class="wk-cell" rowspan="2">9</td><td class="wk-cell" style="opacity:.75;">Tue Oct 13</td><td colspan="2" style="opacity:.72;">Professional Development, no class</td></tr>
         <tr><td class="wk-cell">Thu Oct 15</td><td>Blood Cell Interactive Lecture <em>(iCheck)</em></td><td>Muscles &amp; NAV of the Upper Arm; Anterior Forearm</td></tr>
         <tr><td class="wk-cell" rowspan="2">10</td><td class="wk-cell">Tue Oct 20</td><td><strong>TBL 5</strong> &middot; Blood</td><td>Muscles &amp; NAV of Posterior Forearm</td></tr>
-        <tr style="background:#F6ECD3;"><td class="wk-cell">Thu Oct 22</td><td colspan="2"><strong>Exam 3</strong> &mdash; lecture exam + lab practical. Doors lock at start.</td></tr>
+        <tr style="background:#F6ECD3;"><td class="wk-cell">Thu Oct 22</td><td colspan="2"><strong>Exam 3</strong>, lecture exam + lab practical. Doors lock at start.</td></tr>
         <tr><td class="wk-cell" rowspan="2">11</td><td class="wk-cell">Tue Oct 27</td><td>Guided Walk-Through: Respiratory Anatomy &amp; Histology <em>(iCheck)</em></td><td>Thoracic Anatomy (Respiratory) &amp; Respiratory Histology</td></tr>
         <tr><td class="wk-cell">Thu Oct 29</td><td>Endocrine Guided Walk-Through <em>(iCheck)</em></td><td>(Anterior) Thigh Muscles &amp; NAV</td></tr>
         <tr><td class="wk-cell" rowspan="2">12</td><td class="wk-cell">Tue Nov 3</td><td><strong>TBL 6</strong> &middot; Respiratory</td><td>(Posterior) Thigh Muscle &amp; NAV</td></tr>
         <tr><td class="wk-cell">Thu Nov 5</td><td>Guided DITKI GI Map Activity I <em>(iCheck)</em></td><td>Anterior/Posterior Lower Leg Muscles</td></tr>
         <tr><td class="wk-cell" rowspan="2">13</td><td class="wk-cell">Tue Nov 10</td><td>Guided DITKI GI Map Activity II <em>(iCheck)</em></td><td>GI Organs (Primary)</td></tr>
         <tr><td class="wk-cell">Thu Nov 12</td><td><strong>TBL 7</strong> &middot; GI System</td><td>GI Organs (Accessory)</td></tr>
-        <tr style="background:#F6ECD3;"><td class="wk-cell" rowspan="2">14</td><td class="wk-cell">Tue Nov 17</td><td colspan="2"><strong>Exam 4</strong> &mdash; lecture exam + lab practical. Doors lock at start.</td></tr>
+        <tr style="background:#F6ECD3;"><td class="wk-cell" rowspan="2">14</td><td class="wk-cell">Tue Nov 17</td><td colspan="2"><strong>Exam 4</strong>, lecture exam + lab practical. Doors lock at start.</td></tr>
         <tr><td class="wk-cell">Thu Nov 19</td><td>Guided Renal Map <em>(iCheck)</em></td><td>Renal Anatomy; Male &amp; Female Reproduction</td></tr>
         <tr><td class="wk-cell" rowspan="2">15</td><td class="wk-cell">Tue Nov 24</td><td>Kahoot Review: Renal</td><td>Male &amp; Female Reproductive Anatomy</td></tr>
-        <tr style="background:#F1EFEA;color:#0B1530;"><td class="wk-cell" style="opacity:.75;">Thu Nov 26</td><td colspan="2" style="opacity:.72;">Thanksgiving &mdash; campus closed</td></tr>
+        <tr style="background:#F1EFEA;color:#0B1530;"><td class="wk-cell" style="opacity:.75;">Thu Nov 26</td><td colspan="2" style="opacity:.72;">Thanksgiving, campus closed</td></tr>
         <tr><td class="wk-cell" rowspan="2">16</td><td class="wk-cell">Tue Dec 1</td><td><strong>TBL 8</strong> &middot; Renal</td><td>CNS: Brain, Meninges &amp; CSF</td></tr>
         <tr><td class="wk-cell">Thu Dec 3</td><td>Clinical: Cranial Nerve Exam Stations <em>(iCheck)</em></td><td>Brain Stem (CNS) &amp; Cranial Nerves (PNS)</td></tr>
         <tr><td class="wk-cell" rowspan="2">17</td><td class="wk-cell">Tue Dec 8</td><td><strong>TBL 9</strong> &middot; Cranial Nerves</td><td>CNS: Spinal Cord &amp; Spinal Nerves</td></tr>
-        <tr style="background:#F6ECD3;"><td class="wk-cell">Thu Dec 10</td><td colspan="2"><strong>Exam 5</strong> &mdash; lecture exam + lab practical. Doors lock at start.</td></tr>
+        <tr style="background:#F6ECD3;"><td class="wk-cell">Thu Dec 10</td><td colspan="2"><strong>Exam 5</strong>, lecture exam + lab practical. Doors lock at start.</td></tr>
       </tbody>
     </table>
   </div>
   <div class="body">
     <div class="callout">
-      <p><strong>Renal note.</strong> Renal is assessed with Module 4. Because of the Thanksgiving-week calendar, some renal lab and TBL 8 land just after Exam 4 &mdash; exact exam coverage is always confirmed in Canvas. Module 5 is neuro-only so the nervous system gets the room it needs.</p>
+      <p><strong>Renal note.</strong> Renal is assessed with Module 4. Because of the Thanksgiving-week calendar, some renal lab and TBL 8 land just after Exam 4, exact exam coverage is always confirmed in Canvas. Module 5 is neuro-only so the nervous system gets the room it needs.</p>
     </div>
     <p>See the clickable <a class="inline" href="bio004-course-calendar.html" target="_top">course calendar</a>, the <a class="inline" href="bio004-exam-modules.html" target="_top">exam modules</a>, or your section hub: <a class="inline" href="class3.html" target="_top">Tue/Thu Evening</a>.</p>
   </div>
@@ -1344,15 +1330,15 @@ html { scroll-behavior: smooth; }
   <div class="body">
     <p>Anatomy is cumulative and moves fast. Missing class is costly, and most in-class work cannot be recovered.</p>
     <ul>
-      <li><strong>Week 1 is mandatory.</strong> Miss a Week 1 session and your seat may go to the waitlist &mdash; you may be dropped.</li>
+      <li><strong>Week 1 is mandatory.</strong> Miss a Week 1 session and your seat may go to the waitlist, you may be dropped.</li>
       <li>Be present for at least <strong>90% of a session</strong> to be counted. Arriving 20 minutes late or leaving 20 minutes early counts as an absence.</li>
-      <li><strong>Missed in-class work cannot be made up</strong> &mdash; TBLs, exams, lab quizzes, and iChecks/tChecks earn a zero if you're absent.</li>
+      <li><strong>Missed in-class work cannot be made up</strong>, TBLs, exams, lab quizzes, and iChecks/tChecks earn a zero if you're absent.</li>
       <li>Absences are treated the same whether "excused" or not; you never need to explain one, and the academic result is identical.</li>
       <li><strong>Doors lock when a lab practical starts.</strong> Late means you can't enter.</li>
       <li>Excessive absence may result in being dropped, at the instructor's discretion and per Solano policy.</li>
       <li>Check Canvas at least three times a week; turn on announcement notifications.</li>
     </ul>
-    <p>You'll be on a <strong>team for the whole term</strong> &mdash; come prepared, contribute, and answer team messages within 24 hours.</p>
+    <p>You'll be on a <strong>team for the whole term</strong>, come prepared, contribute, and answer team messages within 24 hours.</p>
     <p><strong>If you decide to leave, you must formally drop the course yourself.</strong> Don't assume it's done for you; not dropping can turn into an avoidable F.</p>
   </div>
 </section>
@@ -1362,9 +1348,9 @@ html { scroll-behavior: smooth; }
   <div class="section-eyebrow">Section 11</div>
   <h2 class="section-headline">Academic integrity and <span class="accent">AI</span>.</h2>
   <div class="body">
-    <p>Cheating and plagiarism are not tolerated. A violation earns at least a zero on the work, may result in an F for the course, and is reported for disciplinary action. Do your own work; cite sources (MLA or APA) &mdash; ask if you need help.</p>
+    <p>Cheating and plagiarism are not tolerated. A violation earns at least a zero on the work, may result in an F for the course, and is reported for disciplinary action. Do your own work; cite sources (MLA or APA), ask if you need help.</p>
     <h3>Using AI</h3>
-    <p>For <strong>studying</strong>, AI is encouraged &mdash; including the "Teach it to an AI" feature in the <a class="inline" href="mastery-os-fall-2026.html" target="_top">Mastery OS</a>. For <strong>graded work</strong>, the rules are strict:</p>
+    <p>For <strong>studying</strong>, AI is encouraged, including the "Teach it to an AI" feature in the <a class="inline" href="mastery-os-fall-2026.html" target="_top">Mastery OS</a>. For <strong>graded work</strong>, the rules are strict:</p>
     <ul>
       <li>Use generative AI <strong>only</strong> on assignments specifically marked as AI assignments.</li>
       <li><strong>No AI on exams</strong> or on any graded part of a TBL.</li>
@@ -1392,10 +1378,10 @@ html { scroll-behavior: smooth; }
     <p>Device use in the anatomy lab is strictly regulated. We work with cadaveric human donors under a legal agreement with UCSF's body donation program. The people who donated their bodies to your education cannot consent to being photographed or recorded, and we protect their privacy and dignity.</p>
     <p><strong>The rules:</strong></p>
     <ul>
-      <li>No phones, smart watches, AI glasses, tablets, laptops, or recording devices in the lab &mdash; ever.</li>
+      <li>No phones, smart watches, AI glasses, tablets, laptops, or recording devices in the lab, ever.</li>
       <li>Devices silenced and fully out of sight: not in a pocket, lap, or on the table.</li>
       <li>No digital notes, photos, video, or audio in the lab.</li>
-      <li>Access digital materials outside lab &mdash; during open study hours or at home.</li>
+      <li>Access digital materials outside lab, during open study hours or at home.</li>
     </ul>
     <p><strong>Violations</strong> may mean immediate removal from the course and further action. Students under 18 must sign the policy, and a parent or guardian must also sign, before working in lab.</p>
     <p>Read and sign the agreement in Canvas before your first lab.</p>
@@ -1407,13 +1393,13 @@ html { scroll-behavior: smooth; }
   <div class="section-eyebrow">Section 14</div>
   <h2 class="section-headline">Your <span class="accent">team</span>.</h2>
   <div class="body">
-    <p>There are three layers of peer learning &mdash; use all three:</p>
+    <p>There are three layers of peer learning, use all three:</p>
     <ul>
-      <li><strong>Your TBL team</strong> &mdash; your home base of 5 to 7 students, balanced by a Week 1 survey and kept the same all term. Graded together on the tRAT; works application and cases together.</li>
-      <li><strong>Study groups</strong> &mdash; voluntary groups you form to drill structures and run cases outside class.</li>
-      <li><strong>Study-with-me sessions</strong> &mdash; peer-led review you organize for each other; these count toward Scholar Points engagement hours.</li>
+      <li><strong>Your TBL team</strong>, your home base of 5 to 7 students, balanced by a Week 1 survey and kept the same all term. Graded together on the tRAT; works application and cases together.</li>
+      <li><strong>Study groups</strong>, voluntary groups you form to drill structures and run cases outside class.</li>
+      <li><strong>Study-with-me sessions</strong>, peer-led review you organize for each other; these count toward Scholar Points engagement hours.</li>
     </ul>
-    <p>By the end of the first class, exchange contact info with your team and pick one communication platform. The standing expectation is a <strong>24-hour response time</strong>. If your team genuinely isn't working, tell me early through Canvas &mdash; before it festers.</p>
+    <p>By the end of the first class, exchange contact info with your team and pick one communication platform. The standing expectation is a <strong>24-hour response time</strong>. If your team genuinely isn't working, tell me early through Canvas, before it festers.</p>
   </div>
 </section>
 
@@ -1422,7 +1408,7 @@ html { scroll-behavior: smooth; }
   <div class="section-eyebrow">Section 15</div>
   <h2 class="section-headline">Accessibility and <span class="accent">accommodation</span>.</h2>
   <div class="body">
-    <p>Your success matters to me. This course is designed to be welcoming to and usable by everyone &mdash; English-language learners, different learning styles, students with disabilities, and those new to hybrid learning. If any part of the course gets in the way of your learning, tell me as soon as possible and we'll build strategies together.</p>
+    <p>Your success matters to me. This course is designed to be welcoming to and usable by everyone, English-language learners, different learning styles, students with disabilities, and those new to hybrid learning. If any part of the course gets in the way of your learning, tell me as soon as possible and we'll build strategies together.</p>
     <dl class="def-list">
       <dt>Office</dt><dd>Accessibility Services Center (ASC) &middot; Fairfield campus, Building 400, Room 407</dd>
       <dt>Phone</dt><dd>(707) 864-7136</dd>
@@ -1442,12 +1428,12 @@ html { scroll-behavior: smooth; }
   <h2 class="section-headline">Where to get <span class="accent">help</span>.</h2>
   <div class="body">
     <ul>
-      <li><strong>Your instructor</strong> &mdash; Canvas Inbox or sharilyn.rennie@solano.edu (48&ndash;72 hr weekday reply).</li>
-      <li><strong>Your team</strong> &mdash; first line of support; use your team chat.</li>
-      <li><strong>On-campus tutoring (ASTC)</strong> &mdash; free, in person at Fairfield, Vacaville &amp; Vallejo and online via Zoom. Enroll in the ASTC Canvas shell at solano.instructure.com/enroll/EKEA7Y or visit welcome.solano.edu/astc-homepage.</li>
-      <li><strong>Office hours</strong> &mdash; 30 minutes before each class, in our room; by appointment otherwise.</li>
-      <li><strong>Study-with-me sessions</strong> &mdash; peer-led review posted in the Canvas thread (Scholar Points count).</li>
-      <li><strong>Canvas Support</strong> &mdash; for login, submission, or video-playback issues.</li>
+      <li><strong>Your instructor</strong>, Canvas Inbox or sharilyn.rennie@solano.edu (48&ndash;72 hr weekday reply).</li>
+      <li><strong>Your team</strong>, first line of support; use your team chat.</li>
+      <li><strong>On-campus tutoring (ASTC)</strong>, free, in person at Fairfield, Vacaville &amp; Vallejo and online via Zoom. Enroll in the ASTC Canvas shell at solano.instructure.com/enroll/EKEA7Y or visit welcome.solano.edu/astc-homepage.</li>
+      <li><strong>Office hours</strong>, 30 minutes before each class, in our room; by appointment otherwise.</li>
+      <li><strong>Study-with-me sessions</strong>, peer-led review posted in the Canvas thread (Scholar Points count).</li>
+      <li><strong>Canvas Support</strong>, for login, submission, or video-playback issues.</li>
     </ul>
     <p>Lost in the term? Go back to <a class="inline" href="start-here.html" target="_top">Start Here</a> and the <a class="inline" href="bio004-course-calendar.html" target="_top">course calendar</a>. The rhythm is the cure.</p>
   </div>
@@ -1465,7 +1451,7 @@ html { scroll-behavior: smooth; }
     <h3>Start and study</h3>
     <div class="hub-grid">
       <a class="hub-card" href="start-here.html" target="_top"><p class="hub-card-title">Start Here <span class="arrow" aria-hidden="true">&rarr;</span></p><p class="hub-card-desc">Your day-one page: the short Week 1 checklist to get set up fast.</p></a>
-      <a class="hub-card" href="mastery-os-fall-2026.html" target="_top"><p class="hub-card-title">Mastery OS <span class="arrow" aria-hidden="true">&rarr;</span></p><p class="hub-card-desc">The study app &mdash; competencies, spaced recall, weakness dashboard, "teach it to an AI."</p></a>
+      <a class="hub-card" href="mastery-os-fall-2026.html" target="_top"><p class="hub-card-title">Mastery OS <span class="arrow" aria-hidden="true">&rarr;</span></p><p class="hub-card-desc">The study app, competencies, spaced recall, weakness dashboard, "teach it to an AI."</p></a>
       <a class="hub-card" href="index.html" target="_top"><p class="hub-card-title">Course home <span class="arrow" aria-hidden="true">&rarr;</span></p><p class="hub-card-desc">The landing page linking every tool and section.</p></a>
     </div>
   </div>
@@ -1504,18 +1490,18 @@ html { scroll-behavior: smooth; }
         <tr><td class="wk-cell">Tue Aug 18</td><td>First class</td></tr>
         <tr><td class="wk-cell">Tue Sep 8</td><td>Exam 1 (Module 1)</td></tr>
         <tr><td class="wk-cell">Tue Sep 29</td><td>Exam 2 (Module 2)</td></tr>
-        <tr><td class="wk-cell">Tue Oct 13</td><td>Professional Development &mdash; no class</td></tr>
+        <tr><td class="wk-cell">Tue Oct 13</td><td>Professional Development, no class</td></tr>
         <tr><td class="wk-cell">Thu Oct 22</td><td>Exam 3 (Module 3)</td></tr>
         <tr><td class="wk-cell">Tue Nov 17</td><td>Exam 4 (Module 4)</td></tr>
-        <tr><td class="wk-cell">Thu Nov 26</td><td>Thanksgiving &mdash; campus closed (no class)</td></tr>
+        <tr><td class="wk-cell">Thu Nov 26</td><td>Thanksgiving, campus closed (no class)</td></tr>
         <tr><td class="wk-cell">Thu Dec 10</td><td>Exam 5 (Module 5)</td></tr>
         <tr><td class="wk-cell">Fri Dec 11</td><td>Last day of instruction</td></tr>
-        <tr><td class="wk-cell">Dec 12&ndash;18</td><td>Finals week &mdash; no additional exam unless posted in Canvas</td></tr>
+        <tr><td class="wk-cell">Dec 12&ndash;18</td><td>Finals week, no additional exam unless posted in Canvas</td></tr>
       </tbody>
     </table>
   </div>
   <div class="body">
-    <p>Add, drop, refund, and withdrawal ("W") deadlines are set by the college. Check the Solano academic calendar and your Self-Service portal at welcome.solano.edu &mdash; and remember, formally dropping the course is your responsibility.</p>
+    <p>Add, drop, refund, and withdrawal ("W") deadlines are set by the college. Check the Solano academic calendar and your Self-Service portal at welcome.solano.edu, and remember, formally dropping the course is your responsibility.</p>
   </div>
 </section>
 
@@ -1524,7 +1510,7 @@ html { scroll-behavior: smooth; }
   <div class="final-eyebrow">A final word</div>
   <h2 class="final-headline">Prepare, show up, <span class="accent">help your team</span>.</h2>
   <div class="final-body">
-    <p>This course asks real work, and I won't pretend otherwise. But the design is on your side: you prepare the concepts on your own time, then class is spent doing the things that actually build mastery &mdash; clarifying, applying, and getting your hands on the anatomy with a team beside you.</p>
+    <p>This course asks real work, and I won't pretend otherwise. But the design is on your side: you prepare the concepts on your own time, then class is spent doing the things that actually build mastery, clarifying, applying, and getting your hands on the anatomy with a team beside you.</p>
     <p>Keep the weekly rhythm, do the Prepare step, lean on your team, and treat each other well. Your grade is feedback, not a verdict. Keep showing up, and keep going. I'm rooting for you.</p>
     <p class="final-byline">Dr. Sharilyn Rennie</p>
   </div>
@@ -1598,8 +1584,7 @@ html { scroll-behavior: smooth; }
     var FRAME_ID = 'bio004-syllabus';
     function sendHeight() {
       var h = Math.max(
-        document.documentElement.scrollHeight,
-        document.body ? document.body.scrollHeight : 0
+        document.documentElement.scrollHeight, document.body ? document.body.scrollHeight : 0
       );
       try {
         parent.postMessage({ type: 'resize', id: FRAME_ID, height: h }, '*');

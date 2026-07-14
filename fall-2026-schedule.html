@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>BIO 004 — Fall 2026 Course Schedule</title>
+<title>BIO 004, Fall 2026 Course Schedule</title>
 <style>
   :root{
     --navy:#0B2A4A; --ink:#1a1a1a; --muted:#5c6b7a; --line:#c9c9c9;
@@ -49,14 +49,14 @@
   .finalbox{border:1.5px solid #333;border-top:none;background:var(--white);padding:12px 14px;font-size:13.5px}
   .finalbox b{font-weight:800}
   .foot{font-size:11.5px;color:var(--muted);margin-top:14px}
-  @media print{.toolbar,.editnote{display:none} body{background:#fff} .wrap{max-width:none;padding:0}}
+  @media print{.toolbar.editnote{display:none} body{background:#fff} .wrap{max-width:none;padding:0}}
 </style>
 </head>
 <body>
 <div class="wrap">
   <header class="top">
     <div>
-      <h1>BIO 004 · Human Anatomy — Course Schedule, Fall 2026</h1>
+      <h1>BIO 004 · Human Anatomy, Course Schedule, Fall 2026</h1>
       <div class="sub">Instruction Aug 17 – Dec 11, 2026 · Finals Dec 12–18 · Required home study 16–20 h/week</div>
     </div>
     <div class="toolbar">
@@ -68,7 +68,7 @@
 
   <div class="calnote">
     <b>Fall calendar swaps</b> (your schedule is unchanged; only the dates and the campus-closure days move to fall):
-    Labor Day <b>Mon Sep 7</b> (Wk 4) · Veterans Day <b>Wed Nov 11</b> (Wk 13) · Thanksgiving <b>Nov 25–29</b> (Wk 15 loses its Thursday). Your Spring "Spring Break" and the Week 9 "No Instruction" Thursday have no fall equivalent — flagged inline for you to keep or delete.
+    Labor Day <b>Mon Sep 7</b> (Wk 4) · Veterans Day <b>Wed Nov 11</b> (Wk 13) · Thanksgiving <b>Nov 25–29</b> (Wk 15 loses its Thursday). Your Spring "Spring Break" and the Week 9 "No Instruction" Thursday have no fall equivalent, flagged inline for you to keep or delete.
   </div>
   <div class="editnote"><b>This is your schedule, verbatim, on fall dates.</b> Click any cell to edit. Exam lines are highlighted where you placed them. "Save my edits" downloads your changed copy; "Print / PDF" makes the syllabus copy.</div>
 
@@ -81,7 +81,7 @@
 
   <div class="finalbox">
     <b>FINAL EXAM.</b> Approximately 50% will be material covered since Lecture Exam 4 and about 50% will cover material from Lecture Exams 1, 2, 3, and 4.
-    <span contenteditable="true"><b>Thursday, December 17</b> — confirm the official finals time slot (Spring ran 8:00–10:00 am in the lecture room).</span>
+    <span contenteditable="true"><b>Thursday, December 17</b>, confirm the official finals time slot (Spring ran 8:00–10:00 am in the lecture room).</span>
   </div>
 
   <div class="foot">Reproduced from your master BIO 004 schedule. The 195-competency map (competencies-fall2026.js) is re-keyed to these same 17 weeks so Mastery OS, the cram, and the gap finder line up with this schedule.</div>
@@ -90,62 +90,7 @@
 <script>
 // Verbatim from the instructor's master schedule. e = exam line (highlighted).
 const WEEKS = [
- {n:1,d:"Aug 17–21",ch:"1",
-   lec:["Introduction to Anatomy","The Language of Anatomy","Structural Hierarchy","Positional Terminology"],
-   lab:["Introduction, Lab Safety, Anatomical Terminology","The Microscope"]},
- {n:2,d:"Aug 24–28",ch:"2 and 4",
-   lec:["Cells, Cell structure and function","Epithelial tissue","Gap Junctions","Endocrine & Exocrine Glands","Connective tissue"],
-   lab:["Histology – Epithelium","Histology – Connective Tissue"]},
- {n:3,d:"Aug 31–Sep 4",ch:"4 and 5",
-   lec:["Muscle Tissue","Nervous Tissue","Integumentary system"],
-   lab:["Histology – Muscle Tissue","Histology – Nervous Tissue","Histology – Blood"]},
- {n:4,d:"Sep 7–11",ch:"6 and 7",
-   lec:["Cartilages & Bone Architecture","Bone Develop. & Repair","Axial Skeleton"],
-   lab:["Histology – Integumentary system",{e:1,plain:0,t:"THU: LAB PRACTICAL EXAM 1"}],
-   fall:"Labor Day Mon Sep 7 — campus closed (Tue/Thu classes meet)."},
- {n:5,d:"Sep 14–18",ch:"8",
-   lec:[{e:1,t:"TUE: LECTURE EXAM 1 (Ch. 1, 2, 4, 5, 6)"},"Appendicular Skeleton"],
-   lab:["Axial Skeleton: Skull","Axial Skeleton: Vert. & Ribs"]},
- {n:6,d:"Sep 21–25",ch:"9 and 10",
-   lec:["Classification & Structure of Joints","Selected Synovial Joints","Muscle – Structure & Sarcomeres"],
-   lab:["Upper extremity & Pectoral girdle"]},
- {n:7,d:"Sep 28–Oct 2",ch:"11 and 17",
-   lec:["Muscle – Arrangement of Fascicles & Lever Systems","The Endocrine System"],
-   lab:["Lower extremity & Pelvic girdle","Selected Synovial Joints"]},
- {n:8,d:"Oct 5–9",ch:"18",
-   lec:["Blood: Composition, Formation & Disorders",{e:1,t:"THU: LECTURE EXAM 2 (Chapters 7, 8, 9, 10 & 11)"}],
-   lab:[{e:1,t:"TUE: LAB PRACTICAL EXAM 2"},"Thorax: Heart and Major Vessels","Muscles of the Head, Neck & Shoulder"]},
- {n:9,d:"Oct 12–16",ch:"19",
-   lec:["The Heart: Heart Structures and Valves","Cardiac Muscle Tissue","Pathway of Blood",{e:1,plain:1,t:"THU: NO INSTRUCTION"}],
-   lab:["Anterior Torso & Arm Muscles",{e:1,plain:1,t:"THU: NO INSTRUCTION"}],
-   fall:"Spring had a NO INSTRUCTION Thursday here — no fall holiday falls on Thu Oct 15. Keep as a flex day or delete."},
- {n:10,d:"Oct 19–23",ch:"19 and 20",
-   lec:["Cardiac Conduction System & Disorders","Blood Vessels: Structure & Types","Blood Vessels: Disorders & Fetal Circulation"],
-   lab:["Posterior Torso & Arm Muscles","Anterior Forearm Muscles"]},
- {n:11,d:"Oct 26–30",ch:"21 and 22",
-   lec:["Lymphatic System","Respiratory System"],
-   lab:["Posterior Forearm Muscles","Histology of Blood Vessels",{e:1,t:"THU: LAB PRACTICAL EXAM 3"}]},
- {n:12,d:"Nov 2–6",ch:"23",
-   lec:[{e:1,t:"TUE: LECTURE EXAM 3 (Chapters 17, 18, 19, 20, 21)"},"Digestive System: Alimentary Canal and Accessory Organs"],
-   lab:["Thoracic anatomy – Respiration","Histology of the Trachea and Lungs","Hip & Anterior Thigh","The Leg"],
-   fall:"Your Spring Break followed this week in Spring — no fall equivalent (Thanksgiving falls in Wk 15)."},
- {n:13,d:"Nov 9–13",ch:"23 and 24",
-   lec:["Digestive System: Alimentary Canal and Accessory Organs","Urinary System: Kidneys, Ureters, Urinary Bladder & Urethra"],
-   lab:["Abdominal Wall and Viscera I","Abdominal Wall and Viscera II"],
-   fall:"Veterans Day Wed Nov 11 — campus closed (Tue/Thu classes meet)."},
- {n:14,d:"Nov 16–20",ch:"25",
-   lec:["Repro. System – Male","Repro. System – Female","Repro. System – Labor & Delivery"],
-   lab:["Abdominal cavity Blood Vessels","Histology of the Alimentary Canal and Accessory Organs",{e:1,t:"THU: PRACTICAL EXAM 4"}]},
- {n:15,d:"Nov 23–27",ch:"12",
-   lec:[{e:1,t:"TUE: LECTURE EXAM 4 (Chapters 22, 23, 24, and 25)"},"Nervous System: Functional Organization & Nervous Tissue","Gross Anatomy & Neuronal Integration"],
-   lab:["Pelvic Anatomy I – Urinary System","Histology of the Urinary System","Pelvic Anatomy II – Male Repro","Pelvic Anatomy III – Female Repro","Histology of the Reproductive System"],
-   fall:"Thanksgiving Nov 25–29 — NO CLASS Thursday Nov 26. This lab-heavy week loses its Thursday; trim or shift the pelvic labs."},
- {n:16,d:"Nov 30–Dec 4",ch:"13 and 14",
-   lec:["CNS: The Brain and Spinal Cord","CNS Meninges and CSF"],
-   lab:["Brain: Meninges, Ventricles, & Lobes","Brainstem and Cranial Nerves","Histology of the Nervous System"]},
- {n:17,d:"Dec 7–11",ch:"15",
-   lec:["PNS","ANS"],
-   lab:["Spinal Cord & Spinal Nerves","ANS",{e:1,t:"THU: LAB PRACTICAL EXAM 5"}]}
+ {n:1,d:"Aug 17–21",ch:"1", lec:["Introduction to Anatomy","The Language of Anatomy","Structural Hierarchy","Positional Terminology"], lab:["Introduction, Lab Safety, Anatomical Terminology","The Microscope"]}, {n:2,d:"Aug 24–28",ch:"2 and 4", lec:["Cells, Cell structure and function","Epithelial tissue","Gap Junctions","Endocrine & Exocrine Glands","Connective tissue"], lab:["Histology – Epithelium","Histology – Connective Tissue"]}, {n:3,d:"Aug 31–Sep 4",ch:"4 and 5", lec:["Muscle Tissue","Nervous Tissue","Integumentary system"], lab:["Histology – Muscle Tissue","Histology – Nervous Tissue","Histology – Blood"]}, {n:4,d:"Sep 7–11",ch:"6 and 7", lec:["Cartilages & Bone Architecture","Bone Develop. & Repair","Axial Skeleton"], lab:["Histology – Integumentary system",{e:1,plain:0,t:"THU: LAB PRACTICAL EXAM 1"}], fall:"Labor Day Mon Sep 7, campus closed (Tue/Thu classes meet)."}, {n:5,d:"Sep 14–18",ch:"8", lec:[{e:1,t:"TUE: LECTURE EXAM 1 (Ch. 1, 2, 4, 5, 6)"},"Appendicular Skeleton"], lab:["Axial Skeleton: Skull","Axial Skeleton: Vert. & Ribs"]}, {n:6,d:"Sep 21–25",ch:"9 and 10", lec:["Classification & Structure of Joints","Selected Synovial Joints","Muscle – Structure & Sarcomeres"], lab:["Upper extremity & Pectoral girdle"]}, {n:7,d:"Sep 28–Oct 2",ch:"11 and 17", lec:["Muscle – Arrangement of Fascicles & Lever Systems","The Endocrine System"], lab:["Lower extremity & Pelvic girdle","Selected Synovial Joints"]}, {n:8,d:"Oct 5–9",ch:"18", lec:["Blood: Composition, Formation & Disorders",{e:1,t:"THU: LECTURE EXAM 2 (Chapters 7, 8, 9, 10 & 11)"}], lab:[{e:1,t:"TUE: LAB PRACTICAL EXAM 2"},"Thorax: Heart and Major Vessels","Muscles of the Head, Neck & Shoulder"]}, {n:9,d:"Oct 12–16",ch:"19", lec:["The Heart: Heart Structures and Valves","Cardiac Muscle Tissue","Pathway of Blood",{e:1,plain:1,t:"THU: NO INSTRUCTION"}], lab:["Anterior Torso & Arm Muscles",{e:1,plain:1,t:"THU: NO INSTRUCTION"}], fall:"Spring had a NO INSTRUCTION Thursday here, no fall holiday falls on Thu Oct 15. Keep as a flex day or delete."}, {n:10,d:"Oct 19–23",ch:"19 and 20", lec:["Cardiac Conduction System & Disorders","Blood Vessels: Structure & Types","Blood Vessels: Disorders & Fetal Circulation"], lab:["Posterior Torso & Arm Muscles","Anterior Forearm Muscles"]}, {n:11,d:"Oct 26–30",ch:"21 and 22", lec:["Lymphatic System","Respiratory System"], lab:["Posterior Forearm Muscles","Histology of Blood Vessels",{e:1,t:"THU: LAB PRACTICAL EXAM 3"}]}, {n:12,d:"Nov 2–6",ch:"23", lec:[{e:1,t:"TUE: LECTURE EXAM 3 (Chapters 17, 18, 19, 20, 21)"},"Digestive System: Alimentary Canal and Accessory Organs"], lab:["Thoracic anatomy – Respiration","Histology of the Trachea and Lungs","Hip & Anterior Thigh","The Leg"], fall:"Your Spring Break followed this week in Spring, no fall equivalent (Thanksgiving falls in Wk 15)."}, {n:13,d:"Nov 9–13",ch:"23 and 24", lec:["Digestive System: Alimentary Canal and Accessory Organs","Urinary System: Kidneys, Ureters, Urinary Bladder & Urethra"], lab:["Abdominal Wall and Viscera I","Abdominal Wall and Viscera II"], fall:"Veterans Day Wed Nov 11, campus closed (Tue/Thu classes meet)."}, {n:14,d:"Nov 16–20",ch:"25", lec:["Repro. System – Male","Repro. System – Female","Repro. System – Labor & Delivery"], lab:["Abdominal cavity Blood Vessels","Histology of the Alimentary Canal and Accessory Organs",{e:1,t:"THU: PRACTICAL EXAM 4"}]}, {n:15,d:"Nov 23–27",ch:"12", lec:[{e:1,t:"TUE: LECTURE EXAM 4 (Chapters 22, 23, 24, and 25)"},"Nervous System: Functional Organization & Nervous Tissue","Gross Anatomy & Neuronal Integration"], lab:["Pelvic Anatomy I – Urinary System","Histology of the Urinary System","Pelvic Anatomy II – Male Repro","Pelvic Anatomy III – Female Repro","Histology of the Reproductive System"], fall:"Thanksgiving Nov 25–29, NO CLASS Thursday Nov 26. This lab-heavy week loses its Thursday; trim or shift the pelvic labs."}, {n:16,d:"Nov 30–Dec 4",ch:"13 and 14", lec:["CNS: The Brain and Spinal Cord","CNS Meninges and CSF"], lab:["Brain: Meninges, Ventricles, & Lobes","Brainstem and Cranial Nerves","Histology of the Nervous System"]}, {n:17,d:"Dec 7–11",ch:"15", lec:["PNS","ANS"], lab:["Spinal Cord & Spinal Nerves","ANS",{e:1,t:"THU: LAB PRACTICAL EXAM 5"}]}
 ];
 
 function cell(items){
