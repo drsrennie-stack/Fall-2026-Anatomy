@@ -19,19 +19,19 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#0B1530;
+    --navy:#08101F;
     --dark:#060A18;
-    --maroon:#8B1D1D;
-    --maroon-dark:#6B1616;
+    --maroon:#7A2A22;
+    --maroon-dark:#5E201A;
     --gold:#DCB45C;
     --straw:#E8CE85;
-    --ink:#0B1530;
+    --ink:#08101F;
     --offwhite-text:#F4EFE8;
     --page:#FAFAF9;
     --card:#FFFFFF;
     --border:#8C90A0;
     --border-blue:#1E2A47;
-    --focus:#8B1D1D;
+    --focus:#7A2A22;
     --shadow-rest:0 1px 3px rgba(11,21,48,0.10);
     --shadow-hover:0 12px 26px rgba(11,21,48,0.16);
   }
@@ -107,7 +107,7 @@
     filter:blur(60px);opacity:.55;
     animation:drift 18s ease-in-out infinite;
   }
-  .aurora .a1{width:520px;height:520px;background:#8B1D1D;top:-160px;left:-120px;}
+  .aurora .a1{width:520px;height:520px;background:#7A2A22;top:-160px;left:-120px;}
   .aurora .a2{width:460px;height:460px;background:#DCB45C;bottom:-180px;right:-100px;animation-delay:-6s;opacity:.35;}
   .aurora .a3{width:420px;height:420px;background:#1E2A47;top:40%;left:45%;animation-delay:-11s;}
   @keyframes drift{
@@ -126,12 +126,12 @@
 
   /* Logo figures rise in staggered */
   .logo-figures{display:flex;gap:10px;align-items:flex-end;margin-bottom:28px;}
-  .logo-figures svg{width:54px;height:auto;opacity:0;transform:translateY(24px);}
-  .logo-figures.go svg{animation:rise 700ms cubic-bezier(.2,.8,.2,1) forwards;}
-  .logo-figures.go svg:nth-child(1){animation-delay:120ms;}
-  .logo-figures.go svg:nth-child(2){animation-delay:300ms;}
-  .logo-figures.go svg:nth-child(3){animation-delay:480ms;}
-  @keyframes rise{to{opacity:1;transform:translateY(0);}}
+  .logo-figures svg{width:54px;height:auto;opacity:0;transform:translateY(20px) scale(.8);transform-origin:center bottom;}
+  .logo-figures.go svg{animation:rise 620ms cubic-bezier(.2,.8,.2,1) forwards;}
+  .logo-figures.go svg:nth-child(1){animation-delay:150ms;}
+  .logo-figures.go svg:nth-child(2){animation-delay:700ms;}
+  .logo-figures.go svg:nth-child(3){animation-delay:1250ms;}
+  @keyframes rise{to{opacity:1;transform:translateY(0) scale(1);}}
 
   .greeting{
     font-size:clamp(40px,8vw,72px);
@@ -185,11 +185,34 @@
 
   /* ===================== TOUR ===================== */
   #screen-tour{
-    position:relative;min-height:680px;
+    position:relative;min-height:100vh;
     background:var(--navy);color:var(--offwhite-text);
     border-top:4px solid var(--border-blue);
-    padding:44px 20px 150px;
+    padding:40px 20px 132px;
+    display:flex;flex-direction:column;
   }
+  /* Inline preview panel (fills the space; resources open here, no leaving the page) */
+  .tour-preview{
+    position:relative;z-index:58;
+    max-width:1040px;width:100%;margin:18px auto 0;
+    flex:1 1 auto;min-height:300px;
+    display:flex;flex-direction:column;
+    background:#FFFFFF;border:1px solid var(--border);border-radius:14px;overflow:hidden;
+    box-shadow:0 14px 34px rgba(0,0,0,.38);
+  }
+  .tp-head{display:flex;align-items:center;gap:12px;flex-wrap:wrap;background:var(--navy);color:var(--offwhite-text);padding:11px 16px;border-bottom:1px solid var(--border-blue);}
+  .tp-title{font-weight:800;font-size:15px;color:#fff;margin:0;}
+  .tp-actions{margin-left:auto;display:flex;gap:10px;align-items:center;}
+  .tp-link{color:var(--gold);font-weight:700;font-size:13px;text-decoration:none;white-space:nowrap;}
+  .tp-link:hover{text-decoration:underline;}
+  .tp-close{background:transparent;border:1.5px solid rgba(244,239,232,.4);color:var(--offwhite-text);border-radius:8px;padding:6px 12px;font-weight:700;font-size:13px;}
+  .tp-close:hover{border-color:var(--gold);}
+  .tp-body{flex:1 1 auto;display:flex;flex-direction:column;min-height:260px;background:#fff;}
+  .tp-frame{flex:1 1 auto;width:100%;border:0;min-height:240px;background:#fff;}
+  .tp-hint{margin:0;padding:7px 12px;font-size:12px;color:#3a4358;background:#F2EFEA;text-align:center;}
+  .tp-empty,.tp-fallback{flex:1 1 auto;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:10px;padding:30px;color:#3a4358;}
+  .tp-empty strong,.tp-fallback strong{color:var(--navy);font-size:16px;}
+  .tp-empty span,.tp-fallback span{max-width:440px;font-size:14px;}
   .tour-head{max-width:1040px;margin:0 auto 8px;text-align:center;}
   .tour-head .eyebrow{color:var(--gold);}
   .tour-head h2{font-size:clamp(22px,3.6vw,30px);font-weight:800;color:#fff;margin:0 0 6px;}
@@ -318,16 +341,68 @@
   a.launch strong{display:block;font-size:17px;font-weight:800;margin-bottom:5px;}
   a.launch span{font-size:14px;color:#3a4358;}
 
-  .chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:26px 0 4px;}
+  .frontdoor{
+    display:flex;align-items:center;justify-content:space-between;gap:20px;
+    text-decoration:none;color:#fff;
+    background:linear-gradient(120deg,#08101F,#1E2A47);
+    border:1px solid var(--border-blue);border-radius:16px;
+    padding:24px 28px;margin:0 0 28px;
+    box-shadow:0 10px 26px rgba(11,21,48,.28);
+    transition:transform 200ms ease,box-shadow 200ms ease;
+  }
+  .frontdoor:hover,.frontdoor:focus-visible{transform:translateY(-3px);box-shadow:0 16px 36px rgba(11,21,48,.36);}
+  .fd-eyebrow{display:block;font-family:'DM Sans',sans-serif;text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:700;color:var(--gold);margin-bottom:6px;}
+  .fd-title{display:block;font-size:22px;font-weight:800;color:#fff;margin-bottom:5px;}
+  .fd-sub{display:block;font-size:14px;color:var(--offwhite-text);opacity:.92;max-width:560px;}
+  .fd-arrow{font-size:30px;color:var(--gold);flex:0 0 auto;line-height:1;}
+  .chips-eyebrow{font-family:'DM Sans',sans-serif;text-transform:uppercase;letter-spacing:.14em;font-size:12px;font-weight:700;color:var(--maroon);text-align:center;margin:26px 0 0;}
+  .chips{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin:14px 0 4px;}
   a.chip,button.chip{
     display:inline-flex;align-items:center;gap:8px;text-decoration:none;
-    background:#fff;color:var(--navy);border:1px solid var(--border);
-    border-radius:999px;padding:9px 16px;font-weight:700;font-size:14px;
-    transition:border-color 200ms ease,transform 200ms ease,box-shadow 200ms ease;
+    background:var(--navy);color:#F4EFE8;border:1px solid var(--navy);
+    border-radius:999px;padding:10px 18px;font-weight:700;font-size:14px;
+    transition:background-color 200ms ease,border-color 200ms ease,transform 200ms ease,box-shadow 200ms ease;
   }
   a.chip:hover,button.chip:hover,a.chip:focus-visible,button.chip:focus-visible{
-    border-color:var(--maroon);transform:translateY(-2px);box-shadow:var(--shadow-rest);
+    background:var(--maroon);border-color:var(--maroon);color:#fff;transform:translateY(-2px);box-shadow:var(--shadow-hover);
   }
+
+  /* Weekly hub gate (offset panel, organized by module) */
+  .hubgate{
+    background:linear-gradient(120deg,#08101F,#152139);
+    border:1px solid var(--border-blue);border-radius:16px;
+    padding:22px 22px 24px;margin:0 0 30px;
+    box-shadow:0 12px 30px rgba(11,21,48,.30);color:#F4EFE8;
+  }
+  .hg-head{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 16px;}
+  .hg-eyebrow{font-family:'DM Sans',sans-serif;text-transform:uppercase;letter-spacing:.16em;font-size:12px;font-weight:700;color:var(--gold);margin:0;}
+  .hg-now{margin:0;font-size:14px;font-weight:700;color:#F4EFE8;}
+  .hg-now b{color:var(--gold);}
+  .hg-instr{margin:10px 0 16px;font-size:13px;color:rgba(244,239,232,.8);max-width:620px;}
+  .hg-modtabs{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:10px;}
+  .modtab{background:transparent;border:1.5px solid rgba(244,239,232,.35);color:#F4EFE8;border-radius:999px;padding:8px 16px;font-weight:700;font-size:13px;cursor:pointer;transition:background-color 200ms ease,border-color 200ms ease,color 200ms ease;}
+  .modtab:hover{border-color:var(--gold);}
+  .modtab[aria-selected="true"]{background:#F4EFE8;color:#08101F;border-color:#F4EFE8;}
+  .modtab .modnow{font-size:10px;color:var(--gold);text-transform:uppercase;letter-spacing:.08em;margin-left:4px;}
+  .modtab[aria-selected="true"] .modnow{color:var(--maroon);}
+  .hg-weeks{display:flex;flex-wrap:wrap;gap:12px;align-items:flex-end;padding-top:22px;}
+  a.wkpill{position:relative;display:inline-flex;flex-direction:column;align-items:center;gap:3px;text-decoration:none;background:rgba(244,239,232,.08);border:1px solid rgba(244,239,232,.28);color:#F4EFE8;border-radius:12px;padding:12px 16px;min-width:92px;text-align:center;transition:background-color 200ms ease,border-color 200ms ease,transform 200ms ease;}
+  a.wkpill:hover,a.wkpill:focus-visible{border-color:var(--gold);transform:translateY(-2px);}
+  a.wkpill .wkmain{font-weight:800;font-size:15px;}
+  a.wkpill .wkn{font-size:11px;color:rgba(244,239,232,.65);font-weight:600;}
+  a.wkpill.current{background:var(--maroon);border-color:var(--gold);}
+  a.wkpill.current .hg-thisweek{font-family:'DM Sans',sans-serif;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--straw);font-weight:700;}
+  .hg-arrow{position:absolute;top:-22px;left:50%;transform:translateX(-50%);color:var(--gold);font-size:20px;font-weight:800;}
+  .hg-arrow span{display:block;animation:hgbounce 1.1s ease-in-out infinite;}
+  @keyframes hgbounce{0%,100%{transform:translateY(0);}50%{transform:translateY(6px);}}
+
+  /* Pill groups: course material prominent, admin muted */
+  .chips-eyebrow--course{color:var(--maroon);}
+  .chips--course a.chip{background:var(--navy);color:#F4EFE8;border-color:var(--navy);padding:12px 20px;font-size:15px;}
+  .chips--course a.chip:hover,.chips--course a.chip:focus-visible{background:var(--maroon);border-color:var(--gold);color:#fff;}
+  .chips--admin{margin-top:12px;}
+  .chips--admin a.chip{background:#fff;color:var(--navy);border:1px solid var(--border);padding:8px 15px;font-size:13px;font-weight:600;}
+  .chips--admin a.chip:hover,.chips--admin a.chip:focus-visible{background:#fff;border-color:var(--maroon);color:var(--maroon);}
 
   .manage{display:flex;gap:14px;justify-content:center;margin:22px 0 8px;}
   .manage button{
@@ -347,8 +422,8 @@
   .hootie-wrap{position:fixed;top:14px;right:16px;z-index:90;}
   body.touring .hootie-wrap{display:none;}
   .hootie-btn{
-    width:56px;height:56px;border-radius:50%;
-    background:var(--navy);border:2px solid var(--gold);
+    width:58px;height:58px;border-radius:50%;
+    background:#FFFFFF;border:2px solid var(--gold);
     font-size:28px;line-height:1;display:flex;align-items:center;justify-content:center;
     box-shadow:0 6px 18px rgba(11,21,48,.35);
     transition:transform 200ms ease,box-shadow 200ms ease;
@@ -371,7 +446,7 @@
   }
   .hootie-panel.open{display:block;}
   .hootie-header{background:var(--navy);color:var(--offwhite-text);padding:15px 16px;display:flex;gap:12px;align-items:center;}
-  .hootie-header .h-emoji{font-size:30px;line-height:1;}
+  .hootie-header .h-emoji{background:#FFFFFF;border-radius:50%;padding:2px;line-height:0;flex:0 0 auto;}
   .hootie-header h2{font-size:16px;margin:0;color:#fff;font-weight:800;}
   .hootie-header p{margin:2px 0 0;font-size:12px;opacity:.9;}
   .hootie-close{margin-left:auto;background:transparent;border:0;color:var(--offwhite-text);font-size:22px;line-height:1;padding:4px 6px;border-radius:8px;}
@@ -410,6 +485,7 @@
   /* Reduced motion */
   @media (prefers-reduced-motion:reduce){
     .hootie-btn{animation:none!important;}
+    .hg-arrow span{animation:none!important;}
     *{scroll-behavior:auto!important;}
     .aurora span{animation:none!important;}
     .logo-figures svg{animation:none!important;opacity:1!important;transform:none!important;}
@@ -427,30 +503,50 @@
 <div class="hootie-wrap" id="hootieWrap">
   <div class="hootie-nudge" id="hootieNudge" role="status">Stuck? Ask Hootie.</div>
   <button type="button" class="hootie-btn" id="hootieBtn" aria-label="Open Hootie, your course helper" aria-expanded="false" aria-controls="hootiePanel">
-    <svg viewBox="0 0 64 64" width="34" height="34" aria-hidden="true" focusable="false">
-      <path d="M6 32 L18 22 L18 42 Z" fill="#8B1D1D"/>
-      <ellipse cx="38" cy="32" rx="20" ry="14" fill="#E8CE85"/>
-      <path d="M30 19 Q38 10 46 19 Z" fill="#8B1D1D"/>
-      <circle cx="40" cy="30" r="6.6" fill="#FFFFFF" stroke="#0B1530" stroke-width="2.4"/>
-      <circle cx="52" cy="30" r="5" fill="#FFFFFF" stroke="#0B1530" stroke-width="2.2"/>
-      <path d="M46.6 30 H47.4" stroke="#0B1530" stroke-width="2.2"/>
-      <circle cx="40" cy="30" r="2.2" fill="#0B1530"/>
-      <circle cx="52" cy="30" r="1.8" fill="#0B1530"/>
-      <path d="M40 40 Q46 44 52 39" fill="none" stroke="#0B1530" stroke-width="2" stroke-linecap="round"/>
+    <svg viewBox="0 0 64 64" width="40" height="40" aria-hidden="true" focusable="false">
+      <path d="M20 39 L6 28 Q3 39 6 50 Z" fill="#DCB45C"/>
+      <ellipse cx="35" cy="40" rx="19" ry="16" fill="#E8CE85"/>
+      <ellipse cx="37" cy="44" rx="12" ry="9" fill="#F2E2B0"/>
+      <path d="M28 25 Q36 21 44 25 L42 31 Q36 34 30 31 Z" fill="#08101F"/>
+      <path d="M36 11 L55 20 L36 29 L17 20 Z" fill="#08101F"/>
+      <circle cx="36" cy="20" r="1.5" fill="#DCB45C"/>
+      <path d="M36 20 L53 21 L53 32" fill="none" stroke="#DCB45C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+      <circle cx="53" cy="34" r="2.4" fill="#DCB45C"/>
+      <circle cx="31" cy="39" r="7" fill="#FFFFFF" stroke="#08101F" stroke-width="2.4"/>
+      <circle cx="45" cy="39" r="7" fill="#FFFFFF" stroke="#08101F" stroke-width="2.4"/>
+      <path d="M37.6 39 H38.4" stroke="#08101F" stroke-width="2.2"/>
+      <circle cx="32" cy="40" r="3" fill="#08101F"/>
+      <circle cx="44" cy="40" r="3" fill="#08101F"/>
+      <circle cx="33.1" cy="38.8" r="1" fill="#FFFFFF"/>
+      <circle cx="45.1" cy="38.8" r="1" fill="#FFFFFF"/>
+      <path d="M33 46 Q38 51 43 46 Q38.5 48.5 33 46 Z" fill="#7A2A22"/>
+      <path d="M31 49 L31 55 L36.5 52 Z" fill="#7A2A22"/>
+      <path d="M42 49 L42 55 L36.5 52 Z" fill="#7A2A22"/>
+      <rect x="35" y="50.2" width="3" height="3.6" rx="1" fill="#5E201A"/>
     </svg>
   </button>
   <div class="hootie-panel" id="hootiePanel" role="dialog" aria-modal="false" aria-labelledby="hootie-title">
     <div class="hootie-header">
-      <svg class="h-emoji" viewBox="0 0 64 64" width="30" height="30" aria-hidden="true" focusable="false">
-        <path d="M6 32 L18 22 L18 42 Z" fill="#8B1D1D"/>
-        <ellipse cx="38" cy="32" rx="20" ry="14" fill="#E8CE85"/>
-        <path d="M30 19 Q38 10 46 19 Z" fill="#8B1D1D"/>
-        <circle cx="40" cy="30" r="6.6" fill="#FFFFFF" stroke="#0B1530" stroke-width="2.4"/>
-        <circle cx="52" cy="30" r="5" fill="#FFFFFF" stroke="#0B1530" stroke-width="2.2"/>
-        <path d="M46.6 30 H47.4" stroke="#0B1530" stroke-width="2.2"/>
-        <circle cx="40" cy="30" r="2.2" fill="#0B1530"/>
-        <circle cx="52" cy="30" r="1.8" fill="#0B1530"/>
-        <path d="M40 40 Q46 44 52 39" fill="none" stroke="#0B1530" stroke-width="2" stroke-linecap="round"/>
+      <svg class="h-emoji" viewBox="0 0 64 64" width="34" height="34" aria-hidden="true" focusable="false">
+        <path d="M20 39 L6 28 Q3 39 6 50 Z" fill="#DCB45C"/>
+        <ellipse cx="35" cy="40" rx="19" ry="16" fill="#E8CE85"/>
+        <ellipse cx="37" cy="44" rx="12" ry="9" fill="#F2E2B0"/>
+        <path d="M28 25 Q36 21 44 25 L42 31 Q36 34 30 31 Z" fill="#08101F"/>
+        <path d="M36 11 L55 20 L36 29 L17 20 Z" fill="#08101F"/>
+        <circle cx="36" cy="20" r="1.5" fill="#DCB45C"/>
+        <path d="M36 20 L53 21 L53 32" fill="none" stroke="#DCB45C" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+        <circle cx="53" cy="34" r="2.4" fill="#DCB45C"/>
+        <circle cx="31" cy="39" r="7" fill="#FFFFFF" stroke="#08101F" stroke-width="2.4"/>
+        <circle cx="45" cy="39" r="7" fill="#FFFFFF" stroke="#08101F" stroke-width="2.4"/>
+        <path d="M37.6 39 H38.4" stroke="#08101F" stroke-width="2.2"/>
+        <circle cx="32" cy="40" r="3" fill="#08101F"/>
+        <circle cx="44" cy="40" r="3" fill="#08101F"/>
+        <circle cx="33.1" cy="38.8" r="1" fill="#FFFFFF"/>
+        <circle cx="45.1" cy="38.8" r="1" fill="#FFFFFF"/>
+        <path d="M33 46 Q38 51 43 46 Q38.5 48.5 33 46 Z" fill="#7A2A22"/>
+        <path d="M31 49 L31 55 L36.5 52 Z" fill="#7A2A22"/>
+        <path d="M42 49 L42 55 L36.5 52 Z" fill="#7A2A22"/>
+        <rect x="35" y="50.2" width="3" height="3.6" rx="1" fill="#5E201A"/>
       </svg>
       <div><h2 id="hootie-title">Hootie, the Know Fish</h2><p>Your course guide. Ask away.</p></div>
       <button type="button" class="hootie-close" id="hootieClose" aria-label="Close Hootie">&times;</button>
@@ -465,9 +561,9 @@
   <div class="intro-inner">
     <div class="logo-figures" id="logoFigures" aria-hidden="true">
       <!-- three-figure mark: navy + two maroon -->
-      <svg viewBox="0 0 40 90" role="img" aria-hidden="true"><circle cx="20" cy="16" r="12" fill="#0B1530"/><path d="M4 88 C4 58 36 58 36 88 Z" fill="#0B1530"/></svg>
-      <svg viewBox="0 0 40 90" role="img" aria-hidden="true"><circle cx="20" cy="16" r="12" fill="#8B1D1D"/><path d="M4 88 C4 58 36 58 36 88 Z" fill="#8B1D1D"/></svg>
-      <svg viewBox="0 0 40 90" role="img" aria-hidden="true"><circle cx="20" cy="16" r="12" fill="#6B1616"/><path d="M4 88 C4 58 36 58 36 88 Z" fill="#6B1616"/></svg>
+      <svg viewBox="0 0 40 52" role="img" aria-hidden="true"><circle cx="20" cy="12" r="9" fill="#08101F" stroke="#FFFFFF" stroke-width="2.4"/><path d="M20 19 C9 19 6 32 6 48 L34 48 C34 32 31 19 20 19 Z" fill="#08101F" stroke="#FFFFFF" stroke-width="2.4"/></svg>
+      <svg viewBox="0 0 40 52" role="img" aria-hidden="true"><circle cx="20" cy="12" r="9" fill="#7A2A22"/><path d="M20 19 C9 19 6 32 6 48 L34 48 C34 32 31 19 20 19 Z" fill="#7A2A22"/></svg>
+      <svg viewBox="0 0 40 52" role="img" aria-hidden="true"><circle cx="20" cy="12" r="9" fill="#DCB45C"/><path d="M20 19 C9 19 6 32 6 48 L34 48 C34 32 31 19 20 19 Z" fill="#DCB45C"/></svg>
     </div>
 
     <p class="greeting" id="greeting" aria-hidden="true">Hello</p>
@@ -503,7 +599,22 @@
     <h2 id="tour-h2">The 7 things that will carry you through this course</h2>
     <p>Open each one at least once. You can replay this tour anytime from the welcome screen.</p>
   </div>
-  <div class="res-rail" id="resRail" role="list"><!-- resource cards injected --></div>
+  <div class="res-rail" id="resRail" role="group" aria-label="Course resources"><!-- resource cards injected --></div>
+  <div class="tour-preview" id="tourPreview">
+    <div class="tp-head">
+      <p class="tp-title" id="tpTitle">Preview</p>
+      <div class="tp-actions">
+        <a class="tp-link" id="tpNewTab" href="#" target="_blank" rel="noopener" hidden>Open in new tab &#8599;</a>
+        <button type="button" class="tp-close" id="tpClose" hidden>Close</button>
+      </div>
+    </div>
+    <div class="tp-body" id="tpBody">
+      <div class="tp-empty">
+        <strong>Your preview opens here</strong>
+        <span>Pick "Show it here" below (or click any card) to open a resource right here, scroll through it, then continue. No new tabs, no leaving the page.</span>
+      </div>
+    </div>
+  </div>
   <img class="hand" id="hand" alt="" aria-hidden="true"
     src="data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><path d='M30 4c-3 0-5 2-5 5v22l-4-5c-2-3-6-3-8-1s-2 5 0 8l10 15c3 5 8 8 14 8h6c7 0 12-5 12-12V22c0-3-2-5-5-5s-5 2-5 5v-2c0-3-2-5-5-5s-5 2-5 5v-3c0-3-2-5-5-5s-5 2-5 5V9c0-3-2-5-5-5z' fill='%23E8CE85' stroke='%236B1616' stroke-width='2'/></svg>">
 </section>
@@ -531,9 +642,9 @@
 <section id="screen-back" class="screen" aria-labelledby="back-h2">
   <div class="back-head">
     <div class="logo-figures" aria-hidden="true">
-      <svg viewBox="0 0 40 90" aria-hidden="true"><circle cx="20" cy="16" r="12" fill="#F4EFE8"/><path d="M4 88 C4 58 36 58 36 88 Z" fill="#F4EFE8"/></svg>
-      <svg viewBox="0 0 40 90" aria-hidden="true"><circle cx="20" cy="16" r="12" fill="#DCB45C"/><path d="M4 88 C4 58 36 58 36 88 Z" fill="#DCB45C"/></svg>
-      <svg viewBox="0 0 40 90" aria-hidden="true"><circle cx="20" cy="16" r="12" fill="#8B1D1D"/><path d="M4 88 C4 58 36 58 36 88 Z" fill="#8B1D1D"/></svg>
+      <svg viewBox="0 0 40 52" aria-hidden="true"><circle cx="20" cy="12" r="9" fill="#F4EFE8"/><path d="M20 19 C9 19 6 32 6 48 L34 48 C34 32 31 19 20 19 Z" fill="#F4EFE8"/></svg>
+      <svg viewBox="0 0 40 52" aria-hidden="true"><circle cx="20" cy="12" r="9" fill="#DCB45C"/><path d="M20 19 C9 19 6 32 6 48 L34 48 C34 32 31 19 20 19 Z" fill="#DCB45C"/></svg>
+      <svg viewBox="0 0 40 52" aria-hidden="true"><circle cx="20" cy="12" r="9" fill="#7A2A22"/><path d="M20 19 C9 19 6 32 6 48 L34 48 C34 32 31 19 20 19 Z" fill="#7A2A22"/></svg>
     </div>
     <p class="status-dot"><span class="dot" aria-hidden="true"></span>You are all set up</p>
     <h2 id="back-h2"><span id="greetName">Good day</span>, welcome back</h2>
@@ -542,10 +653,21 @@
   </div>
 
   <div id="main" class="back-body">
-    <h3 class="ask">Where would you like to start today?</h3>
-    <div class="launch-grid" id="launchGrid"><!-- quick-launch cards injected --></div>
+    <section class="hubgate" id="hubGate" aria-label="Weekly hubs by module">
+      <div class="hg-head">
+        <p class="hg-eyebrow">Your weekly hubs</p>
+        <p class="hg-now" id="hgNow"></p>
+      </div>
+      <p class="hg-instr">Pick a module, then open that week's hub. Every week stays open, so you can revisit past weeks anytime.</p>
+      <div class="hg-modtabs" id="hgModtabs" role="tablist" aria-label="Modules"></div>
+      <div class="hg-weeks" id="hgWeeks"></div>
+    </section>
 
-    <nav class="chips" id="chipRow" aria-label="More resources"><!-- chips injected --></nav>
+    <p class="chips-eyebrow chips-eyebrow--course">Course material</p>
+    <nav class="chips chips--course" id="chipCourse" aria-label="Course material"></nav>
+
+    <p class="chips-eyebrow">Course admin and support</p>
+    <nav class="chips chips--admin" id="chipAdmin" aria-label="Course admin and support"></nav>
 
     <div class="manage">
       <button type="button" id="changeSecBtn">Change my section</button>
@@ -603,25 +725,25 @@
   function buildResources(secKey){
     var s = SECTIONS[secKey];
     return [
-      {key:'syllabus', name:'Syllabus', icon:iconDoc, internal:true, url:s.syllabus,
+      {key:'syllabus', name:'Syllabus', icon:iconDoc, internal:true, frame:true, url:s.syllabus,
        desc:'How the course works, the grade model, and every important date.',
        say:'Start with the syllabus. It lays out how the course works, the grade model, and every important date for your section.'},
-      {key:'mastery', name:'Mastery OS', icon:iconBrain, internal:true, url:'mastery-os-fall-2026.html',
+      {key:'mastery', name:'Mastery OS', icon:iconBrain, internal:true, frame:true, url:'mastery-os-fall-2026.html',
        desc:'Spaced recall, cram plans, and gap finders that adapt to your schedule.',
        say:'The Mastery OS is your study engine. Spaced recall, cram plans, and gap finders that already know your section schedule.'},
-      {key:'loops', name:'Loops', icon:iconLoop, internal:false, url:'https://medmasterscollaborative.com/anatomy-loops',
+      {key:'loops', name:'Loops', icon:iconLoop, internal:false, frame:false, url:'https://medmasterscollaborative.com/anatomy-loops',
        desc:'Quick lab-based practice questions for fast visual review.',
        say:'Loops are quick lab-based practice questions. Use them for fast visual review between study blocks.'},
-      {key:'videos', name:"This week's videos", icon:iconPlay, internal:true, url:'bio004-course-calendar.html',
+      {key:'videos', name:"This week's videos", icon:iconPlay, internal:true, frame:true, url:'bio004-course-calendar.html',
        desc:'Concept lectures on the course calendar, due the night before class.',
        say:'This week’s videos live on the course calendar. Watch the concept lecture the night before class so the in-class walk-through clicks.'},
-      {key:'labs', name:'Lab Sprints', icon:iconFlask, internal:true, url:s.hub,
+      {key:'labs', name:'Lab Sprints', icon:iconFlask, internal:true, frame:true, url:s.hub,
        desc:'Explore, practice, spaced recall, and build-your-own-exam for each lab.',
        say:'Lab Sprints are on your section hub. Explore the structures, practice, run spaced recall, then build your own exam to test yourself.'},
-      {key:'atlas', name:'Digital Atlas', icon:iconAtlas, internal:false, url:'https://share.articulate.com/UOHEe3p6DmTC4nXuUTE02',
+      {key:'atlas', name:'Digital Atlas', icon:iconAtlas, internal:false, frame:true, url:'https://share.articulate.com/UOHEe3p6DmTC4nXuUTE02',
        desc:'Interactive atlas to explore structures in 3D detail.',
        say:'The Digital Atlas lets you explore structures interactively. Great for building the mental picture before lab.'},
-      {key:'study', name:'Study With Me', icon:iconPeople, internal:false, url:'https://drsrennie-stack.github.io/new-build-bio4-solano/study-session-signup.html',
+      {key:'study', name:'Study With Me', icon:iconPeople, internal:false, frame:true, url:'https://drsrennie-stack.github.io/new-build-bio4-solano/study-session-signup.html',
        desc:'Sign up for live co-study sessions and bank engagement hours.',
        say:'Study With Me is live co-study time. Sign up, show up, and you also bank verified engagement hours toward Scholar Points.'}
     ];
@@ -635,6 +757,7 @@
   var iconFlask='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M9 3h6M10 3v6l-5 9a2 2 0 0 0 2 3h10a2 2 0 0 0 2-3l-5-9V3"/><path d="M6.5 15h11"/></svg>';
   var iconAtlas='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3a15 15 0 0 1 0 18M12 3a15 15 0 0 0 0 18"/></svg>';
   var iconPeople='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="9" cy="8" r="3"/><path d="M3 20a6 6 0 0 1 12 0M16 5a3 3 0 0 1 0 6M18 20a6 6 0 0 0-3-5"/></svg>';
+  var iconHome='<svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M3 11l9-7 9 7"/><path d="M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"/><path d="M9 20v-6h6v6"/></svg>';
 
   var RESOURCES = section ? buildResources(section) : [];
 
@@ -692,13 +815,21 @@
     RESOURCES.forEach(function(res, idx){
       var card = document.createElement('div');
       card.className = 'rescard';
-      card.setAttribute('role','listitem');
       card.id = 'res-' + res.key;
+      card.setAttribute('role','button');
+      card.tabIndex = 0;
+      card.setAttribute('aria-label','Show ' + res.name + ' here');
+      card.style.cursor = 'pointer';
       card.innerHTML =
         '<span class="num">'+(idx+1)+' / '+RESOURCES.length+'</span>' +
         '<span class="ico">'+res.icon+'</span>' +
         '<h3>'+res.name+'</h3>' +
         '<p>'+res.desc+'</p>';
+      (function(i){
+        function activate(){ if(!document.body.classList.contains('touring')) return; tourIdx=i; renderStep(); openPreview(RESOURCES[i]); }
+        card.addEventListener('click', activate);
+        card.addEventListener('keydown', function(e){ if(e.key==='Enter'||e.key===' '){ e.preventDefault(); activate(); } });
+      })(idx);
       rail.appendChild(card);
     });
     // dots
@@ -751,6 +882,37 @@
     hand.style.top  = (cRect.top - tRect.top - 30) + 'px';
   }
 
+  // Inline resource preview (fills the panel; no leaving the page)
+  function openPreview(res){
+    var body = document.getElementById('tpBody');
+    document.getElementById('tpTitle').textContent = 'Preview: ' + res.name;
+    var newtab = document.getElementById('tpNewTab');
+    newtab.href = res.url; newtab.hidden = false;
+    document.getElementById('tpClose').hidden = false;
+    if(res.frame){
+      body.innerHTML = '<iframe class="tp-frame" title="Preview of ' + res.name + '"></iframe>' +
+        '<p class="tp-hint">Scroll inside to explore. Not loading? Use Open in new tab, top right.</p>';
+      body.querySelector('iframe').src = res.url;
+    } else {
+      body.innerHTML = '<div class="tp-fallback"><strong>' + res.name + ' opens in its own tab.</strong>' +
+        '<span>It is an interactive app that runs best full screen.</span>' +
+        '<a class="btn btn-primary" href="' + res.url + '" target="_blank" rel="noopener">Open ' + res.name + ' &#8599;</a></div>';
+    }
+    opened[res.key] = true;
+    document.getElementById('nNextBtn').disabled = false;
+    document.getElementById('nOpenBtn').textContent = 'Show again';
+    postHeight();
+  }
+  function resetPreview(){
+    var body = document.getElementById('tpBody');
+    if(!body) return;
+    body.innerHTML = '<div class="tp-empty"><strong>Your preview opens here</strong>' +
+      '<span>Pick "Show it here" below, or click a card, to open a resource right here. Scroll through it, then continue.</span></div>';
+    document.getElementById('tpNewTab').hidden = true;
+    document.getElementById('tpClose').hidden = true;
+    document.getElementById('tpTitle').textContent = 'Preview';
+  }
+
   function renderStep(){
     var res = RESOURCES[tourIdx];
     // spotlight
@@ -771,8 +933,9 @@
     document.getElementById('nBackBtn').disabled = (tourIdx===0);
     document.getElementById('nNextBtn').disabled = !opened[res.key];
     document.getElementById('nNextBtn').textContent = (tourIdx===RESOURCES.length-1) ? 'Finish' : 'Next';
-    document.getElementById('nOpenBtn').textContent = opened[res.key] ? 'Open again' : 'Open it';
+    document.getElementById('nOpenBtn').textContent = opened[res.key] ? 'Show again' : 'Show it here';
 
+    resetPreview();
     speak(res);
     postHeight();
   }
@@ -812,47 +975,106 @@
     var s = SECTIONS[section];
     document.getElementById('greetName').textContent = timeGreeting();
     document.getElementById('backDate').textContent = longDate();
-    var chip = document.getElementById('backSecChip');
-    chip.textContent = 'Your section: ' + s.label + '  ·  ' + s.meet;
+    document.getElementById('backSecChip').textContent = 'Your section: ' + s.label + '  ·  ' + s.meet;
 
-    // Quick-launch cards (4)
-    var launches = [
-      {icon:iconPlay,  strong:"This week's pre-work", span:'Concept lecture and worksheet on the calendar.', internal:true, url:'bio004-course-calendar.html'},
-      {icon:iconBrain, strong:'Mastery OS',           span:'Spaced recall, cram, and gap finders.',        internal:true, url:'mastery-os-fall-2026.html'},
-      {icon:iconFlask, strong:'Lab Sprints',          span:'Explore, practice, and build your own exam.',   internal:true, url:s.hub},
-      {icon:iconPeople,strong:'Study With Me',        span:'Live co-study sessions.',                        internal:false, url:'https://drsrennie-stack.github.io/new-build-bio4-solano/study-session-signup.html'}
-    ];
-    var grid = document.getElementById('launchGrid');
-    grid.innerHTML = '';
-    launches.forEach(function(l){
-      var a = document.createElement('a');
-      a.className = 'launch';
-      a.href = l.url;
-      if(l.internal){ a.target = '_top'; }
-      else { a.target = '_blank'; a.rel = 'noopener'; }
-      a.innerHTML = '<span class="ico">'+l.icon+'</span><strong>'+l.strong+'</strong><span>'+l.span+'</span>';
-      grid.appendChild(a);
-    });
+    renderHubGate(s);
 
-    // Chips
-    var chips = [
+    var STUDY = 'https://drsrennie-stack.github.io/new-build-bio4-solano/study-session-signup.html';
+    // Course material (prominent pills)
+    fillChips(document.getElementById('chipCourse'), [
+      {label:"This week's pre-work", internal:true,  url:'bio004-course-calendar.html'},
+      {label:'Mastery OS',           internal:true,  url:'mastery-os-fall-2026.html'},
+      {label:'Lab Sprints',          internal:true,  url:s.hub},
+      {label:'Loops',                internal:false, url:'https://medmasterscollaborative.com/anatomy-loops'},
+      {label:'Digital Atlas',        internal:false, url:'https://share.articulate.com/UOHEe3p6DmTC4nXuUTE02'}
+    ]);
+    // Course admin and support (muted pills)
+    fillChips(document.getElementById('chipAdmin'), [
       {label:'Syllabus',      internal:true,  url:s.syllabus},
-      {label:'Loops',         internal:false, url:'https://medmasterscollaborative.com/anatomy-loops'},
-      {label:'Digital Atlas', internal:false, url:'https://share.articulate.com/UOHEe3p6DmTC4nXuUTE02'},
+      {label:'Study With Me', internal:false, url:STUDY},
       {label:'Course home',   internal:true,  url:s.home}
-    ];
-    var row = document.getElementById('chipRow');
-    row.innerHTML = '';
-    chips.forEach(function(c){
+    ]);
+    postHeight();
+  }
+
+  function fillChips(container, items){
+    if(!container) return;
+    container.innerHTML = '';
+    items.forEach(function(c){
       var a = document.createElement('a');
       a.className = 'chip';
       a.href = c.url;
       a.textContent = c.label;
       if(c.internal){ a.target = '_top'; }
       else { a.target = '_blank'; a.rel = 'noopener'; }
-      row.appendChild(a);
+      container.appendChild(a);
     });
-    postHeight();
+  }
+
+  // Which week/module is "now" (from the term calendar). Term starts Aug 17, 2026.
+  function currentWeek(){
+    var start = new Date(2026, 7, 17);
+    var now = new Date();
+    var wk = Math.floor((now - start) / (7*24*3600*1000)) + 1;
+    var preterm = wk < 1;
+    wk = Math.max(1, Math.min(17, wk));
+    var mod = wk<=4 ? 1 : wk<=7 ? 2 : wk<=10 ? 3 : wk<=15 ? 4 : 5;
+    return {week:wk, module:mod, preterm:preterm};
+  }
+
+  // 5 modules, each holds its week hubs. Every week stays clickable (past weeks included).
+  var HG_MODULES = [
+    {m:1, w:[1,2,3,4]},
+    {m:2, w:[5,6,7]},
+    {m:3, w:[8,9,10]},
+    {m:4, w:[11,12,13,14,15]},
+    {m:5, w:[16,17]}
+  ];
+  function renderHubGate(s){
+    var cur = currentWeek();
+    var now = document.getElementById('hgNow');
+    if(now){
+      now.innerHTML = cur.preterm
+        ? 'Term starts Aug 17. First stop: <b>Module 1 &middot; Week 1</b>.'
+        : 'You are here: <b>Module ' + cur.module + ' &middot; Week ' + cur.week + '</b>.';
+    }
+    var tabs = document.getElementById('hgModtabs');
+    var weeksBox = document.getElementById('hgWeeks');
+    if(!tabs || !weeksBox) return;
+    var selected = cur.module;
+
+    function renderWeeks(mod){
+      weeksBox.innerHTML = '';
+      HG_MODULES[mod-1].w.forEach(function(wk){
+        var isNow = (wk===cur.week && mod===cur.module);
+        var a = document.createElement('a');
+        a.className = 'wkpill' + (isNow ? ' current' : '');
+        a.href = 'week-' + wk + '.html';
+        a.target = '_top';
+        a.innerHTML = (isNow ? '<span class="hg-arrow" aria-hidden="true"><span>&#8595;</span></span>' : '') +
+          '<span class="wkmain">Week ' + wk + '</span>' +
+          (isNow ? '<span class="hg-thisweek">This week</span>' : '<span class="wkn">Open hub</span>');
+        weeksBox.appendChild(a);
+      });
+    }
+    tabs.innerHTML = '';
+    HG_MODULES.forEach(function(mo){
+      var b = document.createElement('button');
+      b.type = 'button';
+      b.className = 'modtab' + (mo.m===cur.module ? ' current' : '');
+      b.setAttribute('role','tab');
+      b.setAttribute('aria-selected', mo.m===selected ? 'true' : 'false');
+      b.innerHTML = 'Module ' + mo.m + (mo.m===cur.module ? ' <span class="modnow">now</span>' : '');
+      b.addEventListener('click', function(){
+        selected = mo.m;
+        tabs.querySelectorAll('.modtab').forEach(function(t){ t.setAttribute('aria-selected','false'); });
+        b.setAttribute('aria-selected','true');
+        renderWeeks(mo.m);
+        postHeight();
+      });
+      tabs.appendChild(b);
+    });
+    renderWeeks(selected);
   }
 
   // ---------- Section picker (first run, no section known) ----------
@@ -902,12 +1124,9 @@
     });
 
     document.getElementById('nOpenBtn').addEventListener('click', function(){
-      var res = RESOURCES[tourIdx];
-      opened[res.key] = true;
-      openResource(res);
-      document.getElementById('nNextBtn').disabled = false;
-      document.getElementById('nOpenBtn').textContent = 'Open again';
+      openPreview(RESOURCES[tourIdx]);
     });
+    document.getElementById('tpClose').addEventListener('click', resetPreview);
     document.getElementById('nNextBtn').addEventListener('click', function(){
       if(tourIdx >= RESOURCES.length-1){ endTour(); return; }
       tourIdx++;
