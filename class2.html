@@ -9,7 +9,7 @@
 <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;700&family=Lora:ital@1&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <style>
   :root{
-    --navy:#0B1530; --navy-deep:#0B1530; --navy-darkest:#060A18; --navy-tint:#ECEFF4;
+    --navy:#08101F; --navy-deep:#08101F; --navy-darkest:#060A18; --navy-tint:#ECEFF4;
     --terra:#8B1D1D; --terra-dark:#6B1616; --terra-deep:#A0452F;
     --gold:#C9A14A; --gold-soft:#DCB45C;
     --white:#FFFFFF; --offwhite:#FAFAF9; --gray:#6B7280; --gray-light:#D1D5DB;
@@ -79,12 +79,12 @@
   .weeks{margin-top:14px;display:flex;flex-direction:column;gap:10px;}
   .week{border:1px solid var(--navy-tint);border-radius:var(--radius);overflow:hidden;background:#fff;box-shadow:var(--shadow-rest);}
   .week.hidden{display:none;}
-  .week-head{display:flex;align-items:center;gap:12px;background:#8FA98A;color:#0B1530;padding:9px 16px;font-family:var(--font-display);font-weight:800;font-size:.92rem;letter-spacing:.02em;}
+  .week-head{display:flex;align-items:center;gap:12px;background:#8FA98A;color:#08101F;padding:9px 16px;font-family:var(--font-display);font-weight:800;font-size:.92rem;letter-spacing:.02em;}
   .week-head .wk-n{font-family:var(--font-eyebrow);font-weight:700;letter-spacing:.14em;text-transform:uppercase;font-size:.72rem;}
   .week-head .wk-range{font-weight:600;font-size:.8rem;opacity:.85;margin-left:auto;}
   .week.wk-current .week-head{background:var(--terra-dark);color:#fff;}
   .week.wk-current .week-head .wk-range{opacity:.9;}
-  .week-current-tag{display:none;font-family:var(--font-eyebrow);font-weight:700;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;background:var(--gold);color:#0B1530;padding:2px 8px;border-radius:999px;}
+  .week-current-tag{display:none;font-family:var(--font-eyebrow);font-weight:700;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;background:var(--gold);color:#08101F;padding:2px 8px;border-radius:999px;}
   .week.wk-current .week-current-tag{display:inline-block;}
 
   /* ---------- SESSION ROWS ---------- */
@@ -105,9 +105,9 @@
   .tag{font-family:var(--font-eyebrow);font-weight:700;font-size:.6rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border-radius:999px;border:1px solid var(--terra-dark);color:var(--terra-dark);}
   .tag.lab{border-color:var(--terra-dark);color:var(--terra-dark);}
   .tag.exam{background:var(--terra-dark);color:#fff;border-color:var(--terra-dark);}
-  .tag.holiday{background:var(--gold);color:#0B1530;border-color:var(--gold);}
+  .tag.holiday{background:var(--gold);color:#08101F;border-color:var(--gold);}
   .tag.open{background:var(--navy);color:#fff;border-color:var(--navy);}
-  .tag.today{background:var(--gold);color:#0B1530;border-color:var(--gold);}
+  .tag.today{background:var(--gold);color:#08101F;border-color:var(--gold);}
   .caret{flex:0 0 auto;color:var(--terra-dark);transition:transform 200ms ease;font-size:1.1rem;}
   .sess[aria-expanded-row="true"] .caret{transform:rotate(90deg);}
   .sess.noexp .caret{visibility:hidden;}
@@ -165,8 +165,8 @@
       <svg viewBox="40 10 125 148" role="img" aria-hidden="true" focusable="false">
         <g transform="translate(0, 18)">
           <g transform="translate(60, 0) rotate(8 0 130)">
-            <circle cx="0" cy="20" r="10" fill="#0B1530"/>
-            <path d="M 0,32 C -10,32 -16,36 -16,42 C -16,55 -13,68 -11,82 C -10,100 -12,118 -14,130 L 14,130 C 12,118 10,100 11,82 C 13,68 16,55 16,42 C 16,36 10,32 0,32 Z" fill="#0B1530"/>
+            <circle cx="0" cy="20" r="10" fill="#08101F"/>
+            <path d="M 0,32 C -10,32 -16,36 -16,42 C -16,55 -13,68 -11,82 C -10,100 -12,118 -14,130 L 14,130 C 12,118 10,100 11,82 C 13,68 16,55 16,42 C 16,36 10,32 0,32 Z" fill="#08101F"/>
           </g>
           <g transform="translate(100, 0)">
             <circle cx="0" cy="10" r="11" fill="#6B1616"/>
