@@ -12,18 +12,19 @@
    ------------------------------------------------------------
    This file deliberately does NOT define window.BIO004_SCHEDULE.
 
-   mastery-os-fall-2026.html resolves its schedule in this order:
+   Mastery OS USED TO resolve its schedule in this order:
 
      store.get('mos-schedule')
        || window.BIO004_SCHEDULE          <-- global, no section
        || FALL_SECTIONS[store.get('mos-section')]
-       || (summer fallback)
 
-   Defining window.BIO004_SCHEDULE would therefore override the
-   section-aware FALL_SECTIONS lookup and force all three sections
-   onto one schedule. Two of the three would silently show the wrong
-   exam dates. Mastery OS already carries correct per-section data in
-   FALL_MW and FALL_TR, so it needs nothing from this file.
+   Defining window.BIO004_SCHEDULE would therefore have overridden the
+   section-aware lookup and forced all three sections onto one
+   schedule. Two of the three would have silently shown the wrong exam
+   dates. That has been fixed at the consumer end: Mastery OS now
+   resolves per-section data FIRST and only accepts a generic global
+   when the global names the matching section. This file still avoids
+   defining that global, as belt and braces.
 
    Use this file as the human-readable source of truth and for any
    tool that wants the dates without loading Mastery OS. Read it as
@@ -50,12 +51,12 @@
      Thanksgiving ............... Thu Nov 26 to Fri Nov 27
      Last day of instruction .... Fri Dec 11
 
-   >>> THE ONE CONFLICT IN THE WHOLE TERM <<<
-   Class 1 only, Exam 4. The lecture exam is Wed Nov 18. The lab
-   practical is Mon Nov 16, two days earlier, because the department
-   sets practical dates for the whole campus. Every other exam in
-   every section has both parts on the same day. Do not "fix" the
-   Nov 16 date by aligning it to Nov 18; it is correct as written.
+   >>> THE ONE ODD DATE IN THE WHOLE TERM <<<
+   Class 1 Exam 4 is Mon Nov 16, not a Wednesday like its other four.
+   The department sets lab practical dates for the whole Vacaville lab
+   and put it there; the lecture exam was moved onto the same day so
+   both parts sit together. Every exam in every section now has both
+   parts on one day. Do not "correct" Nov 16 to a Wednesday.
    ============================================================ */
 
 window.BIO004_SECTIONS = {
@@ -88,10 +89,11 @@ window.BIO004_SECTIONS = {
           practicalCovers:'5 lab sessions, 2.1 through 2.6' },
         { n:3, lecture:'2026-10-21', practical:'2026-10-21', sameDay:true,
           practicalCovers:'5 lab sessions, 3.1 through 3.5' },
-        { n:4, lecture:'2026-11-18', practical:'2026-11-16', sameDay:false,
+        { n:4, lecture:'2026-11-16', practical:'2026-11-16', sameDay:true,
           practicalCovers:'5 lab sessions, 4.1 through 4.6',
-          note:'SPLIT. Practical Mon Nov 16, lecture exam Wed Nov 18. '
-             + 'This is the only split exam of the term.' },
+          note:'MONDAY. Every other Class 1 exam is a Wednesday. This one sits '
+             + 'Mon Nov 16 because that is the department lab practical date, and '
+             + 'the lecture exam was moved to join it so both parts stay on one day.' },
         { n:5, lecture:'2026-12-09', practical:'2026-12-09', sameDay:true,
           practicalCovers:'5 lab sessions, 5.1 through 5.5' }
       ]

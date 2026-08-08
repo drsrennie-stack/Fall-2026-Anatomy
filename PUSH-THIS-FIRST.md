@@ -1,4 +1,4 @@
-# Complete push, v2
+# Complete push, v3
 
 **Repo:** `drsrennie-stack/Fall-2026-Anatomy`
 **Location:** repo root. The repo is flat, so every file goes at the top level. No folders.
@@ -34,7 +34,7 @@ While I was in that file I also fixed the meeting line, which showed only the la
 
 ### 33 replacements
 
-**Carried a wrong Exam 4 date (10 files).** Class 1 practical was showing Nov 18. It is Mon Nov 16.
+**Carried a wrong Exam 4 date (10 files).** Class 1 was showing Nov 18. Exam 4 is Mon Nov 16, both parts.
 
 `class1.html` · `syllabus-class1.html` · `fall-2026-syllabus.html` · `mastery-os-fall-2026.html` · `mastery-os-fall-2026-instructor.html` · `bio004-course-calendar.html` · `bio004-exam-modules.html` · `fall-2026-schedule-mw.html` · `fall-2026-schedule-tr.html` · `week-14.html`
 
@@ -60,23 +60,40 @@ Also: weeks 4, 7, 10 and 17 say "lecture exam + lab practical" and that is **cor
 
 ## The one thing to understand before pushing
 
-**Class 1 Exam 4 is split.** Lab practical **Mon Nov 16**, lecture exam **Wed Nov 18**. Two sittings, two days. The practical date comes from the department lab master and covers the whole Vacaville lab room, so it is not yours to move. Classes 2 and 3 sit both parts Tue Nov 17.
+**Class 1 Exam 4 is Monday November 16.** Not Wednesday. Both parts, lecture exam and lab practical, sit on that one day.
 
-Every other exam in every section has both parts on the same day. If anyone later sees Nov 16 and Nov 18 and assumes one is a typo, this is the paragraph that stops them.
+Why: the department lab master sets practical dates for the whole Vacaville lab, and it puts the M/W Exam 4 practical on Mon Nov 16. Your lecture schedule had the lecture exam on Wed Nov 18. Since you control both halves, the lecture exam moved onto Nov 16 to join the practical. You stay on Jim's schedule, which is what keeps your setup and takedown windows intact.
 
-**Why `schedule-fall2026.js` was rewritten.** Mastery OS resolves its schedule from a chain of fallbacks, and the old chain checked `window.BIO004_SCHEDULE` **before** the per-section data. The old version of that file defined exactly that global. Any page loading it would have pinned all three sections to one calendar and shown two of them the wrong practical date, silently. The new file exposes `window.BIO004_SECTIONS` instead, and Mastery OS now puts per-section data first and only accepts a generic global if it names the matching section. You do not need a `<script>` tag for it; it is the human-readable source of truth, nothing more.
+**All five exams in all three sections now have both parts on the same day.** Nothing is split. The only unusual thing left about Exam 4 is the weekday, and every file says so.
 
----
+Jim's practical dates, for reference:
+
+| Exam | Class 1 (M/W) | Classes 2 and 3 (T/R) | Your duty |
+|---|---|---|---|
+| 1 | Wed Sep 9 | Tue Sep 8 | Setup Sharilyn or Moe, takedown Sharilyn |
+| 2 | Wed Sep 30 | Tue Sep 29 | Setup Sharilyn or Moe, takedown Sharilyn |
+| 3 | Wed Oct 21 | Thu Oct 22 | Setup Jim, takedown Sharilyn |
+| 4 | **Mon Nov 16** | Tue Nov 17 | Setup Sharilyn or Moe, takedown Sharilyn |
+| 5 | Wed Dec 9 | Thu Dec 10 | Setup Jim, takedown Jim |
+
+**The November knock-ons for Class 1**, since Exam 4 took the Nov 16 slot:
+
+- **TBL 7 (GI System)** moved from Nov 16 to **Mon Nov 9**, one session before the exam.
+- **GI Map Activity II** folded into Nov 4 alongside Activity I.
+- **Wed Nov 18** is now a normal class day: Exam 4 rebuttals plus Guided Renal Map in lecture, Renal Anatomy in lab.
+- **Mon Nov 23** lecture is now Kahoot: Renal. This also closes a gap, since Class 1 was the only section not getting it.
+
+**Why `schedule-fall2026.js` was rewritten.** Mastery OS resolved its schedule by checking `window.BIO004_SCHEDULE` before the per-section data, and the old version of that file defined exactly that global. Any page loading it would have pinned all three sections to one calendar. That is fixed at both ends now: the file exposes `window.BIO004_SECTIONS` instead, and Mastery OS puts per-section data first and only accepts a generic global that names the matching section. You do not need a `<script>` tag for it.
 
 ## After you push, check these
 
 On the live Pages URL, not locally.
 
 1. `welcome.html`, each section, click **Course home**. Lands on `class1/2/3.html`, not a 404.
-2. `class1.html`, **Mon Nov 16**. Reads "Exam 4 Lab Practical" and the note explains the split.
-3. `class1.html`, **Wed Nov 18**. Reads "Renal Anatomy" and notes the lecture exam is today.
-4. `week-14.html` on the M/W track. Both Nov 16 and Nov 18 show as exam days, with different halves.
-5. `bio004-course-calendar.html`, scroll to November. Nov 16 carries a Practical 4 badge.
+2. `class1.html`, **Mon Nov 16**. Reads "Exam 4" and the note says both parts today, and flags the Monday.
+3. `class1.html`, **Wed Nov 18**. Reads "Renal Anatomy", no exam.
+4. `week-14.html` on the M/W track. Nov 16 is the exam day, Nov 18 is a normal class day.
+5. `bio004-course-calendar.html`, November. Nov 16 is the only exam badge that week, and Nov 9 shows TBL 7.
 6. `class2.html`, **Sep 15 and Sep 17**. Skull, then Vertebrae & Ribs. Not the same title twice.
 7. Any class page, **day one**. "Intro to Anatomy Lab, Lab Safety & Introduction to Histology". No cell anatomy, no microscope.
 8. `mastery-os-fall-2026.html`, browser console clean, and each section shows its own Exam 4 date.
@@ -87,7 +104,7 @@ On the live Pages URL, not locally.
 
 - **Print.** Module 1 packet, 70 pages, three sections. The only item with a queue you do not control.
 - **Module 1 Part C structure list.** Cell anatomy stays off it and the microscope lab is gone. If there is a microscopy block in the packet it needs pulling before print.
-- **Tell Class 1 out loud about Nov 16 and Nov 18.** The files say it now. That is not the same as the students knowing it.
+- **Tell Class 1 out loud that Exam 4 is a Monday.** The files say it now. That is not the same as the students knowing it. Week 1, again week 13, and on the board Nov 9.
 - **Message Jim.** The M/W column lists lab 4.5 twice (Nov 4 and Nov 9), three lab numbers have typos (`1. 1`, `14 & 1.5`, `52`), and the M/W sittings on exams 1 and 2 are parenthesised and read as tentative. You have takedown on exams 1 through 4.
 - **Module 2 packet.** Due Week 4, Sep 7.
 

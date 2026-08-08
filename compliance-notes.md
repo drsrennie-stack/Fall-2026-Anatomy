@@ -141,7 +141,25 @@ Three changes landed after the first audit pass. All were re-verified with the f
 
 3. **Nov 25 label reverted.** The department master lumps Nov 25 to 27 as THANKSGIVING. The Solano board approved calendar labels Nov 25 to 29 as "No Classes" with no named holiday, and the instructor's own term for Nov 25 is Travel Day. Her wording was restored in every file. Nov 26 remains Thanksgiving for the Tue/Thu sections.
 
-## 10. Reviewer
+## 10. Final revision: Exam 4 unified to one day
+
+After the instructor confirmed she controls both halves of the exam and must stay on the department lab schedule because of her setup and takedown duty, Class 1 Exam 4 was moved so both parts sit on **Monday November 16**, the department lab practical date. The split is gone. All five exams in all three sections now have the lecture exam and the lab practical on the same day.
+
+Knock-on changes, all instructor-approved:
+
+- **TBL 7 (GI System)** lost its Nov 16 slot to the exam. Moved to **Mon Nov 9**, making it the last GI session before the exam.
+- **GI Map Activity II** was displaced by TBL 7 and folded into Nov 4 alongside Activity I.
+- **Wed Nov 18** became a normal class day: Exam 4 rebuttals plus the Guided Renal Map in lecture, Renal Anatomy in lab.
+- **Mon Nov 23** lecture became Kahoot: Renal. This also closed a section asymmetry, since Class 1 was the only section not receiving that activity.
+
+Accessibility consequences:
+
+- The split-exam callout, the "different day" text chip, and the pink split row styling were all removed from the master schedule, because the condition they signalled no longer exists. Signalling a distinction that is not real is itself an accessibility failure, not a neutral leftover.
+- What replaced them is a single text warning on the Exam 4 row reading "Monday, not the usual Wednesday", which is the one thing about that date that is genuinely unusual. It is text, not colour, so criterion 1.4.1 still holds without the tint.
+- The exam table was restructured from four date columns (lecture and practical per track) to two, plus a coverage column and a department duty column. Fewer columns means less horizontal scroll on narrow viewports, which improves 1.4.10 Reflow.
+- One rendering bug was caught in verification: the Exam 4 warning chip was firing on the Exam 1 row because a non-empty data field was being read as a boolean flag. Fixed and re-verified; exactly one chip renders, on Exam 4.
+
+## 11. Reviewer
 
 Reviewed by: Dr. Sharilyn Rennie
 Built and audited: August 8, 2026
